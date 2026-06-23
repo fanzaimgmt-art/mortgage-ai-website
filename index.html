@@ -4,26 +4,19 @@
 <meta charset="UTF-8" />
 <script>document.documentElement.classList.add('js')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Mortgage AI — Your Online Loan &amp; Insurance Broker, Powered by AI</title>
-<meta name="description" content="Mortgage AI is not another lead-generation site. We're your online broker: send one request, our AI scans the market for the most worthwhile loan or insurance, brings you the 3–4 best offers with zero spam — then keeps tracking your loan and alerts you when it's time to save. In English, Spanish, French &amp; Arabic." />
+<title>Mortgage AI — One request. We do the shopping. No spam flood.</title>
+<meta name="description" data-i18n-attr="content" data-i18n="meta.desc" content="Mortgage AI is your online loan & insurance comparison platform. Send one request — our AI brings you the 3–4 best offers for your personal loan, business loan, or insurance. We don't resell your number, so no spam flood. In your language: English, Español, Français, العربية, עברית." />
 <link rel="icon" type="image/png" href="images/logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Heebo:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --navy:#0a1f3c;
-    --navy-2:#0b2545;
-    --navy-3:#102e57;
-    --gold:#d6a93f;
-    --gold-2:#eac15d;
-    --gold-soft:#f4e6c2;
-    --ink:#0e1726;
-    --slate:#46556b;
-    --slate-2:#6b7a92;
-    --line:#e6eaf0;
-    --bg:#ffffff;
-    --bg-soft:#f6f8fb;
+    --navy:#0a1f3c; --navy-2:#0b2545; --navy-3:#102e57;
+    --gold:#d6a93f; --gold-2:#eac15d; --gold-soft:#f4e6c2;
+    --green:#2e9e6b;
+    --ink:#0e1726; --slate:#46556b; --slate-2:#6b7a92; --line:#e6eaf0;
+    --bg:#ffffff; --bg-soft:#f6f8fb;
     --bg-navy-grad:linear-gradient(160deg,#0a1f3c 0%,#0b2545 55%,#102e57 100%);
     --radius:18px;
     --shadow-sm:0 2px 10px rgba(13,30,58,.06);
@@ -33,254 +26,370 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{
-    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-    color:var(--ink);background:var(--bg);line-height:1.6;
-    -webkit-font-smoothing:antialiased;overflow-x:hidden;
-  }
+  body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   h1,h2,h3,h4,.display{font-family:'Sora',sans-serif;line-height:1.12;letter-spacing:-.02em;font-weight:700}
+  html[lang="he"] body,html[lang="he"] h1,html[lang="he"] h2,html[lang="he"] h3,html[lang="he"] h4{font-family:'Heebo',sans-serif}
+  html[lang="ar"] body,html[lang="ar"] h1,html[lang="ar"] h2,html[lang="ar"] h3,html[lang="ar"] h4{font-family:'IBM Plex Sans Arabic',sans-serif}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
   .gold{color:var(--gold)}
-  .eyebrow{
-    font-family:'Sora',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.18em;
-    text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.55rem;
-  }
+  .eyebrow{font-family:'Sora',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.55rem}
   .eyebrow::before{content:"";width:26px;height:2px;background:var(--gold);display:inline-block;border-radius:2px}
-  .btn{
-    display:inline-flex;align-items:center;gap:.5rem;font-family:'Sora',sans-serif;font-weight:600;
-    font-size:.98rem;padding:.85rem 1.5rem;border-radius:999px;cursor:pointer;border:0;
-    transition:transform .18s ease,box-shadow .18s ease,background .18s ease;white-space:nowrap;
-  }
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:'Sora',sans-serif;font-weight:600;font-size:.98rem;padding:.85rem 1.5rem;border-radius:999px;cursor:pointer;border:0;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;white-space:nowrap}
   .btn-gold{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-2) 100%);color:#1c1402;box-shadow:var(--shadow-gold)}
   .btn-gold:hover{transform:translateY(-2px);box-shadow:0 18px 46px rgba(214,169,63,.42)}
   .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.28)}
   .btn-ghost:hover{background:rgba(255,255,255,.16);transform:translateY(-2px)}
-  .btn-dark{background:var(--navy);color:#fff}
-  .btn-dark:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .btn-ghost-dark{background:transparent;color:var(--navy);border:1px solid var(--line)}
+  .btn-ghost-dark:hover{border-color:var(--navy);transform:translateY(-2px)}
   .btn svg{width:18px;height:18px}
+  .btn-arrow svg{transition:transform .18s}
+  .btn-arrow:hover svg{transform:translateX(3px)}
+
+  /* reassurance strip */
+  .reassure{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
+  .reassure span{display:inline-flex;align-items:center;gap:.4rem;font-size:.86rem;font-weight:500}
+  .reassure svg{width:16px;height:16px;color:var(--green);flex:none}
+  .hero .reassure span{color:#d6e0ee}
 
   /* ---------- NAV ---------- */
-  header.nav{
-    position:fixed;top:0;left:0;right:0;z-index:50;transition:all .3s ease;
-    background:rgba(255,255,255,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-    border-bottom:1px solid transparent;
-  }
-  header.nav.scrolled{background:rgba(255,255,255,.92);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
-  .brand{display:flex;align-items:center;gap:.6rem;font-family:'Sora',sans-serif;font-weight:700;font-size:1.18rem;color:var(--navy)}
+  header.nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:all .3s ease;background:rgba(255,255,255,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent}
+  header.nav.scrolled{background:rgba(255,255,255,.94);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+  .brand{display:flex;align-items:center;gap:.6rem;font-family:'Sora',sans-serif;font-weight:700;font-size:1.18rem;color:var(--navy);flex:none}
   .brand img{width:34px;height:34px;object-fit:contain}
   .brand b{color:var(--gold);font-weight:800}
-  .nav-links{display:flex;align-items:center;gap:2rem}
-  .nav-links a{font-size:.95rem;font-weight:500;color:var(--slate);transition:color .15s}
+  .nav-links{display:flex;align-items:center;gap:1.6rem;margin-inline-start:auto}
+  .nav-links a{font-size:.93rem;font-weight:500;color:var(--slate);transition:color .15s;white-space:nowrap}
   .nav-links a:hover{color:var(--navy)}
-  .nav-cta{display:flex;align-items:center;gap:.9rem}
+  .nav-cta{display:flex;align-items:center;gap:.7rem;flex:none}
+
+  /* language switcher */
+  .lang{position:relative}
+  .lang-btn{display:inline-flex;align-items:center;gap:.4rem;background:rgba(10,31,60,.05);border:1px solid var(--line);color:var(--navy);font-family:'Inter',sans-serif;font-weight:600;font-size:.86rem;padding:.5rem .8rem;border-radius:999px;cursor:pointer}
+  .lang-btn:hover{background:rgba(10,31,60,.09)}
+  .lang-btn svg{width:16px;height:16px}
+  .lang-menu{position:absolute;top:calc(100% + 8px);inset-inline-end:0;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:6px;min-width:160px;display:none;z-index:70}
+  .lang-menu.open{display:block}
+  .lang-menu button{display:flex;width:100%;align-items:center;justify-content:space-between;gap:10px;background:none;border:0;font-family:'Inter',sans-serif;font-size:.95rem;color:var(--ink);padding:.6rem .7rem;border-radius:9px;cursor:pointer;text-align:start}
+  .lang-menu button:hover{background:var(--bg-soft)}
+  .lang-menu button.active{color:var(--gold);font-weight:700}
+  .lang-menu button .chk{width:15px;height:15px;color:var(--gold);opacity:0}
+  .lang-menu button.active .chk{opacity:1}
   .hamb{display:none;background:none;border:0;cursor:pointer;padding:6px}
   .hamb span{display:block;width:24px;height:2px;background:var(--navy);margin:5px 0;border-radius:2px;transition:.25s}
 
   /* ---------- HERO ---------- */
-  .hero{position:relative;background:var(--bg-navy-grad);color:#fff;overflow:hidden;padding:148px 0 110px}
-  .hero::before{
-    content:"";position:absolute;inset:0;background:url('images/hero.jpg') center right/cover no-repeat;
-    opacity:.55;mask-image:linear-gradient(90deg,transparent 8%,#000 75%);
-    -webkit-mask-image:linear-gradient(90deg,transparent 8%,#000 75%);
-  }
-  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,rgba(10,31,60,.92) 30%,rgba(10,31,60,.35) 100%)}
+  .hero{position:relative;background:var(--bg-navy-grad);color:#fff;overflow:hidden;padding:130px 0 96px}
+  .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center right;opacity:.5;z-index:0;-webkit-mask-image:linear-gradient(90deg,transparent 6%,#000 70%);mask-image:linear-gradient(90deg,transparent 6%,#000 70%)}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,rgba(10,31,60,.94) 38%,rgba(10,31,60,.5) 100%);z-index:1}
   .hero .wrap{position:relative;z-index:2}
-  .hero-grid{max-width:720px}
-  .hero h1{font-size:clamp(2.3rem,5.2vw,3.7rem);font-weight:800;margin:18px 0 0}
+  .hero-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  .hero-brand{display:flex;align-items:center;gap:16px;margin-bottom:14px}
+  .hero-logo{width:74px;height:74px;object-fit:contain;filter:drop-shadow(0 8px 22px rgba(0,0,0,.4))}
+  .hero-name{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(1.9rem,4vw,2.6rem);color:#fff;letter-spacing:-.02em;line-height:1}
+  .hero-name b{color:var(--gold-2);font-weight:800}
+  .hero-disambig{font-size:.92rem;color:#aebbd0;margin:-6px 0 18px}
+  .hero h1{font-size:clamp(2.1rem,4.6vw,3.25rem);font-weight:800;margin:10px 0 0}
   .hero h1 .hl{color:var(--gold-2)}
-  .hero .lead{font-size:clamp(1.05rem,2vw,1.22rem);color:#cdd8e8;margin:22px 0 0;max-width:600px}
-  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
-  .hero-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:38px}
-  .chip{
-    display:inline-flex;align-items:center;gap:.45rem;font-size:.85rem;font-weight:500;color:#dfe8f4;
-    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);padding:.45rem .85rem;border-radius:999px;
-  }
+  .hero .lead{font-size:clamp(1rem,1.7vw,1.12rem);color:#cdd8e8;margin:18px 0 0;max-width:600px}
+  .hero .lead b{color:#fff;font-weight:600}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+  .hero .reassure{margin-top:20px}
+  .hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+  .chip{display:inline-flex;align-items:center;gap:.45rem;font-size:.82rem;font-weight:500;color:#dfe8f4;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);padding:.4rem .8rem;border-radius:999px}
   .chip .dot{width:7px;height:7px;border-radius:50%;background:var(--gold)}
 
-  /* ---------- MARQUEE / POSITION STRIP ---------- */
-  .strip{background:var(--ink);color:#fff;padding:30px 0}
-  .strip .wrap{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;text-align:center}
-  .strip .si{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:150px}
-  .strip .si b{font-family:'Sora',sans-serif;font-size:1.7rem;font-weight:700;color:var(--gold-2)}
-  .strip .si span{font-size:.82rem;color:#9fb0c8;letter-spacing:.02em}
-  .strip .sep{width:1px;height:42px;background:rgba(255,255,255,.14)}
+  /* hero form card */
+  .startcard{background:#fff;border-radius:22px;box-shadow:0 30px 70px rgba(3,12,28,.45);padding:26px 24px;color:var(--ink)}
+  .startcard h3{font-size:1.18rem;color:var(--navy);margin-bottom:4px}
+  .startcard .sc-sub{font-size:.88rem;color:var(--slate);margin-bottom:16px}
+  .intent{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+  .intent button{font-family:'Inter',sans-serif;font-size:.84rem;font-weight:600;color:var(--navy);background:var(--bg-soft);border:1.5px solid var(--line);border-radius:12px;padding:12px 6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;transition:.15s}
+  .intent button svg{width:22px;height:22px;color:var(--gold)}
+  .intent button:hover{border-color:var(--gold)}
+  .intent button.sel{border-color:var(--gold);background:#fdf7e8;box-shadow:0 0 0 3px rgba(214,169,63,.18)}
+  .fld{margin-bottom:10px}
+  .fld label{display:block;font-size:.78rem;font-weight:600;color:var(--slate);margin-bottom:4px}
+  .fld input,.fld select{width:100%;font-family:'Inter',sans-serif;font-size:.92rem;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:11px 12px;outline:none;transition:.15s}
+  .fld input:focus,.fld select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(214,169,63,.15)}
+  .fld-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .consent{display:flex;gap:9px;align-items:flex-start;margin:12px 0 14px;font-size:.76rem;color:var(--slate);line-height:1.45}
+  .consent input{margin-top:3px;flex:none;width:16px;height:16px;accent-color:var(--gold)}
+  .consent a{color:var(--navy);text-decoration:underline}
+  .startcard .btn-gold{width:100%}
+  .sc-micro{display:flex;align-items:center;justify-content:center;gap:.4rem;font-size:.76rem;color:var(--slate-2);margin-top:10px}
+  .sc-micro svg{width:14px;height:14px;color:var(--green)}
+  .sc-step{display:none}
+  .sc-step.on{display:block;animation:fade .4s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .sc-back{background:none;border:0;color:var(--slate);font-size:.82rem;cursor:pointer;padding:4px 0;margin-bottom:8px;display:inline-flex;align-items:center;gap:4px}
+  .sc-success{text-align:center;padding:18px 8px}
+  .sc-success .ok{width:56px;height:56px;border-radius:50%;background:#e8f6ef;color:var(--green);display:grid;place-items:center;margin:0 auto 14px}
+  .sc-success .ok svg{width:30px;height:30px}
+  .sc-success h3{margin-bottom:6px}
+  .sc-success p{font-size:.92rem;color:var(--slate)}
 
-  /* ---------- SECTION BASICS ---------- */
-  section{padding:96px 0}
-  .sec-head{max-width:720px;margin-bottom:54px}
+  /* objection one-liners */
+  .objrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .obj{flex:1 1 30%;min-width:150px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:10px 12px;cursor:pointer;transition:.15s}
+  .obj:hover{background:rgba(255,255,255,.1)}
+  .obj .q{font-size:.82rem;font-weight:600;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:6px}
+  .obj .q svg{width:14px;height:14px;color:var(--gold-2);transition:transform .2s}
+  .obj.open .q svg{transform:rotate(45deg)}
+  .obj .a{font-size:.8rem;color:#bccbe0;max-height:0;overflow:hidden;transition:max-height .25s ease,margin .25s;margin-top:0}
+  .obj.open .a{max-height:200px;margin-top:8px}
+
+  /* ---------- STRIP ---------- */
+  .strip{background:var(--ink);color:#fff;padding:26px 0}
+  .strip .wrap{display:flex;align-items:center;justify-content:center;gap:34px;flex-wrap:wrap;text-align:center}
+  .strip .si{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:130px}
+  .strip .si b{font-family:'Sora',sans-serif;font-size:1.55rem;font-weight:700;color:var(--gold-2)}
+  .strip .si span{font-size:.8rem;color:#9fb0c8}
+  .strip .sep{width:1px;height:40px;background:rgba(255,255,255,.14)}
+
+  section{padding:88px 0}
+  .sec-head{max-width:720px;margin-bottom:50px}
   .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
-  .sec-head h2{font-size:clamp(1.8rem,3.6vw,2.6rem);margin:16px 0 0;color:var(--navy)}
-  .sec-head p{font-size:1.08rem;color:var(--slate);margin-top:16px}
+  .sec-head h2{font-size:clamp(1.75rem,3.4vw,2.5rem);margin:14px 0 0;color:var(--navy)}
+  .sec-head p{font-size:1.05rem;color:var(--slate);margin-top:14px}
 
-  /* ---------- NOT-LEADGEN (split) ---------- */
-  .split{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
-  .compare{display:grid;gap:14px}
-  .cmp-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .cmp-card{border-radius:var(--radius);padding:22px 22px;border:1px solid var(--line)}
+  .split{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+
+  /* WHO WE ARE */
+  .who{background:#fff}
+  .who .split{grid-template-columns:.8fr 1.2fr;gap:48px;align-items:start}
+  .founders{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .founder{text-align:center}
+  .founder .fph{width:118px;height:118px;border-radius:50%;overflow:hidden;margin:0 auto 12px;border:3px solid var(--gold-soft);box-shadow:var(--shadow-sm)}
+  .founder .fph img{width:100%;height:100%;object-fit:cover;object-position:center 22%}
+  .founder b{display:block;font-family:'Sora',sans-serif;font-size:.98rem;color:var(--navy)}
+  .founder span{display:block;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin-top:3px}
+  .who-text{display:grid;gap:20px}
+  .who-block h4{font-family:'Sora',sans-serif;font-size:1.1rem;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:.55rem}
+  .who-block h4::before{content:"";width:18px;height:2px;background:var(--gold);display:inline-block;border-radius:2px;flex:none}
+  .who-block p{font-size:.97rem;color:var(--slate)}
+
+  /* VILLAIN */
+  .villain{background:var(--bg-soft)}
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+  .cmp-card{border-radius:var(--radius);padding:22px;border:1px solid var(--line)}
   .cmp-bad{background:#fbf1f1;border-color:#f3dada}
   .cmp-good{background:#0a1f3c;color:#fff;border-color:#0a1f3c;box-shadow:var(--shadow)}
   .cmp-card .tag{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-  .cmp-bad .tag{color:#c0463f}
-  .cmp-good .tag{color:var(--gold-2)}
-  .cmp-card h4{font-size:1.12rem;margin:10px 0 8px}
-  .cmp-bad h4{color:#7c2b27}
-  .cmp-card p{font-size:.92rem;line-height:1.5}
-  .cmp-bad p{color:#9b5450}
-  .cmp-good p{color:#bccbe0}
+  .cmp-bad .tag{color:#c0463f}.cmp-good .tag{color:var(--gold-2)}
+  .cmp-card h4{font-size:1.08rem;margin:10px 0 8px}.cmp-bad h4{color:#7c2b27}
+  .cmp-card p{font-size:.9rem;line-height:1.5}.cmp-bad p{color:#9b5450}.cmp-good p{color:#bccbe0}
+  /* mechanism diagram */
+  .mech{margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-sm)}
+  .mech h4{font-size:1.05rem;color:var(--navy);margin-bottom:18px;text-align:center}
+  .mech-flow{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+  .mech-node{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;max-width:130px}
+  .mech-node .mn-ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:#fdf7e8;color:var(--navy)}
+  .mech-node .mn-ic svg{width:26px;height:26px}
+  .mech-node.you .mn-ic{background:var(--navy);color:#fff}
+  .mech-node.win .mn-ic{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#1c1402}
+  .mech-node b{font-size:.82rem;color:var(--navy)}
+  .mech-node span{font-size:.72rem;color:var(--slate)}
+  .mech-arrow{color:var(--gold);flex:none}.mech-arrow svg{width:26px;height:26px}
+  .mech-note{text-align:center;font-size:.82rem;color:var(--slate);margin-top:16px}
+  .mech-note a{color:var(--navy);text-decoration:underline}
+
   .figure{position:relative;border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}
   .figure img{width:100%;height:100%;object-fit:cover}
   .figure.tall{aspect-ratio:4/5}
-  .figure .badge{
-    position:absolute;left:18px;bottom:18px;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);
-    border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow-sm)
-  }
-  .figure .badge .ic{width:38px;height:38px;border-radius:10px;background:var(--gold);display:grid;place-items:center;color:#1c1402}
-  .figure .badge b{font-family:'Sora',sans-serif;font-size:.95rem;color:var(--navy);display:block}
-  .figure .badge span{font-size:.78rem;color:var(--slate)}
+  .figure .badge{position:absolute;inset-inline-start:18px;bottom:18px;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow-sm)}
+  .figure .badge .ic{width:38px;height:38px;border-radius:10px;background:var(--gold);display:grid;place-items:center;color:#1c1402;flex:none}
+  .figure .badge b{font-family:'Sora',sans-serif;font-size:.92rem;color:var(--navy);display:block}
+  .figure .badge span{font-size:.76rem;color:var(--slate)}
 
-  /* ---------- STEPS ---------- */
-  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;counter-reset:step}
-  .step{position:relative;background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius);padding:30px 24px;transition:.25s}
-  .step:hover{transform:translateY(-6px);box-shadow:var(--shadow);background:#fff;border-color:#dfe6f0}
-  .step .num{
-    counter-increment:step;font-family:'Sora',sans-serif;font-weight:800;font-size:1rem;width:42px;height:42px;
-    border-radius:12px;background:var(--navy);color:#fff;display:grid;place-items:center;margin-bottom:18px
-  }
+  /* STEPS */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step}
+  .step{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 22px;transition:.25s}
+  .step:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .step .num{counter-increment:step;font-family:'Sora',sans-serif;font-weight:800;font-size:1rem;width:42px;height:42px;border-radius:12px;background:var(--navy);color:#fff;display:grid;place-items:center;margin-bottom:16px}
   .step .num::before{content:"0" counter(step)}
-  .step h4{font-size:1.12rem;color:var(--navy);margin-bottom:8px}
-  .step p{font-size:.94rem;color:var(--slate)}
+  .step h4{font-size:1.08rem;color:var(--navy);margin-bottom:8px}
+  .step p{font-size:.92rem;color:var(--slate)}
 
-  /* ---------- WHY GRID ---------- */
+  /* WHY cards */
   .why{background:var(--bg-soft)}
-  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;transition:.25s}
-  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:#dfe6f0}
-  .card .ico{width:52px;height:52px;border-radius:14px;background:linear-gradient(140deg,#fbf2d9,#f4e2b0);
-    display:grid;place-items:center;margin-bottom:20px;color:var(--navy)}
-  .card .ico svg{width:26px;height:26px}
-  .card h4{font-size:1.16rem;color:var(--navy);margin-bottom:9px}
-  .card p{font-size:.96rem;color:var(--slate)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;transition:.25s}
+  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .card .ico{width:50px;height:50px;border-radius:13px;background:linear-gradient(140deg,#fbf2d9,#f4e2b0);display:grid;place-items:center;margin-bottom:18px;color:var(--navy)}
+  .card .ico svg{width:25px;height:25px}
+  .card h4{font-size:1.12rem;color:var(--navy);margin-bottom:9px}
+  .card p{font-size:.94rem;color:var(--slate)}
 
-  /* ---------- VERTICALS ---------- */
-  .verticals{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  /* OFFER band */
+  .offer{background:var(--bg-navy-grad);color:#fff;position:relative;overflow:hidden}
+  .offer .split{align-items:center}
+  .offer .sec-head h2{color:#fff}
+  .offer .eyebrow{color:var(--gold-2)}.offer .eyebrow::before{background:var(--gold-2)}
+  .offer-lead{font-size:1.05rem;color:#cdd8e8;margin:14px 0 22px}
+  .guarantees{display:grid;gap:12px}
+  .guarantee{display:flex;gap:13px;align-items:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:13px;padding:14px 16px}
+  .guarantee .gic{width:38px;height:38px;border-radius:10px;background:rgba(46,158,107,.18);color:#5fd39e;display:grid;place-items:center;flex:none}
+  .guarantee .gic svg{width:20px;height:20px}
+  .guarantee b{display:block;font-family:'Sora',sans-serif;font-size:.98rem;color:#fff}
+  .guarantee span{font-size:.85rem;color:#aebbd0}
+
+  /* VERTICALS */
+  .verticals{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   .vert{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:#fff;transition:.25s}
   .vert:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
-  .vert .vtop{padding:28px 26px 0}
-  .vert .vico{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;color:#1c1402;background:var(--gold);margin-bottom:16px}
-  .vert h4{font-size:1.25rem;color:var(--navy)}
-  .vert p{font-size:.95rem;color:var(--slate);padding:8px 26px 24px}
-  .vert ul{list-style:none;padding:0 26px 26px;display:grid;gap:8px}
-  .vert li{font-size:.9rem;color:var(--slate);display:flex;gap:.5rem;align-items:flex-start}
-  .vert li svg{width:17px;height:17px;color:var(--gold);flex:none;margin-top:3px}
+  .vert .vtop{padding:26px 24px 0}
+  .vert .vico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;color:#1c1402;background:var(--gold);margin-bottom:14px}
+  .vert h4{font-size:1.2rem;color:var(--navy)}
+  .vert>p{font-size:.93rem;color:var(--slate);padding:8px 24px 22px}
+  .vert ul{list-style:none;padding:0 24px 24px;display:grid;gap:8px}
+  .vert li{font-size:.88rem;color:var(--slate);display:flex;gap:.5rem;align-items:flex-start}
+  .vert li svg{width:16px;height:16px;color:var(--green);flex:none;margin-top:3px}
 
-  /* ---------- MARKET (dark band) ---------- */
-  .market{background:var(--bg-navy-grad);color:#fff;position:relative;overflow:hidden}
-  .market .split{position:relative;z-index:2}
-  .market .sec-head h2{color:#fff}
-  .market .sec-head p{color:#c4d1e4}
-  .mstats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
-  .mstat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px}
-  .mstat b{font-family:'Sora',sans-serif;font-size:1.55rem;color:var(--gold-2);display:block}
-  .mstat span{font-size:.82rem;color:#aebbd0}
+  /* MARKET band */
+  .market{background:#fff}
+  .mstats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+  .mstat{background:var(--bg-soft);border:1px solid var(--line);border-radius:16px;padding:18px}
+  .mstat b{font-family:'Sora',sans-serif;font-size:1.5rem;color:var(--navy);display:block}
+  .mstat span{font-size:.8rem;color:var(--slate)}
 
-  /* ---------- AI TRACKING ---------- */
+  /* TRACK */
+  .track{background:var(--bg-soft)}
   .track .split{grid-template-columns:.95fr 1.05fr}
-  .track-list{display:grid;gap:18px;margin-top:8px}
-  .tl{display:flex;gap:16px;align-items:flex-start}
+  .track-list{display:grid;gap:16px;margin-top:6px}
+  .tl{display:flex;gap:15px;align-items:flex-start}
   .tl .tlic{width:46px;height:46px;border-radius:12px;background:var(--navy);color:#fff;display:grid;place-items:center;flex:none}
   .tl .tlic svg{width:22px;height:22px}
-  .tl h4{font-size:1.08rem;color:var(--navy);margin-bottom:4px}
-  .tl p{font-size:.94rem;color:var(--slate)}
+  .tl h4{font-size:1.05rem;color:var(--navy);margin-bottom:4px}
+  .tl p{font-size:.92rem;color:var(--slate)}
 
-  /* ---------- TEAM ---------- */
-  .team{background:var(--bg-soft)}
-  .team-photo{border-radius:24px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:54px;position:relative;aspect-ratio:21/8}
-  .team-photo img{width:100%;height:100%;object-fit:cover;object-position:center 38%}
-  .team-photo .ovl{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,31,60,.55),rgba(10,31,60,0) 55%)}
-  .team-photo .cap{position:absolute;left:30px;bottom:26px;color:#fff;z-index:2}
-  .team-photo .cap b{font-family:'Sora',sans-serif;font-size:1.3rem;display:block}
-  .team-photo .cap span{font-size:.9rem;color:#cdd8e8}
-  .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  /* TEAM */
+  .team{background:#fff}
+  .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
   .member{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.25s}
   .member:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
   .member .ph{aspect-ratio:1/1;overflow:hidden;background:var(--navy)}
   .member .ph img{width:100%;height:100%;object-fit:cover;object-position:center 22%}
-  .member .mono{width:100%;height:100%;display:grid;place-items:center;
-    background:radial-gradient(120% 120% at 30% 20%,#163a6b 0%,#0a1f3c 70%);position:relative}
-  .member .mono b{font-family:'Sora',sans-serif;font-size:3.4rem;font-weight:800;
-    background:linear-gradient(135deg,var(--gold) 0%,var(--gold-2) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .member .mono small{position:absolute;bottom:18px;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#7e93b4}
+  .member .mono{width:100%;height:100%;display:grid;place-items:center;background:radial-gradient(120% 120% at 30% 20%,#163a6b 0%,#0a1f3c 70%);position:relative}
+  .member .mono b{font-family:'Sora',sans-serif;font-size:3.2rem;font-weight:800;background:linear-gradient(135deg,var(--gold),var(--gold-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .member .mono small{position:absolute;bottom:18px;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#7e93b4}
   .member .mbody{padding:22px 24px}
-  .member h4{font-size:1.2rem;color:var(--navy)}
-  .member .role{font-family:'Sora',sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin:4px 0 12px}
-  .member p{font-size:.92rem;color:var(--slate)}
+  .member h4{font-size:1.18rem;color:var(--navy)}
+  .member .role{font-family:'Sora',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin:4px 0 12px}
+  .member p{font-size:.9rem;color:var(--slate)}
 
-  /* ---------- CTA ---------- */
-  .cta{background:var(--ink);color:#fff;text-align:center}
-  .cta h2{font-size:clamp(1.9rem,3.6vw,2.7rem);max-width:760px;margin:0 auto 18px}
-  .cta p{color:#aebbd0;max-width:560px;margin:0 auto 30px;font-size:1.05rem}
-  .cta .row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-  .cta .mailpill{display:inline-flex;align-items:center;gap:.6rem;margin-top:22px;color:#cdd8e8;font-size:.95rem}
+  /* FAQ */
+  .faq-list{max-width:820px;margin:0 auto;display:grid;gap:12px}
+  .faq{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .faq summary{list-style:none;cursor:pointer;padding:18px 22px;font-family:'Sora',sans-serif;font-weight:600;font-size:1rem;color:var(--navy);display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary .pl{width:20px;height:20px;flex:none;color:var(--gold);transition:transform .2s}
+  .faq[open] summary .pl{transform:rotate(45deg)}
+  .faq .fa{padding:0 22px 20px;font-size:.94rem;color:var(--slate)}
 
-  /* ---------- FOOTER ---------- */
-  footer{background:#06152b;color:#9fb0c8;padding:56px 0 30px;font-size:.9rem}
-  .foot-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:28px;margin-bottom:24px}
+  /* FINAL CTA */
+  .final{background:var(--ink);color:#fff}
+  .final .split{align-items:center}
+  .final .eyebrow{color:var(--gold-2)}.final .eyebrow::before{background:var(--gold-2)}
+  .final h2{font-size:clamp(1.8rem,3.4vw,2.5rem);margin:14px 0 14px}
+  .final p{color:#aebbd0;font-size:1.04rem;margin-bottom:18px}
+  .final .reassure span{color:#d6e0ee}
+
+  /* FOOTER */
+  footer{background:#06152b;color:#9fb0c8;padding:0 0 30px;font-size:.9rem}
+  .foot-support{background:#081a36;border-bottom:1px solid rgba(255,255,255,.08)}
+  .foot-support .wrap{display:flex;align-items:center;gap:30px;padding-top:26px;padding-bottom:26px;flex-wrap:wrap}
+  .foot-support img{width:120px;height:120px;border-radius:16px;object-fit:cover;flex:none}
+  .foot-support .fs-txt b{font-family:'Sora',sans-serif;color:#fff;font-size:1.1rem;display:block;margin-bottom:4px}
+  .foot-support .fs-txt p{max-width:520px}
+  .foot-support a{color:var(--gold-2);font-weight:600}
+  .foot-main{padding-top:46px}
+  .foot-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:26px;margin-bottom:22px}
   .foot-brand{display:flex;align-items:center;gap:.6rem;font-family:'Sora',sans-serif;font-weight:700;font-size:1.15rem;color:#fff}
-  .foot-brand img{width:30px;height:30px;object-fit:contain}
-  .foot-brand b{color:var(--gold)}
-  .foot-links{display:flex;gap:26px;flex-wrap:wrap}
+  .foot-brand img{width:30px;height:30px;object-fit:contain}.foot-brand b{color:var(--gold)}
+  .foot-links{display:flex;gap:24px;flex-wrap:wrap}
   .foot-links a:hover{color:#fff}
-  .disclaimer{font-size:.78rem;color:#67788f;line-height:1.6;max-width:880px}
-  .foot-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:22px;color:#67788f;font-size:.82rem}
+  .disclaimer{font-size:.77rem;color:#67788f;line-height:1.6;max-width:900px}
+  .foot-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:20px;color:#67788f;font-size:.82rem}
 
-  /* ---------- REVEAL ---------- */
-  .js .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  /* sticky mobile CTA */
+  .mbar{position:fixed;left:0;right:0;bottom:0;z-index:55;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:10px 16px;display:none;box-shadow:0 -6px 24px rgba(10,31,60,.12)}
+  .mbar .btn-gold{width:100%}
+
+  /* reveal */
+  .js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
   .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
 
-  /* ---------- RESPONSIVE ---------- */
-  @media(max-width:960px){
+  /* ---------- RTL ---------- */
+  [dir="rtl"] .hero-bg{object-position:center left;-webkit-mask-image:linear-gradient(270deg,transparent 6%,#000 70%);mask-image:linear-gradient(270deg,transparent 6%,#000 70%)}
+  [dir="rtl"] .hero::after{background:linear-gradient(250deg,rgba(10,31,60,.94) 38%,rgba(10,31,60,.5) 100%)}
+  [dir="rtl"] .btn-arrow svg,[dir="rtl"] .mech-arrow svg{transform:scaleX(-1)}
+  [dir="rtl"] .btn-arrow:hover svg{transform:scaleX(-1) translateX(3px)}
+  html[lang="he"] h1,html[lang="he"] h2,html[lang="he"] h3,html[lang="he"] h4,html[lang="ar"] h1,html[lang="ar"] h2,html[lang="ar"] h3,html[lang="ar"] h4,html[lang="he"] .hero-name,html[lang="ar"] .hero-name{letter-spacing:normal}
+  bdi,.ltr{unicode-bidi:isolate;direction:ltr}
+
+  @media(max-width:980px){
     .nav-links{display:none}
+    .nav-links.open{display:flex;flex-direction:column;align-items:flex-start;position:absolute;top:72px;inset-inline-start:0;inset-inline-end:0;background:#fff;padding:18px 24px;gap:16px;border-bottom:1px solid var(--line);box-shadow:var(--shadow);margin:0}
     .hamb{display:block}
-    .nav-links.open{display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:#fff;
-      padding:20px 24px;gap:18px;border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
-    .split{grid-template-columns:1fr;gap:38px}
-    .steps{grid-template-columns:repeat(2,1fr)}
-    .cards{grid-template-columns:repeat(2,1fr)}
+    .hero-layout{grid-template-columns:1fr;gap:34px}
+    .startcard{max-width:480px}
+    .split{grid-template-columns:1fr;gap:36px}
+    .steps{grid-template-columns:1fr 1fr}
+    .cards{grid-template-columns:1fr 1fr}
     .verticals{grid-template-columns:1fr}
     .mstats{grid-template-columns:1fr 1fr}
     .team-grid{grid-template-columns:1fr}
-    .team-photo{aspect-ratio:16/10}
+    .who .split{grid-template-columns:1fr}
+    .founders{max-width:360px}
     .order-img{order:-1}
+    .mbar{display:block}
+    body{padding-bottom:74px}
   }
   @media(max-width:560px){
-    section{padding:70px 0}
-    .steps,.cards,.mstats{grid-template-columns:1fr}
-    .cmp-row{grid-template-columns:1fr}
+    section{padding:64px 0}
+    .steps,.cards,.mstats,.compare,.intent{grid-template-columns:1fr}
     .strip .sep{display:none}
-    .hero{padding:128px 0 84px}
+    .strip .wrap{gap:18px}
+    .hero{padding:112px 0 70px}
+    .mech-flow{flex-direction:column}.mech-arrow svg{transform:rotate(90deg)}
+    [dir="rtl"] .mech-arrow svg{transform:rotate(90deg)}
     .foot-top{flex-direction:column}
   }
 </style>
 </head>
 <body>
 
-<!-- ===================== NAV ===================== -->
+<!-- ===== NAV ===== -->
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
-    <a href="#top" class="brand"><img src="images/logo.png" alt="Mortgage AI logo" />Mortgage<b>AI</b></a>
+    <a href="#top" class="brand"><img src="images/logo.png" width="34" height="34" alt="Mortgage AI logo" />Mortgage<b>AI</b></a>
     <nav class="nav-links" id="navLinks">
-      <a href="#how">How it works</a>
-      <a href="#why">Why us</a>
-      <a href="#markets">Markets</a>
-      <a href="#team">Team</a>
-      <a href="#contact">Contact</a>
+      <a href="#about" data-i18n="nav.about">About us</a>
+      <a href="#how" data-i18n="nav.how">How it works</a>
+      <a href="#why" data-i18n="nav.why">Why us</a>
+      <a href="#markets" data-i18n="nav.markets">Markets</a>
+      <a href="#team" data-i18n="nav.team">Team</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
     </nav>
     <div class="nav-cta">
-      <a href="#contact" class="btn btn-gold">Get started
+      <div class="lang">
+        <button class="lang-btn" id="langBtn" aria-label="Languages">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18" stroke-linecap="round"/></svg>
+          <span id="langCur">EN</span>
+        </button>
+        <div class="lang-menu" id="langMenu" role="menu">
+          <button data-lang="en" dir="ltr">English <svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button data-lang="es" dir="ltr">Español <svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button data-lang="fr" dir="ltr">Français <svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button data-lang="ar" dir="rtl">العربية <svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button data-lang="he" dir="rtl">עברית <svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+      <a href="#top" class="btn btn-gold btn-arrow" data-scroll-form data-i18n="nav.cta">See My Offers
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
       <button class="hamb" id="hamb" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -288,317 +397,488 @@
   </div>
 </header>
 
-<!-- ===================== HERO ===================== -->
+<!-- ===== HERO ===== -->
 <section class="hero" id="top">
+  <img class="hero-bg" src="images/hero.jpg" alt="" fetchpriority="high" width="1920" height="1080" />
   <div class="wrap">
-    <div class="hero-grid">
-      <span class="eyebrow reveal">AI-Powered Loan &amp; Insurance Broker</span>
-      <h1 class="reveal d1">Stop chasing brokers.<br /><span class="hl">Let AI bring you</span> the right loan.</h1>
-      <p class="lead reveal d2">Mortgage AI isn't another lead-generation site. We're your online broker. Send <b>one</b> request — our AI scans the whole market for the most worthwhile loan or insurance, brings you the <b>3–4 best offers</b>, and shields you from the spam. Then it keeps watching your loan and tells you the moment it's time to save.</p>
-      <div class="hero-cta reveal d3">
-        <a href="#contact" class="btn btn-gold">Get my offers
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="#how" class="btn btn-ghost">See how it works</a>
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <div class="hero-brand reveal">
+          <img src="images/logo.png" class="hero-logo" width="74" height="74" alt="Mortgage AI logo" />
+          <span class="hero-name">Mortgage<b>AI</b></span>
+        </div>
+        <p class="hero-disambig reveal" data-i18n="hero.disambig">Personal &amp; business loans + insurance. <b style="color:#cdd8e8">We're not a mortgage site.</b></p>
+        <span class="eyebrow reveal d1" data-i18n="hero.eyebrow">AI-Powered Loan &amp; Insurance Comparison</span>
+        <h1 class="reveal d1" data-i18n-html data-i18n="hero.h1">One request. We do the shopping.<br /><span class="hl">No 200-call spam flood.</span></h1>
+        <p class="lead reveal d2" data-i18n-html data-i18n="hero.lead">Most comparison sites resell your number to dozens of lenders — that's why one form turns into a week of calls. Mortgage AI works the opposite way: send <b>one</b> request, our AI scans the market and brings you only the <b>3–4 best offers</b>. Lenders send their offers to <b>us</b> — we don't resell your number. <b>In your language.</b></p>
+        <div class="reassure reveal d2">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="re.free">Free to use</span></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="re.resell">No lead reselling</span></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="re.credit">No credit check to get matches</span></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="re.oblig">No obligation</span></span>
+        </div>
+        <div class="objrow reveal d3">
+          <div class="obj" data-obj>
+            <div class="q"><span data-i18n="obj.free.q">Is it free?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></div>
+            <div class="a" data-i18n="obj.free.a">Yes — you pay nothing to get matched. Lenders and insurers pay us. (An optional Premium savings-tracker is $7.99/mo; free for founding members the first year.)</div>
+          </div>
+          <div class="obj" data-obj>
+            <div class="q"><span data-i18n="obj.credit.q">Does this touch my credit?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></div>
+            <div class="a" data-i18n="obj.credit.a">No — getting your matches doesn't require a credit check. If you choose to proceed with an offer, that lender may check your credit — and they'll tell you first.</div>
+          </div>
+          <div class="obj" data-obj>
+            <div class="q"><span data-i18n="obj.broker.q">Are you a real broker?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></div>
+            <div class="a" data-i18n="obj.broker.a">We're your online comparison platform and work with licensed lending &amp; insurance partners who make the offers. We bring the options to you and never resell your details.</div>
+          </div>
+        </div>
+        <div class="hero-chips reveal d3">
+          <span class="chip"><span class="dot"></span><span data-i18n="chip.personal">Personal Loans</span></span>
+          <span class="chip"><span class="dot"></span><span data-i18n="chip.business">Business Loans</span></span>
+          <span class="chip"><span class="dot"></span><span data-i18n="chip.insurance">Insurance</span></span>
+          <span class="chip"><span class="dot"></span>English · Español · Français · العربية · עברית</span>
+        </div>
       </div>
-      <div class="hero-chips reveal d3">
-        <span class="chip"><span class="dot"></span>Personal Loans</span>
-        <span class="chip"><span class="dot"></span>Business Loans</span>
-        <span class="chip"><span class="dot"></span>Insurance</span>
-        <span class="chip"><span class="dot"></span>English · Español · Français · العربية</span>
+
+      <!-- start form -->
+      <div class="startcard reveal d1" id="startForm">
+        <div class="sc-step on" data-step="1">
+          <h3 data-i18n="form.t1">See your best offers</h3>
+          <p class="sc-sub" data-i18n="form.s1">What do you need? Takes about 3 minutes.</p>
+          <div class="intent">
+            <button type="button" data-intent="Personal Loan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6" stroke-linecap="round"/></svg><span data-i18n="chip.personal">Personal Loan</span></button>
+            <button type="button" data-intent="Business Loan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9 12 3l9 6M5 9v11h14V9" stroke-linejoin="round"/></svg><span data-i18n="chip.business">Business Loan</span></button>
+            <button type="button" data-intent="Insurance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 7.5 8 10 4.6-2.5 8-5 8-10V6l-8-4Z" stroke-linejoin="round"/></svg><span data-i18n="chip.insurance">Insurance</span></button>
+          </div>
+          <div class="sc-micro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="form.micro1">Pick one to start — no account needed</span></div>
+        </div>
+        <div class="sc-step" data-step="2">
+          <button class="sc-back" type="button" data-back><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="form.back">Back</span></button>
+          <h3 data-i18n="form.t2">A few quick details</h3>
+          <p class="sc-sub"><span data-i18n="form.you">You're asking about:</span> <b id="intentLabel" style="color:var(--gold)"></b></p>
+          <div class="fld"><label data-i18n="form.name">Full name</label><input type="text" id="f_name" autocomplete="name" /></div>
+          <div class="fld-row">
+            <div class="fld"><label data-i18n="form.email">Email</label><input type="email" id="f_email" autocomplete="email" /></div>
+            <div class="fld"><label data-i18n="form.phone">Phone</label><input type="tel" id="f_phone" autocomplete="tel" /></div>
+          </div>
+          <div class="fld-row">
+            <div class="fld"><label data-i18n="form.amount">Amount needed</label>
+              <select id="f_amount"><option value="">—</option><option>$1k–$10k</option><option>$10k–$50k</option><option>$50k–$250k</option><option>$250k+</option></select>
+            </div>
+            <div class="fld"><label data-i18n="form.lang">Preferred language</label>
+              <select id="f_lang"><option>English</option><option>Español</option><option>Français</option><option>العربية</option><option>עברית</option></select>
+            </div>
+          </div>
+          <button class="btn btn-gold btn-arrow" type="button" data-next2 data-i18n="form.continue">Continue
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="sc-step" data-step="3">
+          <button class="sc-back" type="button" data-back2><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="form.back">Back</span></button>
+          <h3 data-i18n="form.t3">Last step</h3>
+          <p class="sc-sub" data-i18n="form.s3">Confirm and we'll bring you your 3–4 best offers.</p>
+          <label class="consent"><input type="checkbox" id="f_consent" /><span data-i18n="form.consent">I agree to be contacted by Mortgage AI and its licensed partners about my request, and I accept the <a href="#faq">Privacy Terms</a>. We don't resell your number.</span></label>
+          <button class="btn btn-gold" type="button" data-submit data-i18n="form.submit">See My Best Offers</button>
+          <div class="sc-micro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke-linecap="round"/></svg><span data-i18n="form.micro3">Your details stay private — never resold</span></div>
+        </div>
+        <div class="sc-step sc-success" data-step="done">
+          <div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3 data-i18n="form.dt">Got it!</h3>
+          <p data-i18n="form.dp">A real person replies within one business day — no robocalls. Check your email for confirmation.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== STRIP ===================== -->
+<!-- ===== STRIP ===== -->
 <div class="strip">
   <div class="wrap">
-    <div class="si"><b>1</b><span>request — not 250 phone calls</span></div>
+    <div class="si"><b>1</b><span data-i18n="strip.s1">request, not 200 calls</span></div>
     <div class="sep"></div>
-    <div class="si"><b>3–4</b><span>best offers, AI-filtered</span></div>
+    <div class="si"><b>3–4</b><span data-i18n="strip.s2">best offers, AI-picked</span></div>
     <div class="sep"></div>
-    <div class="si"><b>4</b><span>languages, one platform</span></div>
+    <div class="si"><b>5</b><span data-i18n="strip.s3">languages, one platform</span></div>
     <div class="sep"></div>
-    <div class="si"><b>24/7</b><span>AI tracking after you're funded</span></div>
+    <div class="si"><b>24/7</b><span data-i18n="strip.s4">savings watch after funding</span></div>
   </div>
 </div>
 
-<!-- ===================== NOT LEAD-GEN ===================== -->
-<section id="about">
+<!-- ===== WHO WE ARE ===== -->
+<section id="about" class="who">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow reveal" data-i18n="who.eyebrow">Who we are</span>
+      <h2 class="reveal d1" data-i18n="who.h2">A family-built company making financing simple</h2>
+      <p class="reveal d2" data-i18n="who.sub">Meet the people behind Mortgage AI — and why we started.</p>
+    </div>
+    <div class="split">
+      <div class="founders reveal">
+        <div class="founder">
+          <div class="fph"><img src="images/eyal_face.jpg" width="118" height="118" alt="Eyal Shohet, Founder &amp; CEO" loading="lazy" /></div>
+          <b>Eyal Shohet</b><span data-i18n="who.ceo">Founder &amp; CEO</span>
+        </div>
+        <div class="founder">
+          <div class="fph"><img src="images/moriya_face.jpg" width="118" height="118" alt="Moriya Shohet, Deputy CEO" loading="lazy" /></div>
+          <b>Moriya Shohet</b><span data-i18n="who.deputy">Deputy CEO</span>
+        </div>
+      </div>
+      <div class="who-text reveal d1">
+        <div class="who-block"><h4 data-i18n="who.b1t">Who we are</h4><p data-i18n="who.b1p">Mortgage AI is a family-built financial-technology company. We bring banks, lenders and insurers to compete for you, and put smart, multilingual technology between you and the noise — so getting a loan finally feels simple.</p></div>
+        <div class="who-block"><h4 data-i18n="who.b2t">Why we founded Mortgage AI</h4><p data-i18n="who.b2p">Because families and business owners get buried in calls the moment they look for a loan, millions are served in no language but English, and too many stay stuck in bad terms because no one is watching out for them. We built the platform we wished existed.</p></div>
+        <div class="who-block"><h4 data-i18n="who.b3t">Our vision</h4><p data-i18n="who.b3p">A world where every family and business gets fair loan and insurance terms — throughout the life of their debt — thanks to technology that works for them 24/7, in their own language.</p></div>
+        <div class="who-block"><h4 data-i18n="who.b4t">How we serve you</h4><p data-i18n="who.b4p">One request instead of a hundred calls. Our AI scans the market, brings you the 3–4 best offers, and keeps watching so you always hold a good deal. Fast, private and multilingual — built for the people the big sites overlook.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VILLAIN ===== -->
+<section class="villain" id="why-different">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow reveal" data-i18n="vil.eyebrow">Not a leads company</span>
+      <h2 class="reveal d1" data-i18n="vil.h2">Why your phone explodes — and how we stop it</h2>
+      <p class="reveal d2" data-i18n="vil.sub">The spam was never your fault. It's how the big comparison sites make money.</p>
+    </div>
+    <div class="compare reveal">
+      <div class="cmp-card cmp-bad">
+        <span class="tag" data-i18n="vil.badtag">Lead-gen sites</span>
+        <h4 data-i18n="vil.badh">You become the product</h4>
+        <p data-i18n="vil.badp">Your single request is resold to dozens of lenders at once. Borrowers routinely report 200+ calls and texts in a matter of days.</p>
+      </div>
+      <div class="cmp-card cmp-good">
+        <span class="tag" data-i18n="vil.goodtag">Mortgage AI</span>
+        <h4 data-i18n="vil.goodh">You stay in control</h4>
+        <p data-i18n="vil.goodp">One request, one point of contact. Lenders send offers to us; we don't resell your number. You choose who you talk to — quietly, on your terms.</p>
+      </div>
+    </div>
+    <div class="mech reveal d1">
+      <h4 data-i18n="mech.title">How your request actually flows</h4>
+      <div class="mech-flow">
+        <div class="mech-node you"><div class="mn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6" stroke-linecap="round"/></svg></div><b data-i18n="mech.n1b">Your request</b><span data-i18n="mech.n1s">name &amp; need — never a public lead</span></div>
+        <div class="mech-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="mech-node"><div class="mn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><b data-i18n="mech.n2b">Our AI</b><span data-i18n="mech.n2s">scans lenders — not a resell list</span></div>
+        <div class="mech-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="mech-node win"><div class="mn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3v18l7-5 7 5V3z" stroke-linejoin="round"/></svg></div><b data-i18n="mech.n3b">Your 3–4 best</b><span data-i18n="mech.n3s">you pick — then you reach out</span></div>
+      </div>
+      <p class="mech-note" data-i18n="mech.note">We don't sell or resell your phone number — it's written into our Privacy Terms.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow reveal" data-i18n="how.eyebrow">How it works</span>
+      <h2 class="reveal d1" data-i18n="how.h2">A loan, the easy way — in four steps</h2>
+      <p class="reveal d2" data-i18n="how.sub">From your first request to the offer that's right for you — minutes, not weeks.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="num"></div><h4 data-i18n="how.1t">Send one request</h4><p data-i18n="how.1p">Pick personal loan, business loan, or insurance. Tell us what you need — in your language.</p></div>
+      <div class="step reveal d1"><div class="num"></div><h4 data-i18n="how.2t">AI scans the market</h4><p data-i18n="how.2p">Lenders and insurers send offers back to us. Our AI reads them all and finds your most worthwhile terms.</p></div>
+      <div class="step reveal d2"><div class="num"></div><h4 data-i18n="how.3t">Get your 3–4 best</h4><p data-i18n="how.3p">No flood, no noise. You see only the strongest offers, clearly compared, with our recommendation on top.</p></div>
+      <div class="step reveal d3"><div class="num"></div><h4 data-i18n="how.4t">You choose — we watch</h4><p data-i18n="how.4p">Pick an offer and you reach out on your terms. We keep watching for better deals and renewal-time savings.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY ===== -->
+<section id="why" class="why">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow reveal" data-i18n="wy.eyebrow">Why Mortgage AI</span>
+      <h2 class="reveal d1" data-i18n="wy.h2">Everything the big sites get wrong — fixed</h2>
+      <p class="reveal d2" data-i18n="wy.sub">We earn when you get a better deal, not by reselling your data. That one choice changes everything.</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 7.5 8 10 4.6-2.5 8-5 8-10V6l-8-4Z" stroke-linejoin="round"/></svg></div><h4 data-i18n="wy.1t">No lead reselling</h4><p data-i18n="wy.1p">Lenders send offers to us, not to a list. Your number isn't sold — so your phone stays quiet while you shop. It's in our Privacy Terms.</p></div>
+      <div class="card reveal d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg></div><h4 data-i18n="wy.2t">AI finds the best deal</h4><p data-i18n="wy.2p">Our engine reads every offer and surfaces your most worthwhile terms — the ones you'd find only after weeks of legwork.</p></div>
+      <div class="card reveal d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h13M3 12h13M3 19h9" stroke-linecap="round"/><path d="m18 8 3 3-3 3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4 data-i18n="wy.3t">Speaks your language</h4><p data-i18n="wy.3p">English, Spanish, French, Arabic and Hebrew — the comparison platform millions of families have never had.</p></div>
+      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4 data-i18n="wy.4t">Always-on savings watch</h4><p data-i18n="wy.4p">After you're funded we keep watching — and tell you when an insurance re-shop or a better loan offer can save you money.</p></div>
+      <div class="card reveal d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8 13 16l-4-4-6 6" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 14V8h-6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4 data-i18n="wy.5t">One point of contact</h4><p data-i18n="wy.5p">No chasing a broker, no repeating yourself ten times. One platform handles the whole thing for you.</p></div>
+      <div class="card reveal d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" stroke-linejoin="round"/></svg></div><h4 data-i18n="wy.6t">Fast, no paperwork chase</h4><p data-i18n="wy.6p">Get matched in minutes instead of weeks. Less running around, far less headache.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OFFER / RISK REVERSAL ===== -->
+<section class="offer" id="offer">
   <div class="wrap">
     <div class="split">
       <div>
-        <div class="sec-head" style="margin-bottom:34px">
-          <span class="eyebrow reveal">Who we are</span>
-          <h2 class="reveal d1">Not a leads company.<br />Your online broker.</h2>
-          <p class="reveal d2">Comparison sites make money by selling your request to as many lenders as possible — which is why one form turns into a flood of calls and texts. We built Mortgage AI to do the exact opposite: lenders answer to <b>us</b>, our AI does the searching, and you deal with one trusted point of contact. No hunting for a broker. No chasing paperwork. No wasted weeks.</p>
-        </div>
-        <div class="compare reveal d2">
-          <div class="cmp-row">
-            <div class="cmp-card cmp-bad">
-              <span class="tag">Lead-gen sites</span>
-              <h4>You become the product</h4>
-              <p>Your request is resold to dozens of lenders. One user logged 250+ calls and texts in six days.</p>
-            </div>
-            <div class="cmp-card cmp-good">
-              <span class="tag">Mortgage AI</span>
-              <h4>You stay in control</h4>
-              <p>One request, one point of contact. Lenders compete for you — quietly, on your terms, in your language.</p>
-            </div>
-          </div>
+        <span class="eyebrow reveal" data-i18n="off.eyebrow">The promise</span>
+        <h2 class="reveal d1" data-i18n="off.h2">The One-Request Offer Match</h2>
+        <p class="offer-lead reveal d2" data-i18n="off.lead">Send one request and we bring you your 3–4 best offers — with nothing to lose.</p>
+        <div class="guarantees reveal d2">
+          <div class="guarantee"><div class="gic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><b data-i18n="off.g1t">Free to get matched</b><span data-i18n="off.g1s">Lenders pay us — you pay nothing to see your offers.</span></div></div>
+          <div class="guarantee"><div class="gic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><b data-i18n="off.g2t">No lead reselling</b><span data-i18n="off.g2s">Your number is never sold. You choose who contacts you.</span></div></div>
+          <div class="guarantee"><div class="gic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><b data-i18n="off.g3t">No credit check to match</b><span data-i18n="off.g3s">Seeing your offers won't touch your credit.</span></div></div>
+          <div class="guarantee"><div class="gic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><b data-i18n="off.g4t">No obligation</b><span data-i18n="off.g4s">See your offers, then decide — or walk away.</span></div></div>
         </div>
       </div>
       <div class="figure tall reveal d1 order-img">
-        <img src="images/problem.jpg" alt="Overwhelmed borrower flooded with calls and texts" />
-        <div class="badge">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg></div>
-          <div><b>Zero spam</b><span>by design, not by promise</span></div>
-        </div>
+        <img src="images/handshake.jpg" alt="" loading="lazy" />
+        <div class="badge"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><b data-i18n="off.badge">Nothing to lose</b><span data-i18n="off.badges">your best offers, your call</span></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== HOW IT WORKS ===================== -->
-<section id="how" class="why">
+<!-- ===== MARKETS ===== -->
+<section id="markets" class="market">
   <div class="wrap">
     <div class="sec-head center">
-      <span class="eyebrow reveal">How it works</span>
-      <h2 class="reveal d1">A loan, the easy way — in four steps</h2>
-      <p class="reveal d2">From your first request to the offer that's actually right for you, the whole journey takes minutes — and the AI keeps working long after.</p>
-    </div>
-    <div class="steps">
-      <div class="step reveal"><div class="num"></div><h4>Send one request</h4><p>Pick personal loan, business loan, or insurance. Tell us what you need — in English, Spanish, French, or Arabic.</p></div>
-      <div class="step reveal d1"><div class="num"></div><h4>AI scans the market</h4><p>Lenders and insurers send their offers back to us. Our AI reads every one and finds the most worthwhile terms for you.</p></div>
-      <div class="step reveal d2"><div class="num"></div><h4>Get the 3–4 best</h4><p>No flood, no noise. You see only the strongest, clearly compared, with the AI's recommendation on top.</p></div>
-      <div class="step reveal d3"><div class="num"></div><h4>Pick &amp; we track it</h4><p>Choose your offer and you're done. The AI keeps monitoring your loan and pings you when refinancing or a rate drop can save you money.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== WHY US ===================== -->
-<section id="why">
-  <div class="wrap">
-    <div class="sec-head center">
-      <span class="eyebrow reveal">Why Mortgage AI</span>
-      <h2 class="reveal d1">Everything the big sites get wrong — fixed</h2>
-      <p class="reveal d2">We earn when you get a better deal, not by reselling your data. That single choice changes the whole experience.</p>
-    </div>
-    <div class="cards">
-      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 7.5 8 10 4.6-2.5 8-5 8-10V6l-8-4Z" stroke-linejoin="round"/></svg></div><h4>Zero spam, guaranteed</h4><p>Lenders reply to us, never to you. You're never sold, never buried in calls. Privacy is the default.</p></div>
-      <div class="card reveal d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg></div><h4>AI finds the best deal</h4><p>Our engine reads every offer and surfaces the most worthwhile loan — the one you'd find only after weeks of legwork.</p></div>
-      <div class="card reveal d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h13M3 12h13M3 19h9" stroke-linecap="round"/><path d="m18 8 3 3-3 3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>Speaks your language</h4><p>English, Spanish, French and Arabic — the comparison platform millions of Americans have never had.</p></div>
-      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>Always-on tracking</h4><p>The AI watches your loan after funding and alerts you the moment a rate drop or refinance is worth it.</p></div>
-      <div class="card reveal d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8 13 16l-4-4-6 6" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 14V8h-6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>One point of contact</h4><p>No chasing a broker, no repeating yourself ten times. One platform handles the whole thing for you.</p></div>
-      <div class="card reveal d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" stroke-linejoin="round"/></svg></div><h4>Fast, no paperwork chase</h4><p>Get matched in minutes instead of weeks. Less running around, far less headache.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== VERTICALS ===================== -->
-<section id="markets">
-  <div class="wrap">
-    <div class="sec-head center">
-      <span class="eyebrow reveal">What you can compare</span>
-      <h2 class="reveal d1">Three ways we help you save</h2>
-      <p class="reveal d2">One platform, one login — across the financial decisions that matter most.</p>
+      <span class="eyebrow reveal" data-i18n="mk.eyebrow">What you can compare</span>
+      <h2 class="reveal d1" data-i18n="mk.h2">Three ways we help you save</h2>
+      <p class="reveal d2" data-i18n="mk.sub">One platform, one login — across the decisions that matter most.</p>
     </div>
     <div class="verticals">
       <div class="vert reveal">
-        <div class="vtop">
-          <div class="vico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6" stroke-linecap="round"/></svg></div>
-          <h4>Personal Loans</h4>
-        </div>
-        <p>Consolidate debt or fund a big moment with terms that actually fit you.</p>
+        <div class="vtop"><div class="vico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6" stroke-linecap="round"/></svg></div><h4 data-i18n="mk.1t">Personal Loans</h4></div>
+        <p data-i18n="mk.1p">Consolidate debt or fund a big moment with terms that actually fit you.</p>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Smart debt consolidation</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Lower rates, clearly compared</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Soft, privacy-first matching</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="mk.1a">Smart debt consolidation</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="mk.1b">Better terms, clearly compared</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="mk.1c">Private — no lead reselling</span></li>
         </ul>
       </div>
       <div class="vert reveal d1">
-        <div class="vtop">
-          <div class="vico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9 12 3l9 6M5 9v11h14V9" stroke-linejoin="round"/><path d="M9 20v-6h6v6" /></svg></div>
-          <h4>Business Loans</h4>
-        </div>
-        <p>Working capital and growth financing for the owners who keep their city running.</p>
+        <div class="vtop"><div class="vico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9 12 3l9 6M5 9v11h14V9" stroke-linejoin="round"/><path d="M9 20v-6h6v6"/></svg></div><h4 data-i18n="mk.2t">Business Loans</h4></div>
+        <p data-i18n="mk.2p">Working capital and growth financing for the owners who keep their city running.</p>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Competing offers, side by side</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Built for small &amp; immigrant-owned business</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Fast, paperwork-light process</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="mk.2a">Competing offers, side by side</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="mk.2b">Built for small &amp; immigrant-owned business</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="mk.2c">Fast, paperwork-light process</span></li>
         </ul>
       </div>
       <div class="vert reveal d2">
-        <div class="vtop">
-          <div class="vico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 7.5 8 10 4.6-2.5 8-5 8-10V6l-8-4Z" stroke-linejoin="round"/></svg></div>
-          <h4>Insurance</h4>
-        </div>
-        <p>Stop overpaying. Compare coverage and find the policy that truly fits.</p>
+        <div class="vtop"><div class="vico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 7.5 8 10 4.6-2.5 8-5 8-10V6l-8-4Z" stroke-linejoin="round"/></svg></div><h4 data-i18n="mk.3t">Insurance</h4></div>
+        <p data-i18n="mk.3p">Stop overpaying. Compare coverage and find the policy that truly fits.</p>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Coverage compared honestly</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Only ~15% of policies are bought online — we make it simple</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Ongoing savings checks</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="mk.3a">Coverage compared honestly</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="mk.3b">Simple to switch and save</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="mk.3c">Renewal-time savings checks</span></li>
         </ul>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ===================== MARKET / WHO WE SERVE ===================== -->
-<section class="market">
-  <div class="wrap">
-    <div class="split">
-      <div class="figure tall reveal d1">
-        <img src="images/market.jpg" alt="Hispanic family small-business owner in the city at night" />
-      </div>
+    <!-- in your language band -->
+    <div class="split" style="margin-top:60px">
+      <div class="figure tall reveal d1"><img src="images/market.jpg" alt="" loading="lazy" /></div>
       <div>
-        <div class="sec-head" style="margin-bottom:10px">
-          <span class="eyebrow reveal">Built for the communities the big sites ignore</span>
-          <h2 class="reveal d1">A loan platform that finally speaks your language</h2>
-          <p class="reveal d2">Tens of millions of Hispanic, Arabic- and French-speaking Americans are the most active fintech users in the country — yet there's no real comparison platform in their language. That's the heart of who we serve: hard-working families and business owners who deserve fair terms and a fair shot.</p>
-        </div>
+        <span class="eyebrow reveal" data-i18n="lang.eyebrow">Built for communities the big sites ignore</span>
+        <h2 class="reveal d1" style="font-size:clamp(1.6rem,3vw,2.2rem);color:var(--navy);margin:14px 0 0" data-i18n="lang.h2">A platform that finally speaks your language</h2>
+        <p class="reveal d2" style="color:var(--slate);margin-top:14px" data-i18n="lang.p">Tens of millions of Hispanic, Arabic-, French- and Hebrew-speaking families are among the most active fintech users in the country — yet there's no real comparison platform in their language. That's the heart of who we serve: hard-working families and business owners who deserve fair terms and a fair shot.</p>
         <div class="mstats reveal d2">
-          <div class="mstat"><b>$3.4T</b><span>Hispanic buying power</span></div>
-          <div class="mstat"><b>62M+</b><span>people underserved today</span></div>
-          <div class="mstat"><b>92%</b><span>use fintech — highest of any group</span></div>
+          <div class="mstat"><b><bdi>$3.4T</bdi></b><span data-i18n="lang.s1">Hispanic buying power</span></div>
+          <div class="mstat"><b><bdi>62M+</bdi></b><span data-i18n="lang.s2">people underserved today</span></div>
+          <div class="mstat"><b><bdi>92%</bdi></b><span data-i18n="lang.s3">use fintech — highest of any group</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== AI TRACKING ===================== -->
+<!-- ===== TRACK ===== -->
 <section class="track">
   <div class="wrap">
     <div class="split">
       <div>
-        <div class="sec-head" style="margin-bottom:26px">
-          <span class="eyebrow reveal">The AI that never clocks out</span>
-          <h2 class="reveal d1">We don't disappear once you're funded</h2>
-          <p class="reveal d2">Most platforms forget you the second you sign. Ours keeps working — quietly scanning the market for the rest of your loan's life, so you're always on the best terms available.</p>
-        </div>
+        <span class="eyebrow reveal" data-i18n="tr.eyebrow">The AI that never clocks out</span>
+        <h2 class="reveal d1" style="color:var(--navy)" data-i18n="tr.h2">We don't disappear once you're funded</h2>
+        <p class="reveal d2" style="color:var(--slate);margin:14px 0 8px" data-i18n="tr.sub">Most platforms forget you the second you sign. Ours keeps working — quietly watching the market so you're always on a good deal.</p>
         <div class="track-list">
-          <div class="tl reveal"><div class="tlic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 7-7" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 8h4v4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h4>Rate-drop alerts</h4><p>The moment rates fall below what you're paying, you'll know — and what to do about it.</p></div></div>
-          <div class="tl reveal d1"><div class="tlic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7" stroke-linecap="round"/><path d="M21 4v5h-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h4>Refinance when it pays</h4><p>The AI runs the math continuously and only nudges you when refinancing genuinely saves money.</p></div></div>
-          <div class="tl reveal d2"><div class="tlic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke-linecap="round"/><circle cx="12" cy="12" r="4"/></svg></div><div><h4>One smart dashboard</h4><p>Premium members get continuous tracking and a clear view of every saving opportunity, all in one place.</p></div></div>
+          <div class="tl reveal"><div class="tlic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 7-7" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 8h4v4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h4 data-i18n="tr.1t">Insurance renewal alerts</h4><p data-i18n="tr.1p">Premiums creep up every term. When it's time to re-shop and save, you'll know — and what to do about it.</p></div></div>
+          <div class="tl reveal d1"><div class="tlic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7" stroke-linecap="round"/><path d="M21 4v5h-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h4 data-i18n="tr.2t">Better-offer alerts</h4><p data-i18n="tr.2p">If a stronger loan offer, payoff, or consolidation can save you money, the AI flags it — no chasing required.</p></div></div>
+          <div class="tl reveal d2"><div class="tlic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke-linecap="round"/><circle cx="12" cy="12" r="4"/></svg></div><div><h4 data-i18n="tr.3t">One simple dashboard</h4><p data-i18n="tr.3p">Premium members get continuous tracking and a clear view of every saving opportunity, all in one place.</p></div></div>
         </div>
       </div>
       <div class="figure tall reveal d1">
-        <img src="images/solution.jpg" alt="Customer checking her loan in the Mortgage AI app" />
-        <div class="badge">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3v18M5 10l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div><b>Always saving</b><span>tracking that pays for itself</span></div>
-        </div>
+        <img src="images/solution.jpg" alt="" loading="lazy" />
+        <div class="badge"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3v18M5 10l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><b data-i18n="tr.badge">Always saving</b><span data-i18n="tr.badges">tracking that pays for itself</span></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== TEAM ===================== -->
+<!-- ===== TEAM ===== -->
 <section id="team" class="team">
   <div class="wrap">
     <div class="sec-head center">
-      <span class="eyebrow reveal">Our team</span>
-      <h2 class="reveal d1">The people behind Mortgage AI</h2>
-      <p class="reveal d2">A family-built company with decades of trust, financial discipline, and technology under one roof.</p>
+      <span class="eyebrow reveal" data-i18n="tm.eyebrow">Our team</span>
+      <h2 class="reveal d1" data-i18n="tm.h2">The people behind Mortgage AI</h2>
+      <p class="reveal d2" data-i18n="tm.sub">A family with decades of trust, financial discipline, and technology under one roof.</p>
     </div>
-
-    <div class="team-photo reveal">
-      <img src="images/eyal_office.jpg" alt="Eyal Shohet, CEO of Mortgage AI, in the company office" />
-      <div class="ovl"></div>
-      <div class="cap"><b>Mortgage AI Company</b><span>Leadership that puts the customer first</span></div>
-    </div>
-
     <div class="team-grid">
       <div class="member reveal">
-        <div class="ph"><img src="images/eyal_face.jpg" alt="Eyal Shohet" /></div>
-        <div class="mbody">
-          <h4>Eyal Shohet</h4>
-          <div class="role">Founder &amp; CEO</div>
-          <p>Community leader and entrepreneur with a decade of fundraising across Israel and abroad, a real-estate company, and a lifelong record of building trust. He sets the vision and the standard: treat every customer like family.</p>
-        </div>
+        <div class="ph"><img src="images/eyal_face.jpg" alt="Eyal Shohet" loading="lazy" /></div>
+        <div class="mbody"><h4>Eyal Shohet</h4><div class="role" data-i18n="who.ceo">Founder &amp; CEO</div><p data-i18n="tm.eyal">Community leader and entrepreneur with a decade of fundraising across Israel and abroad, a real-estate company, and a lifelong record of building trust. He sets the vision: treat every customer like family.</p></div>
       </div>
       <div class="member reveal d1">
-        <div class="ph"><img src="images/moriya_face.jpg" alt="Moriya Shohet" /></div>
-        <div class="mbody">
-          <h4>Moriya Shohet</h4>
-          <div class="role">Co-Founder &amp; Deputy CEO</div>
-          <p>A bookkeeper with 20+ years in private business and former director of a charitable association. She brings the financial discipline and operational rigor that keep Mortgage AI honest, organized, and built to last.</p>
-        </div>
+        <div class="ph"><img src="images/moriya_face.jpg" alt="Moriya Shohet" loading="lazy" /></div>
+        <div class="mbody"><h4>Moriya Shohet</h4><div class="role" data-i18n="who.deputy">Deputy CEO</div><p data-i18n="tm.moriya">A bookkeeper with 20+ years in private business and former director of a charitable association. She brings the financial discipline and rigor that keep Mortgage AI honest and built to last.</p></div>
       </div>
       <div class="member reveal d2">
-        <div class="ph">
-          <div class="mono"><b>MS</b><small>System Manager</small></div>
-        </div>
-        <div class="mbody">
-          <h4>Moshe Shohet</h4>
-          <div class="role">System Manager</div>
-          <p>Leads the technology, AI systems, and product build from Los Angeles. He turns the vision into the platform — the engine that scans the market, filters the offers, and keeps every customer saving.</p>
-        </div>
+        <div class="ph"><div class="mono"><b>MS</b><small data-i18n="tm.sys">System Manager</small></div></div>
+        <div class="mbody"><h4>Moshe Shohet</h4><div class="role" data-i18n="tm.sys">System Manager</div><p data-i18n="tm.moshe">Leads the technology, AI systems, and product build from Los Angeles. He turns the vision into the platform — the engine that scans the market, filters the offers, and keeps every customer saving.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== CTA / CONTACT ===================== -->
-<section id="contact" class="cta">
+<!-- ===== FAQ ===== -->
+<section id="faq" class="why">
   <div class="wrap">
-    <span class="eyebrow reveal" style="justify-content:center">Get started</span>
-    <h2 class="reveal d1">Ready for the right loan — without the headache?</h2>
-    <p class="reveal d2">Tell us what you're looking for. Our AI does the searching, the comparing, and the watching — so you don't have to.</p>
-    <div class="row reveal d2">
-      <a href="mailto:mortgageloneai@gmail.com?subject=I'd%20like%20to%20get%20started%20with%20Mortgage%20AI" class="btn btn-gold">Email us &amp; get started
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a href="#how" class="btn btn-ghost">How it works</a>
+    <div class="sec-head center">
+      <span class="eyebrow reveal" data-i18n="fq.eyebrow">Good to know</span>
+      <h2 class="reveal d1" data-i18n="fq.h2">Your questions, answered</h2>
     </div>
-    <div class="mailpill reveal d2">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      mortgageloneai@gmail.com
+    <div class="faq-list reveal">
+      <details class="faq"><summary><span data-i18n="fq.1q">Is it really free?</span><svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></summary><div class="fa" data-i18n="fq.1a">Yes — you pay nothing to get matched and see your offers. Lenders and insurers pay us a fee when you choose to work with them. An optional Premium savings-tracker is $7.99/month, and it's free for founding members during the first year.</div></details>
+      <details class="faq"><summary><span data-i18n="fq.2q">Will this affect my credit score?</span><svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></summary><div class="fa" data-i18n="fq.2a">No. Getting your matches does not require a credit check. If you choose to move forward with a specific offer, that lender may check your credit at that point — and they will tell you before they do.</div></details>
+      <details class="faq"><summary><span data-i18n="fq.3q">So will lenders spam my phone?</span><svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></summary><div class="fa" data-i18n="fq.3a">No. Unlike lead-gen sites, we don't sell or resell your number to a network of lenders. Offers come to us, we show you the best, and you decide who to contact. A lender only reaches out after you choose to proceed with them.</div></details>
+      <details class="faq"><summary><span data-i18n="fq.4q">Are you a licensed broker?</span><svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></summary><div class="fa" data-i18n="fq.4a">Mortgage AI is a technology and comparison platform. We work with licensed lending and insurance partners who provide the actual offers and financing. We bring the options to you in your language; we don't pull your credit and we don't resell your data.</div></details>
+      <details class="faq"><summary><span data-i18n="fq.5q">What does Premium add?</span><svg class="pl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></summary><div class="fa" data-i18n="fq.5a">Premium keeps the AI working after you're funded: continuous savings tracking, insurance renewal alerts, and better-offer notifications, all in one dashboard. It's $7.99/month — free for founding members during the first year.</div></details>
     </div>
   </div>
 </section>
 
-<!-- ===================== FOOTER ===================== -->
-<footer>
+<!-- ===== FINAL CTA ===== -->
+<section class="final" id="start">
   <div class="wrap">
-    <div class="foot-top">
+    <div class="split">
       <div>
-        <div class="foot-brand"><img src="images/logo.png" alt="" />Mortgage<b>AI</b></div>
-        <p style="margin-top:10px;max-width:340px">Your online loan &amp; insurance broker, powered by AI. One request, the best offers, zero spam — in your language.</p>
+        <span class="eyebrow reveal" data-i18n="fn.eyebrow">Get started</span>
+        <h2 class="reveal d1" data-i18n="fn.h2">Ready for the right loan — without the headache?</h2>
+        <p class="reveal d2" data-i18n="fn.p">Send one request. Our AI does the searching, the comparing, and the watching — so you don't have to. Free, private, in your language.</p>
+        <div class="reassure reveal d2">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="re.free">Free to use</span></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="re.resell">No lead reselling</span></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="re.oblig">No obligation</span></span>
+        </div>
       </div>
-      <div class="foot-links">
-        <a href="#how">How it works</a>
-        <a href="#why">Why us</a>
-        <a href="#markets">Markets</a>
-        <a href="#team">Team</a>
-        <a href="mailto:mortgageloneai@gmail.com">Contact</a>
+      <div style="text-align:center">
+        <a href="#top" class="btn btn-gold btn-arrow" data-scroll-form style="font-size:1.1rem;padding:1rem 2rem" data-i18n="fn.cta">See My Best Offers
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <p style="color:#8295ad;font-size:.85rem;margin-top:14px" data-i18n="fn.micro">Takes about 3 minutes · <bdi>mortgageloneai@gmail.com</bdi></p>
       </div>
     </div>
-    <p class="disclaimer">Mortgage AI is a technology platform that helps users compare personal loans, business loans, and insurance, and works with licensed lending and insurance partners to present offers. Mortgage AI does not pull credit itself and does not provide financial, legal, or tax advice. Any offers, names, figures, and savings shown are illustrative for demonstration purposes. Availability of products and services may vary by state and is subject to applicable law and partner approval.</p>
-    <div class="foot-bottom">
-      <span>© 2026 Mortgage AI. All rights reserved.</span>
-      <span>English · Español · Français · العربية</span>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="foot-support">
+    <div class="wrap">
+      <img src="images/receptionist.jpg" alt="" loading="lazy" />
+      <div class="fs-txt">
+        <b data-i18n="ft.supt">Talk to a real person</b>
+        <p data-i18n="ft.supp">Questions before you start? A real human from our team answers — in your language. Email us and we'll reply within one business day. No robocalls, ever.</p>
+        <a href="mailto:mortgageloneai@gmail.com"><bdi>mortgageloneai@gmail.com</bdi></a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-main">
+    <div class="wrap">
+      <div class="foot-top">
+        <div>
+          <div class="foot-brand"><img src="images/logo.png" width="30" height="30" alt="" />Mortgage<b>AI</b></div>
+          <p style="margin-top:10px;max-width:340px" data-i18n="ft.tag">Your online loan &amp; insurance comparison platform. One request, your best offers, no spam flood — in your language.</p>
+        </div>
+        <div class="foot-links">
+          <a href="#about" data-i18n="nav.about">About us</a>
+          <a href="#how" data-i18n="nav.how">How it works</a>
+          <a href="#markets" data-i18n="nav.markets">Markets</a>
+          <a href="#faq" data-i18n="nav.faq">FAQ</a>
+          <a href="mailto:mortgageloneai@gmail.com" data-i18n="ft.contact">Contact</a>
+        </div>
+      </div>
+      <p class="disclaimer" data-i18n="ft.disc">Mortgage AI is a technology and comparison platform that helps users compare business loans, personal loans, and insurance, and works with licensed lending and insurance partners who provide offers. Mortgage AI is not a mortgage company and does not offer mortgages; it does not pull credit itself and does not provide financial, legal, or tax advice. We do not sell or resell your contact information. Any offers, names, figures, and savings shown are illustrative. Product availability varies by state and is subject to applicable law and partner approval.</p>
+      <div class="foot-bottom">
+        <span data-i18n="ft.copy">© 2026 Mortgage AI. All rights reserved.</span>
+        <span>English · Español · Français · العربية · עברית</span>
+      </div>
     </div>
   </div>
 </footer>
 
+<!-- sticky mobile CTA -->
+<div class="mbar"><a href="#top" class="btn btn-gold" data-scroll-form data-i18n="nav.cta">See My Offers</a></div>
+
 <script>
-  // sticky nav shadow
+  // ===== i18n =====
+  var I18N = {"es":{"meta.desc":"","nav.about":"Quiénes somos","nav.how":"Cómo funciona","nav.why":"Por qué elegirnos","nav.markets":"Mercados","nav.team":"Equipo","nav.faq":"Preguntas frecuentes","nav.cta":"Ver mis ofertas","hero.disambig":"Préstamos personales y empresariales + seguros. <b style=\"color:#cdd8e8\">No somos un sitio de hipotecas.</b>","hero.eyebrow":"Comparador de Préstamos y Seguros con Inteligencia Artificial","hero.h1":"Una solicitud. Nosotros hacemos la búsqueda.<br><span class=\"hl\">Sin llamadas de spam interminables.</span>","hero.lead":"La mayoría de los sitios de comparación revenden su número a docenas de prestamistas — por eso un formulario se convierte en una semana de llamadas. Mortgage AI funciona al revés: envíe <b>una</b> solicitud, nuestra IA analiza el mercado y le trae solo las <b>3–4 mejores ofertas</b>. Los prestamistas nos envían sus ofertas <b>a nosotros</b> — no revendemos su número. <b>En su idioma.</b>","re.free":"Gratis","re.resell":"Sin reventa de datos","re.credit":"Sin verificación de crédito para obtener coincidencias","re.oblig":"Sin compromiso","obj.free.q":"¿Es gratis?","obj.free.a":"Sí — usted no paga nada para recibir sus coincidencias. Los prestamistas y aseguradoras nos pagan a nosotros. (Hay un rastreador Premium opcional de ahorros por $7.99/mes; gratis para los miembros fundadores el primer año.)","obj.credit.q":"¿Esto afecta mi crédito?","obj.credit.a":"No — obtener sus coincidencias no requiere una verificación de crédito. Si decide avanzar con una oferta, ese prestamista puede revisar su crédito — y se lo informará antes.","obj.broker.q":"¿Son un corredor real?","obj.broker.a":"Somos su plataforma de comparación en línea y trabajamos con socios prestamistas y aseguradoras con licencia que realizan las ofertas. Le presentamos las opciones y nunca revendemos sus datos.","chip.personal":"Préstamo Personal","chip.business":"Préstamo Empresarial","chip.insurance":"Seguro","form.t1":"Vea sus mejores ofertas","form.s1":"¿Qué necesita? Toma unos 3 minutos.","form.micro1":"Elija uno para comenzar — no necesita crear una cuenta","form.back":"Volver","form.t2":"Algunos datos rápidos","form.you":"Usted está consultando sobre:","form.name":"Nombre completo","form.email":"Correo electrónico","form.phone":"Teléfono","form.amount":"Monto necesario","form.lang":"Idioma preferido","form.continue":"Continuar\n            <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\"><path d=\"M5 12h14M13 6l6 6-6 6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>\n          ","form.t3":"Último paso","form.s3":"Confirme y le traeremos sus 3–4 mejores ofertas.","form.consent":"Acepto ser contactado por Mortgage AI y sus socios con licencia sobre mi solicitud, y acepto los <a href=\"#faq\">Términos de Privacidad</a>. No revendemos su número.","form.submit":"Ver mis mejores ofertas","form.micro3":"Sus datos son privados — nunca revendidos","form.dt":"¡Recibido!","form.dp":"Una persona real responde dentro de un día hábil — sin llamadas automáticas. Revise su correo electrónico para la confirmación.","strip.s1":"solicitud, no 200 llamadas","strip.s2":"mejores ofertas seleccionadas por IA","strip.s3":"idiomas, una plataforma","strip.s4":"monitoreo de ahorros tras el financiamiento","who.eyebrow":"Quiénes somos","who.h2":"Una empresa familiar que simplifica el financiamiento","who.sub":"Conozca a las personas detrás de Mortgage AI — y por qué la fundamos.","who.ceo":"Fundador y Director Ejecutivo","who.deputy":"Director Ejecutivo Adjunto","who.b1t":"Quiénes somos","who.b1p":"Mortgage AI es una empresa de tecnología financiera de origen familiar. Hacemos que bancos, prestamistas y aseguradoras compitan por usted, y ponemos tecnología inteligente y multilingüe entre usted y el ruido — para que obtener un préstamo sea finalmente sencillo.","who.b2t":"Por qué fundamos Mortgage AI","who.b2p":"Porque las familias y empresarios quedan sepultados en llamadas en el momento en que buscan un préstamo, millones son atendidos solo en inglés, y demasiados permanecen atrapados en condiciones desfavorables porque nadie vela por ellos. Construimos la plataforma que hubiéramos querido tener.","who.b3t":"Nuestra visión","who.b3p":"Un mundo donde cada familia y empresa obtenga condiciones justas de préstamos y seguros — durante toda la vida de su deuda — gracias a tecnología que trabaja para ellos las 24 horas del día, los 7 días de la semana, en su propio idioma.","who.b4t":"Cómo le servimos","who.b4p":"Una solicitud en lugar de cien llamadas. Nuestra IA analiza el mercado, le trae las 3–4 mejores ofertas, y sigue vigilando para que siempre tenga un buen trato. Rápido, privado y multilingüe — creado para las personas que los grandes sitios ignoran.","vil.eyebrow":"No somos una empresa de captación de clientes potenciales","vil.h2":"Por qué su teléfono explota de llamadas — y cómo lo detenemos","vil.sub":"El spam nunca fue culpa suya. Así es como los grandes sitios de comparación ganan dinero.","vil.badtag":"Sitios de captación de clientes","vil.badh":"Usted se convierte en el producto","vil.badp":"Su única solicitud se revende a docenas de prestamistas a la vez. Los prestatarios suelen reportar más de 200 llamadas y mensajes en cuestión de días.","vil.goodtag":"Mortgage AI","vil.goodh":"Usted mantiene el control","vil.goodp":"Una solicitud, un punto de contacto. Los prestamistas nos envían las ofertas a nosotros; no revendemos su número. Usted elige con quién hablar — tranquilamente, en sus propios términos.","mech.title":"Cómo fluye su solicitud","mech.n1b":"Su solicitud","mech.n1s":"nombre y necesidad — nunca un dato público","mech.n2b":"Nuestra IA","mech.n2s":"analiza prestamistas — no una lista de reventa","mech.n3b":"Sus 3–4 mejores","mech.n3s":"usted elige — luego se comunica","mech.note":"No vendemos ni revendemos su número de teléfono — está escrito en nuestros Términos de Privacidad.","how.eyebrow":"Cómo funciona","how.h2":"Un préstamo, de manera sencilla — en cuatro pasos","how.sub":"Desde su primera solicitud hasta la oferta adecuada para usted — minutos, no semanas.","how.1t":"Envíe una solicitud","how.1p":"Elija préstamo personal, préstamo empresarial o seguro. Cuéntenos qué necesita — en su idioma.","how.2t":"La IA analiza el mercado","how.2p":"Los prestamistas y aseguradoras nos envían sus ofertas. Nuestra IA las evalúa todas y encuentra las condiciones más convenientes para usted.","how.3t":"Reciba sus 3–4 mejores","how.3p":"Sin saturación ni ruido. Ve solo las ofertas más sólidas, claramente comparadas, con nuestra recomendación en primer lugar.","how.4t":"Usted elige — nosotros vigilamos","how.4p":"Elija una oferta y comuníquese en sus propios términos. Seguimos atentos a mejores tratos y ahorros en el momento de renovación.","wy.eyebrow":"Por qué Mortgage AI","wy.h2":"Todo lo que los grandes sitios hacen mal — corregido","wy.sub":"Ganamos cuando usted obtiene un mejor trato, no revendiendo sus datos. Esa única decisión lo cambia todo.","wy.1t":"Sin reventa de datos","wy.1p":"Los prestamistas nos envían las ofertas a nosotros, no a una lista. Su número no se vende — así su teléfono permanece tranquilo mientras busca. Está en nuestros Términos de Privacidad.","wy.2t":"La IA encuentra el mejor trato","wy.2p":"Nuestro motor evalúa cada oferta y le presenta las condiciones más convenientes — las que solo encontraría después de semanas de búsqueda.","wy.3t":"Habla su idioma","wy.3p":"Inglés, español, francés, árabe y hebreo — el comparador que millones de familias nunca habían tenido.","wy.4t":"Monitoreo de ahorros permanente","wy.4p":"Después de obtener su financiamiento, seguimos atentos — y le avisamos cuando renovar su seguro o una mejor oferta de préstamo puede ahorrarle dinero.","wy.5t":"Un solo punto de contacto","wy.5p":"Sin perseguir a un corredor ni repetirse diez veces. Una plataforma maneja todo por usted.","wy.6t":"Rápido, sin papeleo interminable","wy.6p":"Reciba coincidencias en minutos en lugar de semanas. Menos trámites, mucho menos estrés.","off.eyebrow":"La promesa","off.h2":"La Oferta de Solicitud Única","off.lead":"Envíe una solicitud y le traemos sus 3–4 mejores ofertas — sin nada que perder.","off.g1t":"Gratis para obtener coincidencias","off.g1s":"Los prestamistas nos pagan — usted no paga nada para ver sus ofertas.","off.g2t":"Sin reventa de datos","off.g2s":"Su número nunca se vende. Usted elige quién lo contacta.","off.g3t":"Sin verificación de crédito para coincidir","off.g3s":"Ver sus ofertas no afectará su crédito.","off.g4t":"Sin compromiso","off.g4s":"Vea sus ofertas y decida — o retírese sin consecuencias.","off.badge":"Nada que perder","off.badges":"sus mejores ofertas, su decisión","mk.eyebrow":"Lo que puede comparar","mk.h2":"Tres formas en que le ayudamos a ahorrar","mk.sub":"Una plataforma, un acceso — para las decisiones que más importan.","mk.1t":"Préstamos Personales","mk.1p":"Consolide deudas o financie un momento importante con condiciones que realmente se adapten a usted.","mk.1a":"Consolidación inteligente de deudas","mk.1b":"Mejores tasas, claramente comparadas","mk.1c":"Privado — sin reventa de datos","mk.2t":"Préstamos Empresariales","mk.2p":"Capital de trabajo y financiamiento para el crecimiento de los empresarios que mantienen viva su ciudad.","mk.2a":"Ofertas competidoras, una al lado de la otra","mk.2b":"Diseñado para pequeñas empresas e inmigrantes","mk.2c":"Proceso rápido con poco papeleo","mk.3t":"Seguros","mk.3p":"Deje de pagar de más. Compare coberturas y encuentre la póliza que realmente se adapte a usted.","mk.3a":"Cobertura comparada con honestidad","mk.3b":"Fácil de cambiar y ahorrar","mk.3c":"Revisiones de ahorros en tiempo de renovación","lang.eyebrow":"Creado para comunidades que los grandes sitios ignoran","lang.h2":"Una plataforma que finalmente habla su idioma","lang.p":"Decenas de millones de familias hispanohablantes, arabófonas, francófonas y de habla hebrea se encuentran entre los usuarios de tecnología financiera más activos del país — sin embargo, no existe un comparador real en su idioma. Ese es el corazón de a quiénes servimos: familias trabajadoras y empresarios que merecen condiciones justas y una oportunidad real.","lang.s1":"Poder adquisitivo hispano","lang.s2":"personas desatendidas hoy","lang.s3":"usan tecnología financiera — la tasa más alta de cualquier grupo","tr.eyebrow":"La IA que nunca descansa","tr.h2":"No desaparecemos una vez que recibe su financiamiento","tr.sub":"La mayoría de las plataformas lo olvidan en el momento en que firma. La nuestra sigue trabajando — vigilando silenciosamente el mercado para que siempre tenga un buen trato.","tr.1t":"Alertas de renovación de seguro","tr.1p":"Las primas suben con cada renovación. Cuando sea el momento de buscar una mejor opción y ahorrar, usted lo sabrá — y qué hacer al respecto.","tr.2t":"Alertas de mejores ofertas","tr.2p":"Si una oferta de préstamo más favorable, un pago anticipado o una consolidación puede ahorrarle dinero, la IA lo notifica — sin necesidad de buscarlo.","tr.3t":"Un panel sencillo","tr.3p":"Los miembros Premium obtienen seguimiento continuo y una vista clara de cada oportunidad de ahorro, todo en un solo lugar.","tr.badge":"Siempre ahorrando","tr.badges":"seguimiento que se paga solo","tm.eyebrow":"Nuestro equipo","tm.h2":"Las personas detrás de Mortgage AI","tm.sub":"Una familia con décadas de confianza, disciplina financiera y tecnología bajo un mismo techo.","tm.eyal":"Líder comunitario y emprendedor con una década de recaudación de fondos en Israel y el exterior, una empresa inmobiliaria y una trayectoria de toda la vida construyendo confianza. Él establece la visión: tratar a cada cliente como a un familiar.","tm.moriya":"Contadora con más de 20 años en el sector privado y ex directora de una asociación benéfica. Aporta la disciplina y el rigor financiero que mantienen a Mortgage AI honesta y construida para perdurar.","tm.sys":"Gerente de Sistemas","tm.moshe":"Lidera la tecnología, los sistemas de IA y el desarrollo del producto desde Los Ángeles. Convierte la visión en la plataforma — el motor que analiza el mercado, filtra las ofertas y mantiene ahorrando a cada cliente.","fq.eyebrow":"Bueno saberlo","fq.h2":"Sus preguntas, respondidas","fq.1q":"¿Es realmente gratis?","fq.1a":"Sí — usted no paga nada para recibir coincidencias y ver sus ofertas. Los prestamistas y aseguradoras nos pagan una tarifa cuando usted decide trabajar con ellos. Hay un rastreador Premium opcional de ahorros por $7.99/mes, y es gratis para los miembros fundadores durante el primer año.","fq.2q":"¿Afectará mi puntaje de crédito?","fq.2a":"No. Obtener sus coincidencias no requiere una verificación de crédito. Si decide avanzar con una oferta específica, ese prestamista puede revisar su crédito en ese momento — y se lo informará antes de hacerlo.","fq.3q":"¿Los prestamistas inundarán mi teléfono de llamadas?","fq.3a":"No. A diferencia de los sitios de captación de clientes, no vendemos ni revendemos su número a una red de prestamistas. Las ofertas llegan a nosotros, le mostramos las mejores y usted decide a quién contactar. Un prestamista solo se comunica con usted después de que decida avanzar con él.","fq.4q":"¿Son un corredor con licencia?","fq.4a":"Mortgage AI es una plataforma de tecnología y comparación. Trabajamos con socios prestamistas y aseguradoras con licencia que proporcionan las ofertas y el financiamiento real. Le presentamos las opciones en su idioma; no revisamos su crédito y no revendemos sus datos.","fq.5q":"¿Qué agrega el Premium?","fq.5a":"El Premium mantiene la IA trabajando después de que recibe su financiamiento: seguimiento continuo de ahorros, alertas de renovación de seguros y notificaciones de mejores ofertas, todo en un panel. Es $7.99/mes — gratis para los miembros fundadores durante el primer año.","fn.eyebrow":"Comience ahora","fn.h2":"¿Listo para el préstamo adecuado — sin complicaciones?","fn.p":"Envíe una solicitud. Nuestra IA hace la búsqueda, la comparación y el seguimiento — para que usted no tenga que hacerlo. Gratis, privado, en su idioma.","fn.cta":"Ver mis mejores ofertas\n          <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\"><path d=\"M5 12h14M13 6l6 6-6 6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>\n        ","fn.micro":"Toma unos 3 minutos · <bdi>mortgageloneai@gmail.com</bdi>","ft.supt":"Hable con una persona real","ft.supp":"¿Preguntas antes de comenzar? Un miembro real de nuestro equipo responde — en su idioma. Escríbanos y respondemos dentro de un día hábil. Sin llamadas automáticas, nunca.","ft.tag":"Su plataforma de comparación de préstamos y seguros en línea. Una solicitud, sus mejores ofertas, sin spam — en su idioma.","ft.contact":"Contacto","ft.disc":"Mortgage AI es una plataforma de tecnología y comparación que ayuda a los usuarios a comparar préstamos empresariales, préstamos personales y seguros, y trabaja con socios prestamistas y aseguradoras con licencia que proporcionan las ofertas. Mortgage AI no es una empresa hipotecaria y no ofrece hipotecas; no realiza verificaciones de crédito por cuenta propia y no proporciona asesoramiento financiero, legal ni fiscal. No vendemos ni revendemos su información de contacto. Cualquier oferta, nombre, cifra y ahorro mostrado es ilustrativo. La disponibilidad de productos varía según el estado y está sujeta a la ley aplicable y a la aprobación del socio.","ft.copy":"© 2026 Mortgage AI. Todos los derechos reservados."},"fr":{"meta.desc":"","nav.about":"Qui sommes-nous","nav.how":"Comment ça marche","nav.why":"Pourquoi nous choisir","nav.markets":"Marchés","nav.team":"Équipe","nav.faq":"FAQ","nav.cta":"Voir mes offres","hero.disambig":"Prêts personnels et professionnels + assurance. <b style=\"color:#cdd8e8\">Nous ne sommes pas un site de prêts hypothécaires.</b>","hero.eyebrow":"Comparateur de Prêts et d'Assurances propulsé par l'IA","hero.h1":"Une demande. Nous faisons les recherches.<br><span class=\"hl\">Fini le déluge d'appels indésirables.</span>","hero.lead":"La plupart des sites de comparaison revendent votre numéro à des dizaines de prêteurs — c'est pourquoi un simple formulaire se transforme en une semaine d'appels. Mortgage AI fonctionne à l'inverse : envoyez <b>une</b> demande, notre IA analyse le marché et vous présente uniquement les <b>3–4 meilleures offres</b>. Les prêteurs nous envoient leurs offres <b>directement</b> — nous ne revendons pas votre numéro. <b>Dans votre langue.</b>","re.free":"Gratuit","re.resell":"Aucune revente de données","re.credit":"Aucune vérification de crédit pour obtenir des correspondances","re.oblig":"Sans engagement","obj.free.q":"Est-ce gratuit ?","obj.free.a":"Oui — vous ne payez rien pour obtenir vos correspondances. Les prêteurs et assureurs nous rémunèrent. (Un suivi Premium optionnel des économies est à $7.99/mois ; gratuit pour les membres fondateurs la première année.)","obj.credit.q":"Cela affecte-t-il mon crédit ?","obj.credit.a":"Non — obtenir vos correspondances ne nécessite pas de vérification de crédit. Si vous décidez de donner suite à une offre, ce prêteur peut alors vérifier votre crédit — et vous en informera au préalable.","obj.broker.q":"Êtes-vous un vrai courtier ?","obj.broker.a":"Nous sommes votre comparateur en ligne et nous travaillons avec des partenaires prêteurs et assureurs agréés qui formulent les offres. Nous vous présentons les options et ne revendons jamais vos données.","chip.personal":"Prêt Personnel","chip.business":"Prêt Professionnel","chip.insurance":"Assurance","form.t1":"Voir vos meilleures offres","form.s1":"De quoi avez-vous besoin ? Environ 3 minutes.","form.micro1":"Choisissez pour commencer — aucun compte requis","form.back":"Retour","form.t2":"Quelques informations rapides","form.you":"Vous demandez des informations sur :","form.name":"Nom complet","form.email":"Adresse e-mail","form.phone":"Téléphone","form.amount":"Montant souhaité","form.lang":"Langue préférée","form.continue":"Continuer\n            <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\"><path d=\"M5 12h14M13 6l6 6-6 6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>\n          ","form.t3":"Dernière étape","form.s3":"Confirmez et nous vous apporterons vos 3–4 meilleures offres.","form.consent":"J'accepte d'être contacté par Mortgage AI et ses partenaires agréés concernant ma demande, et j'accepte les <a href=\"#faq\">Conditions de Confidentialité</a>. Nous ne revendons pas votre numéro.","form.submit":"Voir mes meilleures offres","form.micro3":"Vos données restent privées — jamais revendues","form.dt":"Bien reçu !","form.dp":"Une vraie personne vous répond dans un délai d'un jour ouvré — pas de robot. Un e-mail de confirmation vous sera envoyé.","strip.s1":"demande, pas 200 appels","strip.s2":"meilleures offres sélectionnées par l'IA","strip.s3":"langues, une seule plateforme","strip.s4":"suivi des économies après financement","who.eyebrow":"Qui nous sommes","who.h2":"Une entreprise familiale qui simplifie le financement","who.sub":"Découvrez les personnes derrière Mortgage AI — et pourquoi nous l'avons créée.","who.ceo":"Fondateur et Directeur Général","who.deputy":"Directeur Général Adjoint","who.b1t":"Qui nous sommes","who.b1p":"Mortgage AI est une entreprise de technologie financière à dimension familiale. Nous mettons les banques, les prêteurs et les assureurs en concurrence pour vous, et plaçons une technologie intelligente et multilingue entre vous et le bruit — pour qu'obtenir un prêt soit enfin simple.","who.b2t":"Pourquoi nous avons fondé Mortgage AI","who.b2p":"Parce que les familles et les entrepreneurs sont submergés d'appels dès qu'ils cherchent un prêt, des millions de personnes ne sont servies qu'en anglais, et trop nombreux restent bloqués dans de mauvaises conditions faute d'un accompagnateur. Nous avons construit la plateforme que nous aurions voulu avoir.","who.b3t":"Notre vision","who.b3p":"Un monde où chaque famille et entreprise bénéficie de conditions équitables en matière de prêts et d'assurances — tout au long de la durée de vie de leur dette — grâce à une technologie qui travaille pour eux 24h/24 et 7j/7, dans leur propre langue.","who.b4t":"Comment nous vous servons","who.b4p":"Une demande au lieu de cent appels. Notre IA analyse le marché, vous présente les 3–4 meilleures offres, et continue de surveiller pour que vous bénéficiiez toujours d'un bon accord. Rapide, confidentiel et multilingue — conçu pour ceux que les grands sites ignorent.","vil.eyebrow":"Nous ne sommes pas un courtier en leads","vil.h2":"Pourquoi votre téléphone surchauffe — et comment nous y mettons fin","vil.sub":"Le spam n'a jamais été de votre faute. C'est ainsi que les grands sites de comparaison gagnent de l'argent.","vil.badtag":"Sites de génération de leads","vil.badh":"Vous devenez le produit","vil.badp":"Votre unique demande est revendue simultanément à des dizaines de prêteurs. Les emprunteurs signalent régulièrement plus de 200 appels et messages en quelques jours.","vil.goodtag":"Mortgage AI","vil.goodh":"Vous gardez le contrôle","vil.goodp":"Une demande, un point de contact. Les prêteurs nous envoient les offres ; nous ne revendons pas votre numéro. Vous choisissez à qui vous parlez — en toute tranquillité, à vos conditions.","mech.title":"Comment votre demande circule réellement","mech.n1b":"Votre demande","mech.n1s":"nom et besoin — jamais un lead public","mech.n2b":"Notre IA","mech.n2s":"analyse les prêteurs — pas une liste de revente","mech.n3b":"Vos 3–4 meilleures","mech.n3s":"vous choisissez — puis vous prenez contact","mech.note":"Nous ne vendons ni ne revendons votre numéro de téléphone — c'est inscrit dans nos Conditions de Confidentialité.","how.eyebrow":"Comment ça marche","how.h2":"Un prêt, simplement — en quatre étapes","how.sub":"De votre première demande à l'offre qui vous convient — en quelques minutes, pas des semaines.","how.1t":"Envoyez une demande","how.1p":"Choisissez prêt personnel, prêt professionnel ou assurance. Dites-nous ce dont vous avez besoin — dans votre langue.","how.2t":"L'IA analyse le marché","how.2p":"Les prêteurs et assureurs nous retournent leurs offres. Notre IA les étudie toutes et trouve les conditions les plus avantageuses pour vous.","how.3t":"Recevez vos 3–4 meilleures","how.3p":"Pas de surcharge, pas de bruit. Vous ne voyez que les offres les plus solides, clairement comparées, avec notre recommandation en tête.","how.4t":"Vous choisissez — nous veillons","how.4p":"Choisissez une offre et prenez contact à vos conditions. Nous continuons à surveiller les meilleures opportunités et les économies au moment du renouvellement.","wy.eyebrow":"Pourquoi Mortgage AI","wy.h2":"Tout ce que les grands sites font mal — corrigé","wy.sub":"Nous gagnons quand vous obtenez un meilleur accord, pas en revendant vos données. Ce seul choix change tout.","wy.1t":"Aucune revente de leads","wy.1p":"Les prêteurs nous envoient les offres directement, pas à une liste. Votre numéro n'est pas vendu — votre téléphone reste au calme pendant que vous comparez. C'est dans nos Conditions de Confidentialité.","wy.2t":"L'IA trouve la meilleure offre","wy.2p":"Notre moteur analyse chaque offre et vous présente les conditions les plus avantageuses — celles que vous n'auriez trouvées qu'après des semaines de recherche.","wy.3t":"Parle votre langue","wy.3p":"Anglais, espagnol, français, arabe et hébreu — le comparateur que des millions de familles n'avaient jamais eu.","wy.4t":"Veille permanente sur les économies","wy.4p":"Une fois votre financement obtenu, nous continuons à surveiller — et vous informons quand résilier votre assurance ou qu'une meilleure offre de prêt peut vous faire économiser.","wy.5t":"Un seul point de contact","wy.5p":"Pas besoin de courir après un courtier ni de vous répéter dix fois. Une plateforme gère tout pour vous.","wy.6t":"Rapide, sans paperasse interminable","wy.6p":"Obtenez vos correspondances en quelques minutes au lieu de semaines. Moins de démarches, bien moins de tracas.","off.eyebrow":"La promesse","off.h2":"L'Offre à Demande Unique","off.lead":"Envoyez une demande et nous vous apportons vos 3–4 meilleures offres — sans rien à perdre.","off.g1t":"Gratuit pour obtenir des correspondances","off.g1s":"Les prêteurs nous rémunèrent — vous ne payez rien pour voir vos offres.","off.g2t":"Aucune revente de données","off.g2s":"Votre numéro n'est jamais vendu. Vous choisissez qui vous contacte.","off.g3t":"Aucune vérification de crédit pour comparer","off.g3s":"Consulter vos offres n'affectera pas votre crédit.","off.g4t":"Sans engagement","off.g4s":"Consultez vos offres, puis décidez — ou repartez sans contrainte.","off.badge":"Rien à perdre","off.badges":"vos meilleures offres, votre décision","mk.eyebrow":"Ce que vous pouvez comparer","mk.h2":"Trois façons de vous aider à économiser","mk.sub":"Une plateforme, un accès — pour les décisions qui comptent le plus.","mk.1t":"Prêts Personnels","mk.1p":"Regroupez vos dettes ou financez un moment important avec des conditions qui vous correspondent vraiment.","mk.1a":"Regroupement de dettes intelligent","mk.1b":"De meilleures conditions, clairement comparées","mk.1c":"Confidentiel — aucune revente de données","mk.2t":"Prêts Professionnels","mk.2p":"Fonds de roulement et financement de la croissance pour les entrepreneurs qui font vivre leur ville.","mk.2a":"Offres concurrentes, côte à côte","mk.2b":"Conçu pour les petites entreprises et les entrepreneurs immigrés","mk.2c":"Processus rapide, peu de paperasse","mk.3t":"Assurance","mk.3p":"Arrêtez de payer trop cher. Comparez les couvertures et trouvez la police qui vous convient vraiment.","mk.3a":"Couvertures comparées honnêtement","mk.3b":"Facile à changer et à économiser","mk.3c":"Vérifications d'économies au moment du renouvellement","lang.eyebrow":"Conçu pour les communautés que les grands sites ignorent","lang.h2":"Une plateforme qui parle enfin votre langue","lang.p":"Des dizaines de millions de familles hispanophones, arabophones, francophones et hébraïcophones comptent parmi les utilisateurs de services financiers numériques les plus actifs du pays — pourtant, il n'existe pas de vrai comparateur dans leur langue. Voilà l'essence de ceux que nous servons : des familles travailleuses et des entrepreneurs qui méritent des conditions équitables et une vraie chance.","lang.s1":"Pouvoir d'achat hispanique","lang.s2":"personnes mal desservies aujourd'hui","lang.s3":"utilisent la fintech — le taux le plus élevé de tous les groupes","tr.eyebrow":"L'IA qui ne s'arrête jamais","tr.h2":"Nous ne disparaissons pas une fois votre financement obtenu","tr.sub":"La plupart des plateformes vous oublient dès que vous signez. La nôtre continue de travailler — surveillant silencieusement le marché pour que vous bénéficiiez toujours d'un bon accord.","tr.1t":"Alertes de renouvellement d'assurance","tr.1p":"Les primes augmentent à chaque terme. Quand il sera temps de recomparer et d'économiser, vous le saurez — et saurez quoi faire.","tr.2t":"Alertes de meilleures offres","tr.2p":"Si une offre de prêt plus avantageuse, un remboursement anticipé ou un regroupement peut vous faire économiser, l'IA vous le signale — sans démarche de votre part.","tr.3t":"Un tableau de bord simple","tr.3p":"Les membres Premium bénéficient d'un suivi continu et d'une vue claire de chaque opportunité d'économie, le tout en un seul endroit.","tr.badge":"Toujours en train d'économiser","tr.badges":"un suivi qui s'autofinance","tm.eyebrow":"Notre équipe","tm.h2":"Les personnes derrière Mortgage AI","tm.sub":"Une famille avec des décennies de confiance, de rigueur financière et de technologie sous le même toit.","tm.eyal":"Leader communautaire et entrepreneur avec une décennie de collecte de fonds en Israël et à l'étranger, une société immobilière et un parcours de toute une vie à construire la confiance. Il définit la vision : traiter chaque client comme un membre de la famille.","tm.moriya":"Comptable avec plus de 20 ans dans le secteur privé et ancienne directrice d'une association caritative. Elle apporte la discipline et la rigueur financière qui maintiennent Mortgage AI honnête et solide dans la durée.","tm.sys":"Responsable Systèmes","tm.moshe":"Dirige la technologie, les systèmes d'IA et le développement du produit depuis Los Angeles. Il transforme la vision en plateforme — le moteur qui analyse le marché, filtre les offres et permet à chaque client d'économiser continuellement.","fq.eyebrow":"Bon à savoir","fq.h2":"Vos questions, nos réponses","fq.1q":"Est-ce vraiment gratuit ?","fq.1a":"Oui — vous ne payez rien pour obtenir vos correspondances et voir vos offres. Les prêteurs et assureurs nous versent des honoraires lorsque vous choisissez de travailler avec eux. Un suivi Premium optionnel des économies est à $7.99/mois, et il est gratuit pour les membres fondateurs pendant la première année.","fq.2q":"Cela affectera-t-il ma cote de crédit ?","fq.2a":"Non. Obtenir vos correspondances ne nécessite pas de vérification de crédit. Si vous décidez d'aller de l'avant avec une offre spécifique, ce prêteur peut alors vérifier votre crédit — et vous en informera avant de le faire.","fq.3q":"Les prêteurs vont-ils inonder mon téléphone d'appels ?","fq.3a":"Non. Contrairement aux sites de génération de leads, nous ne vendons ni ne revendons votre numéro à un réseau de prêteurs. Les offres nous parviennent, nous vous montrons les meilleures et vous décidez qui contacter. Un prêteur ne vous contacte qu'après que vous ayez choisi de donner suite à son offre.","fq.4q":"Êtes-vous un courtier agréé ?","fq.4a":"Mortgage AI est une plateforme technologique et de comparaison. Nous travaillons avec des partenaires prêteurs et assureurs agréés qui fournissent les offres et le financement réels. Nous vous présentons les options dans votre langue ; nous ne consultons pas votre crédit et ne revendons pas vos données.","fq.5q":"Qu'apporte le Premium ?","fq.5a":"Le Premium maintient l'IA active après votre financement : suivi continu des économies, alertes de renouvellement d'assurance et notifications de meilleures offres, le tout dans un tableau de bord. C'est $7.99/mois — gratuit pour les membres fondateurs pendant la première année.","fn.eyebrow":"Commencez maintenant","fn.h2":"Prêt pour le bon prêt — sans les tracas ?","fn.p":"Envoyez une demande. Notre IA fait les recherches, les comparaisons et la surveillance — pour que vous n'ayez pas à le faire. Gratuit, confidentiel, dans votre langue.","fn.cta":"Voir mes meilleures offres\n          <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\"><path d=\"M5 12h14M13 6l6 6-6 6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>\n        ","fn.micro":"Environ 3 minutes · <bdi>mortgageloneai@gmail.com</bdi>","ft.supt":"Parler à une vraie personne","ft.supp":"Des questions avant de commencer ? Un vrai membre de notre équipe vous répond — dans votre langue. Écrivez-nous et nous répondons dans un délai d'un jour ouvré. Jamais de robot, jamais.","ft.tag":"Votre comparateur de prêts et d'assurances en ligne. Une demande, vos meilleures offres, sans spam — dans votre langue.","ft.contact":"Contact","ft.disc":"Mortgage AI est une plateforme technologique et de comparaison qui aide les utilisateurs à comparer des prêts professionnels, des prêts personnels et des assurances, et travaille avec des partenaires prêteurs et assureurs agréés qui fournissent les offres. Mortgage AI n'est pas un organisme de crédit hypothécaire et ne propose pas de prêts hypothécaires ; il ne consulte pas lui-même le crédit des utilisateurs et ne fournit pas de conseils financiers, juridiques ou fiscaux. Nous ne vendons ni ne revendons vos coordonnées. Toute offre, tout nom, chiffre et économie présentés sont fournis à titre illustratif. La disponibilité des produits varie selon l'État et est soumise à la législation applicable et à l'approbation du partenaire.","ft.copy":"© 2026 Mortgage AI. Tous droits réservés."},"ar":{"meta.desc":"","nav.about":"من نحن","nav.how":"كيف يعمل","nav.why":"لماذا نحن","nav.markets":"الأسواق","nav.team":"الفريق","nav.faq":"الأسئلة الشائعة","nav.cta":"اعرض عروضي","hero.disambig":"قروض شخصية وتجارية + تأمين. <b style=\"color:#cdd8e8\">نحن لسنا موقعاً للرهن العقاري.</b>","hero.eyebrow":"مقارنة القروض والتأمين بالذكاء الاصطناعي","hero.h1":"طلب واحد. نحن نتولى البحث.<br><span class=\"hl\">لا فيضان من 200 مكالمة مزعجة.</span>","hero.lead":"معظم مواقع المقارنة تعيد بيع رقمك لعشرات المُقرضين — ولهذا يتحول نموذج واحد إلى أسبوع كامل من المكالمات. Mortgage AI يعمل بالطريقة المعاكسة تماماً: أرسل <b>طلباً واحداً</b>، يفحص الذكاء الاصطناعي لدينا السوق ويأتيك بـ<b>3–4 أفضل عروض</b> فقط. يرسل المُقرضون عروضهم <b>إلينا</b> — ولا نعيد بيع رقمك. <b>بلغتك.</b>","re.free":"مجاني تماماً","re.resell":"لا إعادة بيع للبيانات","re.credit":"لا فحص ائتماني للحصول على التطابقات","re.oblig":"بدون أي التزام","obj.free.q":"هل الخدمة مجانية؟","obj.free.a":"نعم — لا تدفع شيئاً للحصول على التطابقات. المُقرضون وشركات التأمين هم من يدفعون لنا. (يتوفر متتبع توفير Premium اختياري بـ $7.99/شهر؛ مجاني للأعضاء المؤسسين خلال السنة الأولى.)","obj.credit.q":"هل يؤثر هذا على سجلي الائتماني؟","obj.credit.a":"لا — الحصول على التطابقات لا يستلزم فحصاً ائتمانياً. إن قررت المضي قدماً مع عرض ما، قد يُجري ذلك المُقرض فحصاً ائتمانياً — وسيُخبرك بذلك مسبقاً.","obj.broker.q":"هل أنتم وسطاء فعليون؟","obj.broker.a":"نحن منصة مقارنة إلكترونية نتعاون مع شركاء مُقرضين وشركات تأمين مرخصة تُقدم العروض. نعرض عليك الخيارات ولا نعيد بيع بياناتك أبداً.","chip.personal":"قرض شخصي","chip.business":"قرض تجاري","chip.insurance":"تأمين","form.t1":"اعرض أفضل عروضك","form.s1":"ماذا تحتاج؟ يستغرق نحو 3 دقائق.","form.micro1":"اختر للبدء — لا حاجة لإنشاء حساب","form.back":"رجوع","form.t2":"بعض التفاصيل السريعة","form.you":"أنت تستفسر عن:","form.name":"الاسم الكامل","form.email":"البريد الإلكتروني","form.phone":"رقم الهاتف","form.amount":"المبلغ المطلوب","form.lang":"اللغة المفضلة","form.continue":"متابعة\n            <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\"><path d=\"M5 12h14M13 6l6 6-6 6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>\n          ","form.t3":"الخطوة الأخيرة","form.s3":"أكّد الطلب وسنأتيك بـ 3–4 أفضل عروض.","form.consent":"أوافق على أن يتواصل معي Mortgage AI وشركاؤه المرخصون بشأن طلبي، وأقبل <a href=\"#faq\">شروط الخصوصية</a>. لا نعيد بيع رقمك.","form.submit":"اعرض أفضل عروضي","form.micro3":"بياناتك خاصة — لا تُباع أبداً","form.dt":"تم الاستلام!","form.dp":"يرد عليك شخص حقيقي خلال يوم عمل واحد — بدون مكالمات آلية. تحقق من بريدك الإلكتروني للتأكيد.","strip.s1":"طلب واحد، لا 200 مكالمة","strip.s2":"أفضل عروض يختارها الذكاء الاصطناعي","strip.s3":"لغات، منصة واحدة","strip.s4":"متابعة التوفير بعد التمويل","who.eyebrow":"من نحن","who.h2":"شركة عائلية تُبسّط التمويل","who.sub":"تعرّف على الأشخاص وراء Mortgage AI — ولماذا أسسناها.","who.ceo":"المؤسس والرئيس التنفيذي","who.deputy":"نائب الرئيس التنفيذي","who.b1t":"من نحن","who.b1p":"Mortgage AI شركة تقنية مالية ذات طابع عائلي. نجعل البنوك والمُقرضين وشركات التأمين يتنافسون لخدمتك، ونضع تقنية ذكية متعددة اللغات بينك وبين الفوضى — حتى يصبح الحصول على قرض أمراً بسيطاً أخيراً.","who.b2t":"لماذا أسسنا Mortgage AI","who.b2p":"لأن الأسر وأصحاب الأعمال يُغرقون في المكالمات فور بحثهم عن قرض، وملايين الأشخاص يُخدَمون باللغة الإنجليزية فقط، وكثيرون يظلون عالقين في شروط سيئة لأنه لا أحد يُراقب مصالحهم. بنينا المنصة التي كنا نتمنى وجودها.","who.b3t":"رؤيتنا","who.b3p":"عالم تحصل فيه كل أسرة وكل مؤسسة على شروط عادلة للقروض والتأمين — طوال فترة سداد ديونها — بفضل تقنية تعمل لصالحها على مدار 24/7، بلغتها الخاصة.","who.b4t":"كيف نخدمك","who.b4p":"طلب واحد بدلاً من مئة مكالمة. يفحص الذكاء الاصطناعي السوق، يأتيك بـ 3–4 أفضل عروض، ويواصل المراقبة لتبقى دائماً على صفقة جيدة. سريع، خاص، ومتعدد اللغات — مبني للأشخاص الذين تتجاهلهم المواقع الكبرى.","vil.eyebrow":"لسنا شركة بيع بيانات","vil.h2":"لماذا يغرق هاتفك بالمكالمات — وكيف نوقف ذلك","vil.sub":"البريد المزعج لم يكن يوماً خطأك. هذه هي طريقة كسب المال التي تعتمدها مواقع المقارنة الكبرى.","vil.badtag":"مواقع بيع البيانات","vil.badh":"أنت تصبح المنتج","vil.badp":"طلبك الوحيد يُعاد بيعه لعشرات المُقرضين في آنٍ واحد. يُبلّغ المقترضون عادةً عن أكثر من 200 مكالمة ورسالة في غضون أيام.","vil.goodtag":"Mortgage AI","vil.goodh":"أنت تتحكم في الأمر","vil.goodp":"طلب واحد، نقطة تواصل واحدة. يرسل المُقرضون العروض إلينا؛ لا نعيد بيع رقمك. أنت تختار من تتحدث معه — بهدوء تام، وبشروطك أنت.","mech.title":"كيف يسير طلبك فعلياً","mech.n1b":"طلبك","mech.n1s":"الاسم والحاجة — لا يُنشر أبداً","mech.n2b":"الذكاء الاصطناعي","mech.n2s":"يفحص المُقرضين — لا قائمة إعادة بيع","mech.n3b":"أفضل 3–4 عروض لك","mech.n3s":"أنت تختار — ثم تتواصل","mech.note":"لا نبيع ولا نعيد بيع رقم هاتفك — ذلك مُدوَّن في شروط الخصوصية لدينا.","how.eyebrow":"كيف يعمل","how.h2":"قرض بالطريقة السهلة — في أربع خطوات","how.sub":"من طلبك الأول إلى العرض المناسب لك — دقائق لا أسابيع.","how.1t":"أرسل طلباً واحداً","how.1p":"اختر قرضاً شخصياً، قرضاً تجارياً، أو تأميناً. أخبرنا بما تحتاجه — بلغتك.","how.2t":"الذكاء الاصطناعي يفحص السوق","how.2p":"يُرسل المُقرضون وشركات التأمين عروضهم إلينا. يقرأ الذكاء الاصطناعي جميعها ويعثر على أفضل الشروط لك.","how.3t":"احصل على أفضل 3–4 عروض","how.3p":"بلا فوضى ولا ضجيج. ترى فقط أقوى العروض، مقارنةً بوضوح، وتوصيتنا في المقدمة.","how.4t":"أنت تختار — نحن نراقب","how.4p":"اختر عرضاً وتواصل بشروطك. نواصل البحث عن صفقات أفضل وتوفير عند التجديد.","wy.eyebrow":"لماذا Mortgage AI","wy.h2":"كل ما تُخطئ فيه المواقع الكبرى — مُصحَّح","wy.sub":"نكسب عندما تحصل على صفقة أفضل، لا بإعادة بيع بياناتك. هذا الاختيار الواحد يُغيّر كل شيء.","wy.1t":"لا إعادة بيع للبيانات","wy.1p":"يرسل المُقرضون العروض إلينا مباشرةً، لا إلى قائمة. رقمك لا يُباع — هاتفك يبقى هادئاً أثناء بحثك. ذلك مُدوَّن في شروط الخصوصية.","wy.2t":"الذكاء الاصطناعي يجد أفضل صفقة","wy.2p":"يُحلّل محركنا كل عرض ويُقدّم لك أفضل الشروط — تلك التي لم تكن لتجدها إلا بعد أسابيع من البحث.","wy.3t":"يتحدث لغتك","wy.3p":"الإنجليزية، الإسبانية، الفرنسية، العربية والعبرية — المقارنة التي لم تحظَ بها ملايين الأسر من قبل.","wy.4t":"مراقبة التوفير على مدار الساعة","wy.4p":"بعد حصولك على التمويل نواصل المراقبة — ونُخبرك متى يمكن لإعادة تأمينك أو عرض قرض أفضل أن يوفّر لك المال.","wy.5t":"نقطة تواصل واحدة","wy.5p":"لا مطاردة لوسيط ولا تكرار نفسك عشر مرات. منصة واحدة تتولى كل شيء نيابةً عنك.","wy.6t":"سريع بلا جبال من الأوراق","wy.6p":"احصل على التطابقات في دقائق بدلاً من أسابيع. أقل تعقيداً، وأقل إجهاداً.","off.eyebrow":"الوعد","off.h2":"عرض الطلب الواحد","off.lead":"أرسل طلباً واحداً ونأتيك بـ 3–4 أفضل عروض — دون أي خسارة.","off.g1t":"مجاني للحصول على التطابقات","off.g1s":"المُقرضون هم من يدفعون لنا — أنت لا تدفع شيئاً لرؤية عروضك.","off.g2t":"لا إعادة بيع للبيانات","off.g2s":"رقمك لا يُباع أبداً. أنت تختار من يتواصل معك.","off.g3t":"لا فحص ائتماني للمقارنة","off.g3s":"رؤية عروضك لن تؤثر على سجلك الائتماني.","off.g4t":"بدون التزام","off.g4s":"اعرض عروضك ثم قرر — أو انصرف بحرية تامة.","off.badge":"لا شيء تخسره","off.badges":"أفضل عروضك، قرارك أنت","mk.eyebrow":"ما يمكنك مقارنته","mk.h2":"ثلاث طرق نساعدك بها على التوفير","mk.sub":"منصة واحدة، دخول واحد — لأهم القرارات.","mk.1t":"القروض الشخصية","mk.1p":"دمج ديونك أو تمويل لحظة مهمة بشروط تناسبك فعلاً.","mk.1a":"دمج ذكي للديون","mk.1b":"شروط أفضل مقارَنة بوضوح","mk.1c":"خاص — لا إعادة بيع للبيانات","mk.2t":"القروض التجارية","mk.2p":"رأس مال عامل وتمويل نمو لأصحاب الأعمال الذين يُحرّكون اقتصاد مدنهم.","mk.2a":"عروض متنافسة جنباً إلى جنب","mk.2b":"مُصمَّم للشركات الصغيرة والمملوكة للمهاجرين","mk.2c":"إجراءات سريعة خفيفة الأوراق","mk.3t":"التأمين","mk.3p":"توقف عن دفع أكثر مما ينبغي. قارن التغطيات وجد الوثيقة التي تناسبك حقاً.","mk.3a":"تغطيات مقارَنة بأمانة","mk.3b":"سهل التبديل والتوفير","mk.3c":"مراجعات التوفير عند التجديد","lang.eyebrow":"مبني للمجتمعات التي تتجاهلها المواقع الكبرى","lang.h2":"منصة تتحدث لغتك أخيراً","lang.p":"عشرات الملايين من الأسر الناطقة بالعربية والإسبانية والفرنسية والعبرية هم من أكثر مستخدمي التكنولوجيا المالية نشاطاً في البلاد — ومع ذلك لا يوجد مقارن حقيقي بلغتهم. هذا هو جوهر من نخدمهم: أسر مجتهدة وأصحاب أعمال يستحقون شروطاً عادلة وفرصة حقيقية.","lang.s1":"القوة الشرائية للمجتمع اللاتيني","lang.s2":"شخص يفتقر إلى الخدمة الملائمة اليوم","lang.s3":"يستخدمون التكنولوجيا المالية — الأعلى بين جميع الفئات","tr.eyebrow":"الذكاء الاصطناعي الذي لا يتوقف","tr.h2":"لا نختفي بعد حصولك على التمويل","tr.sub":"معظم المنصات تنساك فور توقيعك. منصتنا تواصل العمل — تراقب السوق بصمت لتبقى دائماً على صفقة جيدة.","tr.1t":"تنبيهات تجديد التأمين","tr.1p":"الأقساط ترتفع مع كل دورة. حين يحين وقت إعادة المقارنة والتوفير، ستعلم — وستعرف ماذا تفعل.","tr.2t":"تنبيهات العروض الأفضل","tr.2p":"إن كان عرض قرض أقوى أو سداد مبكر أو دمج قادر على توفير المال لك، يُنبّهك الذكاء الاصطناعي — دون أن تضطر للبحث.","tr.3t":"لوحة تحكم بسيطة","tr.3p":"يحصل الأعضاء المميزون على متابعة مستمرة ورؤية واضحة لكل فرصة توفير، كل ذلك في مكان واحد.","tr.badge":"توفير دائم","tr.badges":"متابعة تُعوّض تكلفتها","tm.eyebrow":"فريقنا","tm.h2":"الأشخاص وراء Mortgage AI","tm.sub":"عائلة تجمع عقوداً من الثقة والانضباط المالي والتكنولوجيا تحت سقف واحد.","tm.eyal":"قائد مجتمعي ورجل أعمال ذو عقد من جمع التبرعات في إسرائيل والخارج، وشركة عقارية، وسجل عمر في بناء الثقة. يضع الرؤية: التعامل مع كل عميل كأحد أفراد الأسرة.","tm.moriya":"محاسبة بأكثر من 20 عاماً في القطاع الخاص ومديرة سابقة لجمعية خيرية. تُضفي الانضباط والصرامة الماليين اللذين يُبقيان Mortgage AI أمينةً ومبنيةً لتدوم.","tm.sys":"مدير الأنظمة","tm.moshe":"يقود التكنولوجيا وأنظمة الذكاء الاصطناعي وبناء المنتج من لوس أنجلوس. يحوّل الرؤية إلى منصة — المحرك الذي يفحص السوق ويُصفّي العروض ويُبقي كل عميل في وضع توفير مستمر.","fq.eyebrow":"مفيد أن تعرف","fq.h2":"أسئلتك، إجاباتها","fq.1q":"هل هو مجاني فعلاً؟","fq.1a":"نعم — لا تدفع شيئاً للحصول على التطابقات ورؤية عروضك. يدفع لنا المُقرضون وشركات التأمين رسوماً حين تختار العمل معهم. يتوفر متتبع توفير Premium اختياري بـ $7.99/شهر، ومجاني للأعضاء المؤسسين خلال السنة الأولى.","fq.2q":"هل سيؤثر على تصنيفي الائتماني؟","fq.2a":"لا. الحصول على التطابقات لا يتطلب فحصاً ائتمانياً. إن قررت المضي قدماً مع عرض معين، قد يُجري ذلك المُقرض فحصاً ائتمانياً عندها — وسيُخبرك قبل أن يفعل.","fq.3q":"هل سيُغرق المُقرضون هاتفي بالمكالمات؟","fq.3a":"لا. خلافاً لمواقع بيع البيانات، لا نبيع ولا نعيد بيع رقمك لشبكة من المُقرضين. تصلنا العروض، نعرض عليك الأفضل، وأنت تقرر من تتصل به. لا يتواصل معك أي مُقرض إلا بعد أن تختار المضي معه.","fq.4q":"هل أنتم وسطاء مرخصون؟","fq.4a":"Mortgage AI منصة تقنية ومقارنة. نعمل مع شركاء مُقرضين وشركات تأمين مرخصة تُقدم العروض والتمويل الفعلي. نعرض عليك الخيارات بلغتك؛ لا نستعلم عن سجلك الائتماني ولا نعيد بيع بياناتك.","fq.5q":"ماذا يضيف Premium؟","fq.5a":"يُبقي Premium الذكاء الاصطناعي يعمل بعد حصولك على التمويل: متابعة مستمرة للتوفير، وتنبيهات تجديد التأمين، وإشعارات بعروض أفضل، كل ذلك في لوحة تحكم واحدة. السعر $7.99/شهر — مجاني للأعضاء المؤسسين خلال السنة الأولى.","fn.eyebrow":"ابدأ الآن","fn.h2":"مستعد للقرض المناسب — دون عناء؟","fn.p":"أرسل طلباً واحداً. الذكاء الاصطناعي لدينا يتولى البحث والمقارنة والمراقبة — لتتفرغ أنت لما يهمك. مجاني، خاص، بلغتك.","fn.cta":"اعرض أفضل عروضي\n          <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\"><path d=\"M5 12h14M13 6l6 6-6 6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>\n        ","fn.micro":"يستغرق نحو 3 دقائق · <bdi>mortgageloneai@gmail.com</bdi>","ft.supt":"تحدث مع شخص حقيقي","ft.supp":"لديك أسئلة قبل البدء؟ يرد عليك فرد حقيقي من فريقنا — بلغتك. راسلنا ونرد خلال يوم عمل واحد. لا مكالمات آلية، أبداً.","ft.tag":"منصة مقارنة القروض والتأمين الإلكترونية. طلب واحد، أفضل عروضك، بلا رسائل مزعجة — بلغتك.","ft.contact":"تواصل معنا","ft.disc":"Mortgage AI منصة تقنية ومقارنة تساعد المستخدمين على مقارنة القروض التجارية والقروض الشخصية والتأمين، وتعمل مع شركاء مُقرضين وشركات تأمين مرخصة تُقدم العروض. Mortgage AI ليست شركة رهن عقاري ولا تُقدم قروضاً عقارية؛ ولا تُجري فحوصات ائتمانية بنفسها ولا تُقدم أي استشارات مالية أو قانونية أو ضريبية. لا نبيع ولا نعيد بيع معلومات التواصل الخاصة بك. أي عروض وأسماء وأرقام ومدخرات مُعروضة هي لأغراض توضيحية فقط. توافر المنتجات يتفاوت حسب الولاية ويخضع للقانون المعمول به وموافقة الشريك.","ft.copy":"© 2026 Mortgage AI. جميع الحقوق محفوظة."},"he":{"meta.desc":"","nav.about":"עלינו","nav.how":"איך זה עובד","nav.why":"למה אנחנו","nav.markets":"שווקים","nav.team":"הצוות","nav.faq":"שאלות נפוצות","nav.cta":"ראה את ההצעות שלי","hero.disambig":"הלוואות אישיות ועסקיות + ביטוח. <b style=\"color:#cdd8e8\">אנחנו לא אתר משכנתאות.</b>","hero.eyebrow":"השוואת הלוואות וביטוח מבוססת בינה מלאכותית","hero.h1":"בקשה אחת. אנחנו עושים את הקניות.<br><span class=\"hl\">בלי 200 שיחות ספאם שלא ביקשת.</span>","hero.lead":"רוב אתרי ההשוואה מוכרים את המספר שלך לעשרות מלווים — ולכן טופס אחד הופך לשבוע של שיחות. Mortgage AI עובד הפוך: שלח <b>בקשה אחת</b>, הבינה המלאכותית שלנו סורקת את השוק ומביאה לך רק את <b>3–4 ההצעות הטובות ביותר</b>. המלווים שולחים את ההצעות <b>אלינו</b> — אנחנו לא מוכרים את המספר שלך. <b>בשפה שלך.</b>","re.free":"חינם לשימוש","re.resell":"אין מכירת נתונים חוזרת","re.credit":"אין בדיקת אשראי לקבלת התאמות","re.oblig":"ללא התחייבות","obj.free.q":"זה חינם?","obj.free.a":"כן — אתה לא משלם כלום כדי לקבל התאמות. המלווים וחברות הביטוח משלמים לנו. (קיים מנוי Premium אופציונלי למעקב חיסכון במחיר $7.99 לחודש; חינם לחברים מייסדים בשנה הראשונה.)","obj.credit.q":"האם זה נוגע לאשראי שלי?","obj.credit.a":"לא — קבלת ההתאמות לא מצריכה בדיקת אשראי. אם תבחר להתקדם עם הצעה מסוימת, אותו מלווה עשוי לבדוק את האשראי שלך — והוא יודיע לך על כך מראש.","obj.broker.q":"האם אתם מתווך אמיתי?","obj.broker.a":"אנחנו פלטפורמת השוואה אינטרנטית ועובדים עם שותפי אשראי וביטוח מורשים שמגישים את ההצעות. אנחנו מביאים לך את האפשרויות ולא מוכרים את הפרטים שלך בחזרה.","chip.personal":"הלוואה אישית","chip.business":"הלוואה עסקית","chip.insurance":"ביטוח","form.t1":"ראה את ההצעות הטובות ביותר שלך","form.s1":"מה אתה צריך? לוקח בערך 3 דקות.","form.micro1":"בחר אחד כדי להתחיל — לא נדרש חשבון","form.back":"חזרה","form.t2":"כמה פרטים מהירים","form.you":"אתה שואל לגבי:","form.name":"שם מלא","form.email":"אימייל","form.phone":"טלפון","form.amount":"הסכום הדרוש","form.lang":"שפה מועדפת","form.continue":"המשך\n            <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\"><path d=\"M5 12h14M13 6l6 6-6 6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>\n          ","form.t3":"שלב אחרון","form.s3":"אשר ואנחנו נביא לך את 3–4 ההצעות הטובות ביותר שלך.","form.consent":"אני מסכים שMortgage AI ושותפיה המורשים יצרו איתי קשר בנוגע לבקשתי, ואני מקבל את <a href=\"#faq\">תנאי הפרטיות</a>. אנחנו לא מוכרים את המספר שלך.","form.submit":"ראה את ההצעות הטובות ביותר שלי","form.micro3":"הפרטים שלך נשמרים פרטיים — לא נמכרים לעולם","form.dt":"קיבלנו!","form.dp":"בן אדם אמיתי עונה תוך יום עסקים אחד — ללא שיחות רובוטיות. בדוק את האימייל שלך לאישור.","strip.s1":"בקשה אחת, לא 200 שיחות","strip.s2":"הצעות מובחרות שנבחרו על ידי AI","strip.s3":"שפות, פלטפורמה אחת","strip.s4":"מעקב חיסכון לאחר קבלת המימון","who.eyebrow":"מי אנחנו","who.h2":"חברה משפחתית שמפשטת את עולם המימון","who.sub":"הכירו את האנשים מאחורי Mortgage AI — ולמה הקמנו אותה.","who.ceo":"מייסד ומנכ\"ל","who.deputy":"סגן מנכ\"ל","who.b1t":"מי אנחנו","who.b1p":"Mortgage AI היא חברת טכנולוגיה פיננסית בנייה משפחתית. אנחנו גורמים לבנקים, למלווים ולחברות הביטוח להתחרות על העסקה שלך, ומציבים טכנולוגיה חכמה ורב-לשונית בינך לבין הרעש — כדי שקבלת הלוואה תרגיש פשוטה סוף סוף.","who.b2t":"למה הקמנו את Mortgage AI","who.b2p":"כי משפחות ובעלי עסקים טובעים בשיחות ברגע שהם מחפשים הלוואה, מיליונים מקבלים שירות רק באנגלית, ויותר מדי נשארים תקועים בתנאים גרועים כי אין מי שמגן עליהם. בנינו את הפלטפורמה שהיינו רוצים שתהיה קיימת.","who.b3t":"החזון שלנו","who.b3p":"עולם שבו כל משפחה ועסק מקבלים תנאים הוגנים להלוואה ולביטוח — לאורך כל חיי החוב — הודות לטכנולוגיה שעובדת עבורם 24/7, בשפה שלהם.","who.b4t":"איך אנחנו משרתים אותך","who.b4p":"בקשה אחת במקום מאה שיחות. הבינה המלאכותית שלנו סורקת את השוק, מביאה לך את 3–4 ההצעות הטובות ביותר, וממשיכה לעקוב כדי שתמיד תשמור על עסקה טובה. מהיר, פרטי ורב-לשוני — נבנה עבור האנשים שאתרים גדולים מתעלמים מהם.","vil.eyebrow":"אנחנו לא חברת לידים","vil.h2":"למה הטלפון שלך מתפוצץ משיחות — ואיך אנחנו עוצרים את זה","vil.sub":"הספאם לא היה אשמתך אף פעם. כך אתרי ההשוואה הגדולים מרוויחים כסף.","vil.badtag":"אתרי יצירת לידים","vil.badh":"אתה הופך למוצר","vil.badp":"הבקשה הבודדת שלך נמכרת מחדש לעשרות מלווים בו-זמנית. לווים מדווחים לרוב על יותר מ-200 שיחות ומסרונים תוך כמה ימים.","vil.goodtag":"Mortgage AI","vil.goodh":"אתה שולט","vil.goodp":"בקשה אחת, נקודת קשר אחת. מלווים שולחים הצעות אלינו; אנחנו לא מוכרים את המספר שלך. אתה בוחר עם מי לדבר — בשקט, בתנאים שלך.","mech.title":"איך הבקשה שלך זורמת בפועל","mech.n1b":"הבקשה שלך","mech.n1s":"שם וצורך — לא פרט ציבורי","mech.n2b":"הבינה המלאכותית שלנו","mech.n2s":"סורקת מלווים — לא רשימת מכירה","mech.n3b":"3–4 הטובים ביותר שלך","mech.n3s":"אתה בוחר — אז יוצר קשר","mech.note":"אנחנו לא מוכרים או מוכרים מחדש את מספר הטלפון שלך — זה כתוב בתנאי הפרטיות שלנו.","how.eyebrow":"איך זה עובד","how.h2":"הלוואה בדרך הקלה — בארבעה שלבים","how.sub":"מהבקשה הראשונה שלך עד להצעה שמתאימה לך — דקות, לא שבועות.","how.1t":"שלח בקשה אחת","how.1p":"בחר הלוואה אישית, עסקית, או ביטוח. ספר לנו מה אתה צריך — בשפה שלך.","how.2t":"הבינה המלאכותית סורקת את השוק","how.2p":"מלווים וחברות ביטוח שולחים הצעות חזרה אלינו. הבינה המלאכותית קוראת את כולן ומוצאת את התנאים המשתלמים ביותר עבורך.","how.3t":"קבל את 3–4 הטובות ביותר שלך","how.3p":"בלי הצפה, בלי רעש. אתה רואה רק את ההצעות החזקות ביותר, מושוות בבירור, עם המלצתנו בראש.","how.4t":"אתה בוחר — אנחנו שומרים","how.4p":"בחר הצעה ופנה בתנאים שלך. אנחנו ממשיכים לעקוב אחרי עסקאות טובות יותר וחיסכונות בזמן חידוש.","wy.eyebrow":"למה Mortgage AI","wy.h2":"כל מה שאתרים גדולים עושים לא בסדר — מתוקן","wy.sub":"אנחנו מרוויחים כשאתה מקבל עסקה טובה יותר, לא ממכירת הנתונים שלך. הבחירה הזאת האחת משנה הכל.","wy.1t":"אין מכירת לידים חוזרת","wy.1p":"מלווים שולחים הצעות אלינו, לא לרשימה. המספר שלך לא נמכר — הטלפון שלך שקט בזמן שאתה קונה. זה בתנאי הפרטיות שלנו.","wy.2t":"הבינה המלאכותית מוצאת את העסקה הטובה ביותר","wy.2p":"המנוע שלנו קורא כל הצעה ומציג לך את התנאים המשתלמים ביותר — כאלה שהיית מוצא רק אחרי שבועות של חפירה.","wy.3t":"מדבר בשפה שלך","wy.3p":"אנגלית, ספרדית, צרפתית, ערבית ועברית — פלטפורמת ההשוואה שמיליוני משפחות מעולם לא היה להן.","wy.4t":"מעקב חיסכון ללא הפסקה","wy.4p":"אחרי שקיבלת מימון, אנחנו ממשיכים לעקוב — ומיידעים אותך כשחידוש ביטוח או הצעת הלוואה טובה יותר יכולים לחסוך לך כסף.","wy.5t":"נקודת קשר אחת","wy.5p":"אין רדיפה אחרי מתווך ואין חזרה על עצמך עשר פעמים. פלטפורמה אחת מטפלת בהכל בשבילך.","wy.6t":"מהיר, ללא רצף בירוקרטי","wy.6p":"קבל התאמות תוך דקות במקום שבועות. פחות ריצות, הרבה פחות כאב ראש.","off.eyebrow":"ההבטחה","off.h2":"הצעת הבקשה האחת","off.lead":"שלח בקשה אחת ואנחנו מביאים לך את 3–4 ההצעות הטובות ביותר — ללא שום סיכון.","off.g1t":"חינם לקבלת התאמות","off.g1s":"המלווים משלמים לנו — אתה לא משלם כלום כדי לראות את ההצעות.","off.g2t":"אין מכירת נתונים חוזרת","off.g2s":"המספר שלך לא נמכר לעולם. אתה בוחר מי יצור איתך קשר.","off.g3t":"אין בדיקת אשראי לצורך ההשוואה","off.g3s":"צפייה בהצעות שלך לא תפגע באשראי שלך.","off.g4t":"ללא התחייבות","off.g4s":"ראה את ההצעות שלך, ואז תחליט — או תצא בלי כלום.","off.badge":"שום דבר להפסיד","off.badges":"ההצעות הטובות ביותר שלך, ההחלטה שלך","mk.eyebrow":"מה אפשר להשוות","mk.h2":"שלוש דרכים שאנחנו עוזרים לך לחסוך","mk.sub":"פלטפורמה אחת, כניסה אחת — לכל ההחלטות שחשובות.","mk.1t":"הלוואות אישיות","mk.1p":"איחוד חובות או מימון רגע חשוב עם תנאים שממש מתאימים לך.","mk.1a":"איחוד חובות חכם","mk.1b":"תנאים טובים יותר, מושווים בבירור","mk.1c":"פרטי — אין מכירת נתונים חוזרת","mk.2t":"הלוואות עסקיות","mk.2p":"הון חוזר ומימון צמיחה לבעלי עסקים שמניעים את הכלכלה המקומית.","mk.2a":"הצעות מתחרות, אחת לצד השנייה","mk.2b":"בנוי לעסקים קטנים ועסקים בבעלות מהגרים","mk.2c":"תהליך מהיר עם מינימום ניירת","mk.3t":"ביטוח","mk.3p":"הפסק לשלם יותר מדי. השווה כיסויים ומצא את הפוליסה שמתאימה לך באמת.","mk.3a":"כיסויים מושווים בכנות","mk.3b":"קל להחליף ולחסוך","mk.3c":"בדיקות חיסכון בזמן חידוש","lang.eyebrow":"נבנה לקהילות שאתרים גדולים מתעלמים מהן","lang.h2":"פלטפורמה שסוף סוף מדברת בשפה שלך","lang.p":"עשרות מיליוני משפחות דוברות ספרדית, ערבית, צרפתית ועברית הן מהמשתמשים הפעילים ביותר בפינטק בארץ — ועדיין אין פלטפורמת השוואה אמיתית בשפתן. זה לב העניין של מי שאנחנו משרתים: משפחות עובדות ובעלי עסקים שמגיעים להם תנאים הוגנים וסיכוי אמיתי.","lang.s1":"כוח קנייה היספאני","lang.s2":"אנשים שלא מקבלים שירות מספק כיום","lang.s3":"משתמשים בפינטק — הגבוה ביותר מכל קבוצה","tr.eyebrow":"הבינה המלאכותית שלא נחה","tr.h2":"אנחנו לא נעלמים ברגע שקיבלת מימון","tr.sub":"רוב הפלטפורמות שוכחות אותך ברגע שאתה חותם. שלנו ממשיכה לעבוד — עוקבת בשקט אחר השוק כדי שתמיד תהיה על עסקה טובה.","tr.1t":"התראות חידוש ביטוח","tr.1p":"הפרמיות עולות עם כל תקופה. כשהגיע הזמן להשוות מחדש ולחסוך — תדע, ותדע מה לעשות.","tr.2t":"התראות להצעות טובות יותר","tr.2p":"אם הצעת הלוואה חזקה יותר, פירעון מוקדם, או איחוד חובות יכולים לחסוך לך כסף — הבינה המלאכותית מסמנת לך. בלי שתצטרך לרוץ.","tr.3t":"לוח בקרה פשוט אחד","tr.3p":"חברי Premium מקבלים מעקב רציף ותצוגה ברורה של כל הזדמנות חיסכון, הכל במקום אחד.","tr.badge":"חוסך כל הזמן","tr.badges":"מעקב שמחזיר את עצמו","tm.eyebrow":"הצוות שלנו","tm.h2":"האנשים מאחורי Mortgage AI","tm.sub":"משפחה עם עשרות שנים של אמינות, משמעת פיננסית וטכנולוגיה תחת קורת גג אחת.","tm.eyal":"מנהיג קהילתי ויזם עם עשור של גיוס תרומות בישראל ובחו\"ל, חברת נדל\"ן ותיק ומוניטין של חיים שלמים בבניית אמון. הוא מניח את החזון: להתייחס לכל לקוח כמו למשפחה.","tm.moriya":"מנהלת חשבונות עם 20+ שנה בעסקים פרטיים ומנהלת לשעבר של עמותה. היא מביאה את המשמעת הפיננסית והדייקנות שמשמרות את Mortgage AI ישרה ובנויה לאורך.","tm.sys":"מנהל מערכות","tm.moshe":"מוביל את הטכנולוגיה, מערכות הבינה המלאכותית ובניית המוצר מלוס אנג'לס. הוא הופך את החזון לפלטפורמה — המנוע שסורק את השוק, מסנן הצעות, ושומר על כל לקוח במצב של חיסכון.","fq.eyebrow":"כדאי לדעת","fq.h2":"השאלות שלך, עם תשובות","fq.1q":"זה ממש חינם?","fq.1a":"כן — אתה לא משלם כלום כדי לקבל התאמות ולראות את ההצעות שלך. המלווים וחברות הביטוח משלמים לנו עמלה כשאתה בוחר לעבוד איתם. קיים מנוי Premium אופציונלי למעקב חיסכון במחיר $7.99 לחודש, וחינם לחברים מייסדים בשנה הראשונה.","fq.2q":"האם זה ישפיע על ניקוד האשראי שלי?","fq.2a":"לא. קבלת ההתאמות לא מצריכה בדיקת אשראי. אם תחליט להתקדם עם הצעה ספציפית, אותו מלווה עשוי לבדוק את האשראי שלך בשלב הזה — ויודיע לך לפני שיעשה את זה.","fq.3q":"האם מלווים יציפו את הטלפון שלי בשיחות?","fq.3a":"לא. בשונה מאתרי לידים, אנחנו לא מוכרים או מוכרים מחדש את המספר שלך לרשת של מלווים. הצעות מגיעות אלינו, אנחנו מראים לך את הטובות ביותר, ואתה מחליט עם מי לדבר. מלווה יוצר איתך קשר רק אחרי שבחרת להתקדם איתו.","fq.4q":"האם אתם מתווכים מורשים?","fq.4a":"Mortgage AI היא פלטפורמת טכנולוגיה והשוואה. אנחנו עובדים עם שותפי אשראי וביטוח מורשים שמספקים את ההצעות והמימון בפועל. אנחנו מביאים לך את האפשרויות בשפה שלך; אנחנו לא בודקים את האשראי שלך ולא מוכרים את הנתונים שלך.","fq.5q":"מה Premium מוסיף?","fq.5a":"Premium שומר על הבינה המלאכותית בפעולה אחרי שקיבלת מימון: מעקב חיסכון רציף, התראות חידוש ביטוח, והתראות על הצעות טובות יותר — הכל בלוח בקרה אחד. המחיר הוא $7.99 לחודש — חינם לחברים מייסדים בשנה הראשונה.","fn.eyebrow":"צא לדרך","fn.h2":"מוכן לקבל את ההלוואה הנכונה — בלי כאבי ראש?","fn.p":"שלח בקשה אחת. הבינה המלאכותית שלנו עושה את החיפוש, ההשוואה והמעקב — כדי שאתה לא תצטרך. חינם, פרטי, בשפה שלך.","fn.cta":"ראה את ההצעות הטובות ביותר שלי\n          <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\"><path d=\"M5 12h14M13 6l6 6-6 6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>\n        ","fn.micro":"לוקח בערך 3 דקות · <bdi>mortgageloneai@gmail.com</bdi>","ft.supt":"דבר עם אדם אמיתי","ft.supp":"שאלות לפני שמתחילים? בן אדם אמיתי מהצוות שלנו עונה — בשפה שלך. שלח לנו אימייל ונחזור תוך יום עסקים אחד. אף פעם אין שיחות רובוטיות.","ft.tag":"פלטפורמת השוואת הלוואות וביטוח אינטרנטית. בקשה אחת, ההצעות הטובות ביותר שלך, ללא ספאם — בשפה שלך.","ft.contact":"יצירת קשר","ft.disc":"Mortgage AI היא פלטפורמת טכנולוגיה והשוואה המסייעת למשתמשים להשוות הלוואות עסקיות, הלוואות אישיות וביטוח, ועובדת עם שותפי אשראי וביטוח מורשים המספקים הצעות. Mortgage AI אינה חברת משכנתאות ואינה מציעה משכנתאות; היא לא בודקת אשראי בעצמה ואינה מספקת ייעוץ פיננסי, משפטי, או מיסויי. אנחנו לא מוכרים או מוכרים מחדש את פרטי הקשר שלך. כל הצעה, שם, נתון וחיסכון המוצגים הם לצרכי המחשה בלבד. זמינות המוצרים משתנה לפי מדינה וכפופה לחוק החל ולאישור השותף.","ft.copy":"© 2026 Mortgage AI. כל הזכויות שמורות."}};
+  var EN = {};
+  function captureEN(){
+    document.querySelectorAll('[data-i18n]').forEach(function(el){ EN[el.getAttribute('data-i18n')] = el.innerHTML; });
+  }
+  function applyLang(lang){
+    var dict = (lang==='en') ? EN : (I18N[lang]||{});
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var k = el.getAttribute('data-i18n');
+      var v = dict[k];
+      if(v==null) v = EN[k];
+      if(v==null) return;
+      if(el.hasAttribute('data-i18n-attr')){ el.setAttribute(el.getAttribute('data-i18n-attr'), v.replace(/<[^>]*>/g,'')); }
+      else { el.innerHTML = v; }
+    });
+    var rtl = (lang==='ar'||lang==='he');
+    document.documentElement.dir = rtl ? 'rtl' : 'ltr';
+    document.documentElement.lang = lang;
+    var cur = {en:'EN',es:'ES',fr:'FR',ar:'ع',he:'עב'}[lang]||'EN';
+    document.getElementById('langCur').textContent = cur;
+    document.querySelectorAll('#langMenu button').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang')===lang); });
+    try{ localStorage.setItem('mai_lang', lang); }catch(e){}
+  }
+  // ===== nav =====
   var nav = document.getElementById('nav');
-  window.addEventListener('scroll', function(){
-    if(window.scrollY > 12){ nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); }
-  });
-  // mobile menu
-  var hamb = document.getElementById('hamb'), links = document.getElementById('navLinks');
+  window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY>12); });
+  var hamb=document.getElementById('hamb'), links=document.getElementById('navLinks');
   hamb.addEventListener('click', function(){ links.classList.toggle('open'); });
   links.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ links.classList.remove('open'); }); });
-  // scroll reveal
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, {threshold:0.14, rootMargin:'0px 0px -40px 0px'});
+  // lang menu
+  var langBtn=document.getElementById('langBtn'), langMenu=document.getElementById('langMenu');
+  langBtn.addEventListener('click', function(e){ e.stopPropagation(); langMenu.classList.toggle('open'); });
+  document.addEventListener('click', function(){ langMenu.classList.remove('open'); });
+  langMenu.querySelectorAll('button').forEach(function(b){ b.addEventListener('click', function(){ applyLang(b.getAttribute('data-lang')); langMenu.classList.remove('open'); }); });
+  // scroll-to-form helpers
+  document.querySelectorAll('[data-scroll-form]').forEach(function(a){ a.addEventListener('click', function(e){ e.preventDefault(); document.getElementById('startForm').scrollIntoView({behavior:'smooth',block:'center'}); }); });
+  // objection expanders
+  document.querySelectorAll('[data-obj]').forEach(function(o){ o.addEventListener('click', function(){ o.classList.toggle('open'); }); });
+  // ===== start form =====
+  var sc = document.getElementById('startForm'), chosen='';
+  function showStep(n){ sc.querySelectorAll('.sc-step').forEach(function(s){ s.classList.toggle('on', s.getAttribute('data-step')===String(n)); }); }
+  sc.querySelectorAll('[data-intent]').forEach(function(b){ b.addEventListener('click', function(){
+    chosen=b.getAttribute('data-intent'); document.getElementById('intentLabel').textContent=chosen; showStep(2);
+  }); });
+  sc.querySelector('[data-back]').addEventListener('click', function(){ showStep(1); });
+  sc.querySelector('[data-next2]').addEventListener('click', function(){
+    var nm=document.getElementById('f_name').value.trim(), em=document.getElementById('f_email').value.trim();
+    if(!nm||!em){ alert('Please add your name and email.'); return; }
+    showStep(3);
+  });
+  sc.querySelector('[data-back2]').addEventListener('click', function(){ showStep(2); });
+  sc.querySelector('[data-submit]').addEventListener('click', function(){
+    if(!document.getElementById('f_consent').checked){ alert('Please confirm consent to continue.'); return; }
+    var name=document.getElementById('f_name').value.trim();
+    var email=document.getElementById('f_email').value.trim();
+    var phone=document.getElementById('f_phone').value.trim();
+    var amount=document.getElementById('f_amount').value;
+    var flang=document.getElementById('f_lang').value;
+    var body='New Mortgage AI request%0D%0A----------------------%0D%0AType: '+encodeURIComponent(chosen)+'%0D%0AName: '+encodeURIComponent(name)+'%0D%0AEmail: '+encodeURIComponent(email)+'%0D%0APhone: '+encodeURIComponent(phone)+'%0D%0AAmount: '+encodeURIComponent(amount)+'%0D%0ALanguage: '+encodeURIComponent(flang);
+    window.location.href='mailto:mortgageloneai@gmail.com?subject='+encodeURIComponent('New request: '+chosen)+'&body='+body;
+    showStep('done');
+  });
+  // ===== reveal =====
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  // ===== init =====
+  captureEN();
+  var saved; try{ saved=localStorage.getItem('mai_lang'); }catch(e){}
+  if(!saved){ var n=(navigator.language||'en').slice(0,2).toLowerCase(); if(['es','fr','ar','he'].indexOf(n)>=0) saved=n; }
+  if(saved && saved!=='en') applyLang(saved); else applyLang('en');
 </script>
+<!--I18N_INJECT-->
 </body>
 </html>
