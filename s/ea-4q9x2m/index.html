@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#0f1a33">
+<title>Mortgage AI · לוח התקדמות</title>
+<link rel="icon" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b1428; --card:#13213f; --card2:#182a50; --line:#24375f;
+    --text:#eef2fb; --muted:#9fb0d0; --gold:#fca311; --gold-soft:rgba(252,163,17,.14);
+    --green:#3ecf8e; --blue:#6aa8ff; --red:#ff7a7a;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--text);font-family:Heebo,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+    line-height:1.5;-webkit-font-smoothing:antialiased;padding:0 16px 48px}
+  .wrap{max-width:720px;margin:0 auto}
+  header{display:flex;align-items:center;gap:12px;padding:20px 0 12px}
+  header img{width:52px;height:52px;border-radius:12px;flex:none}
+  header h1{font-size:20px;margin:0;font-weight:800;letter-spacing:.2px}
+  header .sub{color:var(--muted);font-size:13px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin:12px 0}
+  .card h2{font-size:16px;margin:0 0 10px;font-weight:700}
+  .progress-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+  .big{font-size:28px;font-weight:800}
+  .big small{font-size:14px;color:var(--muted);font-weight:500}
+  .bar{height:10px;background:var(--line);border-radius:99px;overflow:hidden}
+  .bar>span{display:block;height:100%;background:linear-gradient(90deg,#ffcf6b,var(--gold));border-radius:99px;transition:width .6s}
+  .headline{font-size:15px;margin:12px 0 0;color:var(--text)}
+  .waiting{background:linear-gradient(180deg,var(--gold-soft),transparent),var(--card);border-color:rgba(252,163,17,.45)}
+  .waiting h2{color:var(--gold)}
+  ul.clean{list-style:none;margin:0;padding:0}
+  ul.clean li{padding:9px 0;border-top:1px solid var(--line);display:flex;gap:10px;align-items:flex-start;font-size:15px}
+  ul.clean li:first-child{border-top:0}
+  .dot{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;margin-top:1px}
+  .s-done .dot{background:rgba(62,207,142,.18);color:var(--green)}
+  .s-doing .dot{background:rgba(106,168,255,.18);color:var(--blue)}
+  .s-waiting .dot{background:var(--gold-soft);color:var(--gold)}
+  .s-todo .dot{background:transparent;border:1.5px solid var(--line);color:var(--muted)}
+  .s-done .txt{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(159,176,208,.5)}
+  .txt{flex:1}
+  .chip{flex:none;font-size:12px;padding:2px 8px;border-radius:99px;background:var(--card2);color:var(--muted);border:1px solid var(--line);white-space:nowrap}
+  .chip.dad{color:var(--gold);border-color:rgba(252,163,17,.45)}
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .tile{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:10px 8px;text-align:center}
+  .tile b{display:block;font-size:22px;font-weight:800}
+  .tile span{font-size:12px;color:var(--muted)}
+  .tile.money b{color:var(--gold)}
+  details.phase{background:var(--card);border:1px solid var(--line);border-radius:16px;margin:10px 0;overflow:hidden}
+  details.phase summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  details.phase summary::-webkit-details-marker{display:none}
+  .ph-title{font-weight:700;font-size:15px}
+  .ph-days{color:var(--muted);font-size:12px}
+  .ph-meta{display:flex;align-items:center;gap:8px;flex:none}
+  .ph-count{font-size:12px;color:var(--muted)}
+  .badge{font-size:11px;padding:2px 8px;border-radius:99px;font-weight:700}
+  .b-active{background:rgba(106,168,255,.18);color:var(--blue)}
+  .b-done{background:rgba(62,207,142,.18);color:var(--green)}
+  .b-next{background:var(--card2);color:var(--muted)}
+  details.phase .body{padding:0 16px 10px}
+  .empty{color:var(--muted);font-size:14px}
+  .log li{font-size:14px}
+  .log .d{color:var(--muted);flex:none;min-width:44px}
+  footer{color:var(--muted);font-size:12px;text-align:center;margin-top:24px}
+  .err{color:var(--red)}
+  @media (max-width:380px){ .tiles{grid-template-columns:repeat(2,1fr)} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="logo.png" alt="">
+    <div>
+      <h1>Mortgage AI · לוח התקדמות</h1>
+      <div class="sub" id="updated">טוען…</div>
+    </div>
+  </header>
+
+  <section class="card">
+    <div class="progress-top">
+      <div class="big" id="dayLabel">יום –</div>
+      <div class="sub" id="pctLabel"></div>
+    </div>
+    <div class="bar"><span id="bar" style="width:0%"></span></div>
+    <p class="headline" id="headline"></p>
+  </section>
+
+  <section class="card waiting">
+    <h2>⏳ מחכה לך, אייל</h2>
+    <ul class="clean" id="waiting"></ul>
+  </section>
+
+  <section class="card">
+    <h2>📊 המספרים</h2>
+    <div class="tiles" id="tiles"></div>
+  </section>
+
+  <h2 style="font-size:16px;margin:20px 4px 4px">🗺️ התוכנית</h2>
+  <div id="phases"></div>
+
+  <section class="card">
+    <h2>📝 בקשות שלך</h2>
+    <ul class="clean" id="requests"></ul>
+  </section>
+
+  <section class="card">
+    <h2>🕒 מה קרה לאחרונה</h2>
+    <ul class="clean log" id="log"></ul>
+  </section>
+
+  <footer>מתעדכן על ידי קלוד בסוף כל יום עבודה · שאלות בקבוצת הוואטסאפ</footer>
+</div>
+
+<script>
+(function(){
+  var ICON = {done:"✓", doing:"●", waiting:"⏳", todo:""};
+  var BADGE = {active:["b-active","עכשיו"], done:["b-done","הושלם"], next:["b-next","בהמשך"]};
+  function el(tag, cls, text){ var e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
+  function item(text, status, owner){
+    var li = el("li","s-"+(status||"todo"));
+    li.appendChild(el("span","dot",ICON[status]||""));
+    li.appendChild(el("span","txt",text));
+    if(owner){ li.appendChild(el("span","chip"+(owner.indexOf("אבא")>-1?" dad":""),owner)); }
+    return li;
+  }
+  function render(s){
+    document.getElementById("updated").textContent = "עודכן: " + s.updated;
+    var start = new Date(s.start_date + "T00:00:00");
+    var day = Math.floor((new Date() - start) / 86400000) + 1;
+    day = Math.max(1, Math.min(day, s.total_days));
+    var pct = Math.round(day / s.total_days * 100);
+    document.getElementById("dayLabel").innerHTML = "";
+    var dl = document.getElementById("dayLabel");
+    dl.appendChild(document.createTextNode("יום " + day + " "));
+    dl.appendChild(el("small",null,"מתוך " + s.total_days));
+    document.getElementById("pctLabel").textContent = pct + "% מהזמן";
+    document.getElementById("bar").style.width = pct + "%";
+    document.getElementById("headline").textContent = s.headline || "";
+
+    var w = document.getElementById("waiting");
+    (s.waiting_on_dad||[]).forEach(function(t){ w.appendChild(item(t,"waiting")); });
+    if(!w.children.length) w.appendChild(el("li","empty","כרגע אין שום דבר שמחכה לך 👌"));
+
+    var sc = s.scoreboard || {};
+    var tiles = [["calls","שיחות"],["started","בקשות שהתחילו"],["completed","תיקים מלאים"],["sent_to_broker","נשלחו לברוקר"],["funded","מומנו"],["commission_usd","עמלה ($)"]];
+    var t = document.getElementById("tiles");
+    tiles.forEach(function(p){
+      var d = el("div","tile"+(p[0]==="commission_usd"?" money":""));
+      var v = sc[p[0]]||0;
+      d.appendChild(el("b",null, p[0]==="commission_usd" ? "$"+Number(v).toLocaleString("en-US") : String(v)));
+      d.appendChild(el("span",null,p[1]));
+      t.appendChild(d);
+    });
+
+    var ph = document.getElementById("phases");
+    (s.phases||[]).forEach(function(p){
+      var d = el("details","phase"); if(p.status==="active") d.open = true;
+      var sum = el("summary");
+      var left = el("div"); left.appendChild(el("div","ph-title",p.title)); left.appendChild(el("div","ph-days",p.days));
+      var items = p.items||[]; var done = items.filter(function(i){return i.status==="done";}).length;
+      var meta = el("div","ph-meta"); meta.appendChild(el("span","ph-count",done+"/"+items.length));
+      var b = BADGE[p.status]||BADGE.next; meta.appendChild(el("span","badge "+b[0],b[1]));
+      sum.appendChild(left); sum.appendChild(meta); d.appendChild(sum);
+      var body = el("div","body"); var ul = el("ul","clean");
+      items.forEach(function(i){ ul.appendChild(item(i.text,i.status,i.owner)); });
+      body.appendChild(ul); d.appendChild(body); ph.appendChild(d);
+    });
+
+    var rq = document.getElementById("requests");
+    (s.requests||[]).forEach(function(r){
+      var st = r.status==="אושר"?"done":(r.status==="בעבודה"?"doing":"waiting");
+      rq.appendChild(item((r.date?r.date+" · ":"")+r.text, st, r.status));
+    });
+    if(!rq.children.length) rq.appendChild(el("li","empty","עוד אין בקשות. כל בקשה שתכתוב בקבוצה תופיע כאן עם הסטטוס שלה."));
+
+    var lg = document.getElementById("log");
+    (s.log||[]).slice().reverse().slice(0,12).forEach(function(l){
+      var li = el("li"); li.appendChild(el("span","d",l.date)); li.appendChild(el("span","txt",l.text)); lg.appendChild(li);
+    });
+  }
+  fetch("status.json?v=" + Date.now(), {cache:"no-store"})
+    .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+    .then(render)
+    .catch(function(){ var u=document.getElementById("updated"); u.textContent="לא הצלחתי לטעון את הנתונים. נסה לרענן."; u.className="sub err"; });
+})();
+</script>
+</body>
+</html>
