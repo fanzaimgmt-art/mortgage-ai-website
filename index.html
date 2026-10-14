@@ -877,7 +877,7 @@
   // objection expanders
   document.querySelectorAll('[data-obj]').forEach(function(o){ o.addEventListener('click', function(){ o.classList.toggle('open'); }); });
   // ===== start form (business funding, Stage 1) =====
-  var API_BASE = (location.hostname === 'localhost' || location.hostname === '127.0.0.1') ? 'http://localhost:8790' : '__API_BASE__';
+  var API_BASE = (location.hostname === 'localhost' || location.hostname === '127.0.0.1') ? 'http://localhost:8790' : 'https://mortgageai-api.fanzai-mgmt.workers.dev';
   var sc = document.getElementById('startForm'), openedAt = Date.now(), sending = false;
   var FORM_MSG = {
     en: {req: 'Please fill in all the fields.', email: 'Please check your email address.', phone: 'Please check your phone number.', boxes: 'Please check both boxes to continue.', rate: 'Too many requests. Please try again in an hour.', fail: 'Something went wrong. Please try again, or email us at mortgageloneai@gmail.com.'},
