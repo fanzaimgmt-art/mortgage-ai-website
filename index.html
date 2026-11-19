@@ -1833,7 +1833,12 @@
     var timedOut = false;
     var timer = setTimeout(function(){ timedOut = true; ctrl.abort(); }, 20000);
     fetch(API_BASE + '/api/lead', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload), signal: ctrl.signal })
-      .then(function(r){ clearTimeout(timer); return r.json().then(function(j){ return {status: r.status, body: j}; }).catch(function(){ return {status: r.status, body: {}}; }); })
+      .then(function(r){
+        return r.json().then(function(j){ return {status: r.status, body: j}; }).catch(function(err){
+          if(timedOut || (err && err.name === 'AbortError')) throw err;
+          return {status: r.status, body: {}};
+        });
+      })
       .then(function(res){
         if(res.status === 200 && res.body.ok){
           document.getElementById('leadRef').textContent = res.body.ref || '';
