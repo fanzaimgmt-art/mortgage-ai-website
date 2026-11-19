@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <script>document.documentElement.classList.add('js')</script>
@@ -15,7 +15,7 @@
     --navy:#0a1f3c; --navy-2:#0b2545; --navy-3:#102e57;
     --gold:#d6a93f; --gold-2:#eac15d; --gold-soft:#f4e6c2;
     --green:#2e9e6b;
-    --ink:#0e1726; --slate:#46556b; --slate-2:#6b7a92; --line:#e6eaf0;
+    --ink:#0e1726; --slate:#46556b; --slate-2:#5e6c84; --line:#e6eaf0;
     --bg:#ffffff; --bg-soft:#f6f8fb;
     --bg-navy-grad:linear-gradient(160deg,#0a1f3c 0%,#0b2545 55%,#102e57 100%);
     --radius:18px;
@@ -32,10 +32,13 @@
   html[lang="ar"] body,html[lang="ar"] h1,html[lang="ar"] h2,html[lang="ar"] h3,html[lang="ar"] h4{font-family:'IBM Plex Sans Arabic',sans-serif}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
+  :focus-visible{outline:3px solid #0a4f9c;outline-offset:3px}
+  .skip{position:absolute;inset-inline-start:12px;top:8px;z-index:80;background:#fff;color:#0a1f3c;font-family:'Sora',sans-serif;font-weight:600;font-size:.9rem;padding:8px 14px;border-radius:10px;box-shadow:var(--shadow-sm);transform:translateY(-160%)}
+  .skip:focus{transform:none}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
   .gold{color:var(--gold)}
-  .eyebrow{font-family:'Sora',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.55rem}
-  .eyebrow::before{content:"";width:26px;height:2px;background:var(--gold);display:inline-block;border-radius:2px}
+  .eyebrow{font-family:'Sora',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:#8a5e12;display:inline-flex;align-items:center;gap:.55rem}
+  .eyebrow::before{content:"";width:26px;height:2px;background:#8a5e12;display:inline-block;border-radius:2px}
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:'Sora',sans-serif;font-weight:600;font-size:.98rem;padding:.85rem 1.5rem;border-radius:999px;cursor:pointer;border:0;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;white-space:nowrap}
   .btn-gold{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-2) 100%);color:#1c1402;box-shadow:var(--shadow-gold)}
   .btn-gold:hover{transform:translateY(-2px);box-shadow:0 18px 46px rgba(214,169,63,.42)}
@@ -59,7 +62,7 @@
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
   .brand{display:flex;align-items:center;gap:.6rem;font-family:'Sora',sans-serif;font-weight:700;font-size:1.18rem;color:var(--navy);flex:none}
   .brand img{width:34px;height:34px;object-fit:contain}
-  .brand b{color:var(--gold);font-weight:800}
+  .brand b{color:#8a5e12;font-weight:800}
   .nav-links{display:flex;align-items:center;gap:1.6rem;margin-inline-start:auto}
   .nav-links a{font-size:.93rem;font-weight:500;color:var(--slate);transition:color .15s;white-space:nowrap}
   .nav-links a:hover{color:var(--navy)}
@@ -74,7 +77,7 @@
   .lang-menu.open{display:block}
   .lang-menu button{display:flex;width:100%;align-items:center;justify-content:space-between;gap:10px;background:none;border:0;font-family:'Inter',sans-serif;font-size:.95rem;color:var(--ink);padding:.6rem .7rem;border-radius:9px;cursor:pointer;text-align:start}
   .lang-menu button:hover{background:var(--bg-soft)}
-  .lang-menu button.active{color:var(--gold);font-weight:700}
+  .lang-menu button.active{color:#8a5e12;font-weight:700}
   .lang-menu button .chk{width:15px;height:15px;color:var(--gold);opacity:0}
   .lang-menu button.active .chk{opacity:1}
   .hamb{display:none;background:none;border:0;cursor:pointer;padding:6px}
@@ -95,6 +98,8 @@
   .hero h1 .hl{color:var(--gold-2)}
   .hero .lead{font-size:clamp(1rem,1.7vw,1.12rem);color:#cdd8e8;margin:18px 0 0;max-width:600px}
   .hero .lead b{color:#fff;font-weight:600}
+  .hero .eyebrow,.offer .eyebrow{color:var(--gold-2)}
+  .hero .eyebrow::before,.offer .eyebrow::before{background:var(--gold-2)}
   .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
   .hero .reassure{margin-top:20px}
   .hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
@@ -112,8 +117,10 @@
   .intent button.sel{border-color:var(--gold);background:#fdf7e8;box-shadow:0 0 0 3px rgba(214,169,63,.18)}
   .fld{margin-bottom:10px}
   .fld label{display:block;font-size:.78rem;font-weight:600;color:var(--slate);margin-bottom:4px}
-  .fld input,.fld select{width:100%;font-family:'Inter',sans-serif;font-size:.92rem;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:11px 12px;outline:none;transition:.15s}
-  .fld input:focus,.fld select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(214,169,63,.15)}
+  .fld input,.fld select{width:100%;font-family:'Inter',sans-serif;font-size:.92rem;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:11px 12px;transition:.15s}
+  .fld input:focus,.fld select:focus{border-color:#0a4f9c;box-shadow:0 0 0 3px rgba(10,79,156,.28)}
+  .fld.invalid input,.fld.invalid select,.consent.invalid input{border-color:#9f1239}
+  .hp{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap;border:0}
   .fld-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .consent{display:flex;gap:9px;align-items:flex-start;margin:12px 0 14px;font-size:.76rem;color:var(--slate);line-height:1.45}
   .consent input{margin-top:3px;flex:none;width:16px;height:16px;accent-color:var(--gold)}
@@ -130,6 +137,8 @@
   .sc-success .ok svg{width:30px;height:30px}
   .sc-success h3{margin-bottom:6px}
   .sc-success p{font-size:.92rem;color:var(--slate)}
+  .sc-err{color:#9f1239;font-size:.88rem;font-weight:600;margin:8px 0}
+  .sc-err:empty{display:none}
 
   /* objection one-liners */
   .objrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
@@ -311,7 +320,7 @@
   .foot-brand img{width:30px;height:30px;object-fit:contain}.foot-brand b{color:var(--gold)}
   .foot-links{display:flex;gap:24px;flex-wrap:wrap}
   .foot-links a:hover{color:#fff}
-  .disclaimer{font-size:.77rem;color:#67788f;line-height:1.6;max-width:900px}
+  .disclaimer{font-size:.77rem;color:#8496ad;line-height:1.6;max-width:900px}
   .foot-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:20px;color:#67788f;font-size:.82rem}
 
   /* sticky mobile CTA */
@@ -326,12 +335,13 @@
   /* ---------- RTL ---------- */
   [dir="rtl"] .hero-bg{object-position:center left;-webkit-mask-image:linear-gradient(270deg,transparent 6%,#000 70%);mask-image:linear-gradient(270deg,transparent 6%,#000 70%)}
   [dir="rtl"] .hero::after{background:linear-gradient(250deg,rgba(10,31,60,.94) 38%,rgba(10,31,60,.5) 100%)}
-  [dir="rtl"] .btn-arrow svg,[dir="rtl"] .mech-arrow svg{transform:scaleX(-1)}
+  [dir="rtl"] .btn-arrow svg,[dir="rtl"] .mech-arrow svg,[dir="rtl"] .sc-back svg{transform:scaleX(-1)}
   [dir="rtl"] .btn-arrow:hover svg{transform:scaleX(-1) translateX(3px)}
   html[lang="he"] h1,html[lang="he"] h2,html[lang="he"] h3,html[lang="he"] h4,html[lang="ar"] h1,html[lang="ar"] h2,html[lang="ar"] h3,html[lang="ar"] h4,html[lang="he"] .hero-name,html[lang="ar"] .hero-name{letter-spacing:normal}
   bdi,.ltr{unicode-bidi:isolate;direction:ltr}
 
-  @media(max-width:980px){
+  /* 981px covers a window whose inner width rounds to 980. */
+  @media(max-width:981px){
     .nav-links{display:none}
     .nav-links.open{display:flex;flex-direction:column;align-items:flex-start;position:absolute;top:72px;inset-inline-start:0;inset-inline-end:0;background:#fff;padding:18px 24px;gap:16px;border-bottom:1px solid var(--line);box-shadow:var(--shadow);margin:0}
     .hamb{display:block}
@@ -348,6 +358,12 @@
     .order-img{order:-1}
     .mbar{display:block}
     body{padding-bottom:74px}
+    .track .split{grid-template-columns:1fr}
+    .nav-cta > .btn{display:none}
+    .mbar .btn{white-space:normal}
+    .split > *,.hero-layout > *{min-width:0}
+    .figure .badge{max-width:calc(100% - 36px)}
+    .figure .badge b,.figure .badge span{white-space:normal;overflow-wrap:anywhere}
   }
   @media(max-width:560px){
     section{padding:64px 0}
@@ -362,12 +378,13 @@
 </style>
 </head>
 <body>
+<a class="skip" href="#startForm" data-i18n="a11y.skip">Skip to the funding request</a>
 
 <!-- ===== NAV ===== -->
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
     <a href="#top" class="brand"><img src="images/logo.png" width="34" height="34" alt="Mortgage AI logo" />Mortgage<b>AI</b></a>
-    <nav class="nav-links" id="navLinks">
+    <nav class="nav-links" id="navLinks" data-i18n="a11y.nav" data-i18n-attr="aria-label" aria-label="Primary">
       <a href="#about" data-i18n="nav.about">About us</a>
       <a href="#how" data-i18n="nav.how">How it works</a>
       <a href="#why" data-i18n="nav.why">Why us</a>
@@ -376,29 +393,30 @@
     </nav>
     <div class="nav-cta">
       <div class="lang">
-        <button class="lang-btn" id="langBtn" aria-label="Languages">
+        <button class="lang-btn" id="langBtn" aria-haspopup="menu" aria-expanded="false" aria-controls="langMenu" data-i18n="a11y.lang" data-i18n-attr="aria-label" aria-label="Languages">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18" stroke-linecap="round"/></svg>
           <span id="langCur">EN</span>
         </button>
         <div class="lang-menu" id="langMenu" role="menu">
-          <button data-lang="en" dir="ltr">English <svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <button data-lang="es" dir="ltr">Español <svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <button data-lang="fr" dir="ltr">Français <svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <button data-lang="ar" dir="rtl">العربية <svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <button data-lang="he" dir="rtl">עברית <svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button data-lang="en" dir="ltr" role="menuitem">English <svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button data-lang="es" dir="ltr" role="menuitem">Español <svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button data-lang="fr" dir="ltr" role="menuitem">Français <svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button data-lang="ar" dir="rtl" role="menuitem">العربية <svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button data-lang="he" dir="rtl" role="menuitem">עברית <svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
       <a href="#top" class="btn btn-gold btn-arrow" data-scroll-form data-i18n="nav.cta">Get funding
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
-      <button class="hamb" id="hamb" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="hamb" id="hamb" aria-expanded="false" aria-controls="navLinks" data-i18n="a11y.menu" data-i18n-attr="aria-label" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
+<main id="main">
 
 <!-- ===== HERO ===== -->
 <section class="hero" id="top">
-  <img class="hero-bg" src="images/hero.jpg" alt="" fetchpriority="high" width="1920" height="1080" />
+  <img class="hero-bg" src="images/hero.jpg" alt="" aria-hidden="true" fetchpriority="high" width="1920" height="1080" />
   <div class="wrap">
     <div class="hero-layout">
       <div class="hero-copy">
@@ -507,7 +525,7 @@
           <div class="fld"><label for="f_lang" data-i18n="form.lang">Preferred language</label>
             <select id="f_lang"><option value="en">English</option><option value="es">Español</option><option value="fr">Français</option><option value="ar">العربية</option><option value="he">עברית</option></select>
           </div>
-          <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true"><label>Website<input type="text" id="f_website" tabindex="-1" autocomplete="off" /></label></div>
+          <div class="hp" aria-hidden="true"><label>Website<input type="text" id="f_website" tabindex="-1" autocomplete="off" /></label></div>
           <button class="btn btn-gold btn-arrow" type="button" data-next2 data-i18n="form.continue">Continue
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -517,8 +535,8 @@
           <h3 data-i18n="form.t3">Last step</h3>
           <p class="sc-sub" data-i18n="form.s3">We send your request to one licensed funding partner. No lists, no reselling.</p>
           <label class="consent"><input type="checkbox" id="f_bp" /><span data-i18n="form.bp">I confirm this request is for business purposes only, not for personal, family, or household use.</span></label>
-          <label class="consent"><input type="checkbox" id="f_consent" /><span id="consentText" data-i18n="form.consent">I agree that Mortgage AI and its licensed funding partner may contact me about my business funding request by phone, text, and email, including with automated technology, at the number and email I gave. Consent is not a condition of any purchase. Message and data rates may apply. Reply STOP to opt out. I accept the <a href="terms.html" target="_blank">Terms</a> and <a href="privacy.html" target="_blank">Privacy Policy</a>.</span></label>
-          <p class="sc-err" id="formErr" role="alert" style="color:#ff8a8a;font-size:14px;margin:8px 0;display:none"></p>
+          <label class="consent"><input type="checkbox" id="f_consent" /><span id="consentText" data-i18n="form.consent">I agree that Mortgage AI and its licensed funding partner may contact me about my business funding request by phone, text, and email, including with automated technology, at the number and email I gave. Consent is not a condition of any purchase. Message and data rates may apply. Reply STOP to opt out. I accept the <a href="terms.html" target="_blank" rel="noopener">Terms</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
+          <p class="sc-err" id="formErr" role="alert"></p>
           <button class="btn btn-gold" type="button" data-submit data-i18n="form.submit">Send my request</button>
           <div class="sc-micro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke-linecap="round"/></svg><span data-i18n="form.micro3">Your details stay private — never resold</span></div>
         </div>
@@ -661,7 +679,7 @@
         </div>
       </div>
       <div class="figure tall reveal d1 order-img">
-        <img src="images/handshake.jpg" alt="" loading="lazy" />
+        <img src="images/handshake.jpg" alt="Two people in business attire shaking hands" loading="lazy" />
         <div class="badge"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><b data-i18n="off.badge">Your decision</b><span data-i18n="off.badges">one request, no obligation</span></div></div>
       </div>
     </div>
@@ -707,7 +725,7 @@
     </div>
     <!-- in your language band -->
     <div class="split" style="margin-top:60px">
-      <div class="figure tall reveal d1"><img src="images/market.jpg" alt="" loading="lazy" /></div>
+      <div class="figure tall reveal d1"><img src="images/market.jpg" alt="A small-business owner standing with his family" loading="lazy" /></div>
       <div>
         <span class="eyebrow reveal" data-i18n="lang.eyebrow">Built for communities the big sites ignore</span>
         <h2 class="reveal d1" style="font-size:clamp(1.6rem,3vw,2.2rem);color:var(--navy);margin:14px 0 0" data-i18n="lang.h2">A platform that finally speaks your language</h2>
@@ -737,7 +755,7 @@
         </div>
       </div>
       <div class="figure tall reveal d1">
-        <img src="images/solution.jpg" alt="" loading="lazy" />
+        <img src="images/solution.jpg" alt="A person smiling while using a phone" loading="lazy" />
         <div class="badge"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6" stroke-linecap="round"/></svg></div><div><b data-i18n="tp.badge">Real people</b><span data-i18n="tp.badges">one partner, in your language</span></div></div>
       </div>
     </div>
@@ -785,11 +803,12 @@
   </div>
 </section>
 
+</main>
 <!-- ===== FOOTER ===== -->
 <footer>
   <div class="foot-support">
     <div class="wrap">
-      <img src="images/receptionist.jpg" alt="" loading="lazy" />
+      <img src="images/receptionist.jpg" alt="A team member with a headset, ready to help" loading="lazy" />
       <div class="fs-txt">
         <b data-i18n="ft.supt">Talk to a real person</b>
         <p data-i18n="ft.supp">Questions before you start? A real person from our team answers, in your language. Email us and we'll usually reply within one business day.</p>
@@ -801,7 +820,7 @@
     <div class="wrap">
       <div class="foot-top">
         <div>
-          <div class="foot-brand"><img src="images/logo.png" width="30" height="30" alt="" />Mortgage<b>AI</b></div>
+          <div class="foot-brand"><img src="images/logo.png" width="30" height="30" alt="Mortgage AI logo" />Mortgage<b>AI</b></div>
           <p style="margin-top:10px;max-width:340px" data-i18n="ft.tag">Small-business funding requests, sent to one licensed funding partner. One request, no lead reselling, in your language.</p>
         </div>
         <div class="foot-links">
@@ -833,10 +852,10 @@
   // Stage 1 business-funding form strings (override the older offer-comparison form copy).
   (function(){
     var F = {
-      es: {"form.t1":"Financiamiento para su negocio","form.s1":"Cuéntenos sobre su negocio. Toma unos 2 minutos.","form.biz":"Nombre del negocio","form.ind":"Industria","form.state":"Estado","form.tib":"Tiempo en operación","form.rev":"Ingresos mensuales","form.continue":"Continuar","form.micro1":"Sin revisión de crédito para enviar la solicitud","form.back":"Atrás","form.t2":"¿Qué necesita?","form.amount":"Monto necesario","form.use":"Uso de los fondos","form.name":"Nombre completo","form.email":"Correo electrónico","form.phone":"Teléfono","form.lang":"Idioma preferido","form.t3":"Último paso","form.s3":"Enviamos su solicitud a un solo socio de financiamiento con licencia. Sin listas, sin reventa.","form.bp":"Confirmo que esta solicitud es solo para fines comerciales, no para uso personal, familiar o del hogar.","form.consent":"Acepto que Mortgage AI y su socio de financiamiento con licencia me contacten sobre mi solicitud de financiamiento comercial por teléfono, mensaje de texto y correo electrónico, incluso con tecnología automatizada, al número y correo que proporcioné. El consentimiento no es condición de ninguna compra. Pueden aplicarse tarifas de mensajes y datos. Responda STOP para cancelar. Acepto los <a href=\"terms.html\" target=\"_blank\">Términos</a> y la <a href=\"privacy.html\" target=\"_blank\">Política de privacidad</a>.","form.submit":"Enviar mi solicitud","form.micro3":"Sus datos son privados, nunca se revenden","form.dt":"Solicitud recibida","form.dp":"Un socio de financiamiento con licencia le contactará en un día hábil, en su idioma.","form.ref":"Su número de referencia:","opt.choose":"Elegir","opt.other":"Otro","opt.ind.restaurant":"Restaurante / comida","opt.ind.construction":"Construcción / oficios","opt.ind.retail":"Tienda minorista","opt.ind.transport":"Transporte / camiones","opt.ind.health":"Salud / medicina","opt.ind.services":"Servicios profesionales","opt.ind.ecommerce":"Comercio electrónico","opt.tib.lt6m":"Menos de 6 meses","opt.tib.6-12m":"6 a 12 meses","opt.tib.1-2y":"1 a 2 años","opt.tib.2y":"Más de 2 años","opt.use.wc":"Capital de trabajo","opt.use.equipment":"Equipo","opt.use.inventory":"Inventario","opt.use.expansion":"Expansión","opt.use.payroll":"Nómina"},
-      fr: {"form.t1":"Financement pour votre entreprise","form.s1":"Parlez-nous de votre entreprise. Environ 2 minutes.","form.biz":"Nom de l'entreprise","form.ind":"Secteur","form.state":"État","form.tib":"Ancienneté de l'entreprise","form.rev":"Chiffre d'affaires mensuel","form.continue":"Continuer","form.micro1":"Aucune vérification de crédit pour envoyer la demande","form.back":"Retour","form.t2":"De quoi avez-vous besoin ?","form.amount":"Montant souhaité","form.use":"Utilisation des fonds","form.name":"Nom complet","form.email":"E-mail","form.phone":"Téléphone","form.lang":"Langue préférée","form.t3":"Dernière étape","form.s3":"Nous envoyons votre demande à un seul partenaire de financement agréé. Pas de listes, pas de revente.","form.bp":"Je confirme que cette demande est uniquement à des fins professionnelles, et non personnelles, familiales ou domestiques.","form.consent":"J'accepte que Mortgage AI et son partenaire de financement agréé me contactent au sujet de ma demande de financement professionnel par téléphone, SMS et e-mail, y compris par des moyens automatisés, au numéro et à l'adresse fournis. Ce consentement n'est pas une condition d'achat. Des frais de messagerie et de données peuvent s'appliquer. Répondez STOP pour vous désinscrire. J'accepte les <a href=\"terms.html\" target=\"_blank\">Conditions</a> et la <a href=\"privacy.html\" target=\"_blank\">Politique de confidentialité</a>.","form.submit":"Envoyer ma demande","form.micro3":"Vos données restent privées, jamais revendues","form.dt":"Demande reçue","form.dp":"Un partenaire de financement agréé vous contactera sous un jour ouvré, dans votre langue.","form.ref":"Votre référence :","opt.choose":"Choisir","opt.other":"Autre","opt.ind.restaurant":"Restauration","opt.ind.construction":"Construction / artisans","opt.ind.retail":"Commerce de détail","opt.ind.transport":"Transport / camionnage","opt.ind.health":"Santé / médical","opt.ind.services":"Services professionnels","opt.ind.ecommerce":"E-commerce","opt.tib.lt6m":"Moins de 6 mois","opt.tib.6-12m":"6 à 12 mois","opt.tib.1-2y":"1 à 2 ans","opt.tib.2y":"Plus de 2 ans","opt.use.wc":"Fonds de roulement","opt.use.equipment":"Équipement","opt.use.inventory":"Stock","opt.use.expansion":"Expansion","opt.use.payroll":"Salaires"},
-      ar: {"form.t1":"تمويل لعملك التجاري","form.s1":"أخبرنا عن عملك. يستغرق حوالي دقيقتين.","form.biz":"اسم النشاط التجاري","form.ind":"المجال","form.state":"الولاية","form.tib":"مدة النشاط","form.rev":"الإيرادات الشهرية","form.continue":"متابعة","form.micro1":"لا يوجد فحص ائتماني لإرسال الطلب","form.back":"رجوع","form.t2":"ما الذي تحتاجه؟","form.amount":"المبلغ المطلوب","form.use":"استخدام التمويل","form.name":"الاسم الكامل","form.email":"البريد الإلكتروني","form.phone":"الهاتف","form.lang":"اللغة المفضلة","form.t3":"الخطوة الأخيرة","form.s3":"نرسل طلبك إلى شريك تمويل واحد مرخّص. بلا قوائم وبلا إعادة بيع.","form.bp":"أؤكد أن هذا الطلب لأغراض تجارية فقط، وليس للاستخدام الشخصي أو العائلي أو المنزلي.","form.consent":"أوافق على أن تتواصل معي Mortgage AI وشريك التمويل المرخّص بخصوص طلب التمويل التجاري عبر الهاتف والرسائل النصية والبريد الإلكتروني، بما في ذلك عبر تقنيات آلية، على الرقم والبريد اللذين قدمتهما. الموافقة ليست شرطًا لأي شراء. قد تُطبق رسوم الرسائل والبيانات. أرسل STOP لإلغاء الاشتراك. أوافق على <a href=\"terms.html\" target=\"_blank\">الشروط</a> و<a href=\"privacy.html\" target=\"_blank\">سياسة الخصوصية</a>.","form.submit":"إرسال طلبي","form.micro3":"بياناتك خاصة ولا يُعاد بيعها أبدًا","form.dt":"تم استلام الطلب","form.dp":"سيتواصل معك شريك تمويل مرخّص خلال يوم عمل واحد بلغتك.","form.ref":"رقمك المرجعي:","opt.choose":"اختر","opt.other":"أخرى","opt.ind.restaurant":"مطعم / أغذية","opt.ind.construction":"بناء / حِرف","opt.ind.retail":"متجر تجزئة","opt.ind.transport":"نقل / شاحنات","opt.ind.health":"صحة / طب","opt.ind.services":"خدمات مهنية","opt.ind.ecommerce":"تجارة إلكترونية","opt.tib.lt6m":"أقل من 6 أشهر","opt.tib.6-12m":"من 6 إلى 12 شهرًا","opt.tib.1-2y":"من سنة إلى سنتين","opt.tib.2y":"أكثر من سنتين","opt.use.wc":"رأس مال عامل","opt.use.equipment":"معدات","opt.use.inventory":"مخزون","opt.use.expansion":"توسع","opt.use.payroll":"رواتب"},
-      he: {"form.t1":"מימון לעסק שלך","form.s1":"ספרו לנו על העסק. לוקח בערך 2 דקות.","form.biz":"שם העסק","form.ind":"תחום","form.state":"מדינה","form.tib":"ותק העסק","form.rev":"הכנסה חודשית","form.continue":"המשך","form.micro1":"בלי בדיקת אשראי כדי לשלוח בקשה","form.back":"חזרה","form.t2":"מה אתם צריכים?","form.amount":"סכום נדרש","form.use":"למה הכסף","form.name":"שם מלא","form.email":"אימייל","form.phone":"טלפון","form.lang":"שפה מועדפת","form.t3":"שלב אחרון","form.s3":"אנחנו שולחים את הבקשה לשותף מימון מורשה אחד. בלי רשימות, בלי מכירה הלאה.","form.bp":"אני מאשר/ת שהבקשה היא למטרות עסקיות בלבד, ולא לשימוש אישי, משפחתי או ביתי.","form.consent":"אני מסכים/ה ש-Mortgage AI ושותף המימון המורשה שלה ייצרו איתי קשר לגבי בקשת המימון העסקי בטלפון, בהודעות ובאימייל, כולל בטכנולוגיה אוטומטית, במספר ובאימייל שמסרתי. ההסכמה אינה תנאי לרכישה כלשהי. ייתכנו חיובי הודעות ונתונים. השיבו STOP להסרה. אני מקבל/ת את <a href=\"terms.html\" target=\"_blank\">התנאים</a> ואת <a href=\"privacy.html\" target=\"_blank\">מדיניות הפרטיות</a>.","form.submit":"שליחת הבקשה","form.micro3":"הפרטים שלך נשארים פרטיים ולא נמכרים הלאה","form.dt":"הבקשה התקבלה","form.dp":"שותף מימון מורשה יחזור אליך תוך יום עסקים אחד, בשפה שלך.","form.ref":"מספר הפנייה שלך:","opt.choose":"בחירה","opt.other":"אחר","opt.ind.restaurant":"מסעדה / אוכל","opt.ind.construction":"בנייה / בעלי מקצוע","opt.ind.retail":"חנות","opt.ind.transport":"הובלות / משאיות","opt.ind.health":"בריאות / רפואה","opt.ind.services":"שירותים מקצועיים","opt.ind.ecommerce":"מסחר מקוון","opt.tib.lt6m":"פחות מ-6 חודשים","opt.tib.6-12m":"6 עד 12 חודשים","opt.tib.1-2y":"שנה עד שנתיים","opt.tib.2y":"יותר משנתיים","opt.use.wc":"הון חוזר","opt.use.equipment":"ציוד","opt.use.inventory":"מלאי","opt.use.expansion":"הרחבה","opt.use.payroll":"משכורות"}
+      es: {"form.t1":"Financiamiento para su negocio","form.s1":"Cuéntenos sobre su negocio. Toma unos 2 minutos.","form.biz":"Nombre del negocio","form.ind":"Industria","form.state":"Estado","form.tib":"Tiempo en operación","form.rev":"Ingresos mensuales","form.continue":"Continuar","form.micro1":"Sin revisión de crédito para enviar la solicitud","form.back":"Atrás","form.t2":"¿Qué necesita?","form.amount":"Monto necesario","form.use":"Uso de los fondos","form.name":"Nombre completo","form.email":"Correo electrónico","form.phone":"Teléfono","form.lang":"Idioma preferido","form.t3":"Último paso","form.s3":"Enviamos su solicitud a un solo socio de financiamiento con licencia. Sin listas, sin reventa.","form.bp":"Confirmo que esta solicitud es solo para fines comerciales, no para uso personal, familiar o del hogar.","form.consent":"Acepto que Mortgage AI y su socio de financiamiento con licencia me contacten sobre mi solicitud de financiamiento comercial por teléfono, mensaje de texto y correo electrónico, incluso con tecnología automatizada, al número y correo que proporcioné. El consentimiento no es condición de ninguna compra. Pueden aplicarse tarifas de mensajes y datos. Responda STOP para cancelar. Acepto los <a href=\"terms.html\" target=\"_blank\" rel=\"noopener\">Términos</a> y la <a href=\"privacy.html\" target=\"_blank\" rel=\"noopener\">Política de privacidad</a>.","form.submit":"Enviar mi solicitud","form.micro3":"Sus datos son privados, nunca se revenden","form.dt":"Solicitud recibida","form.dp":"Un socio de financiamiento con licencia le contactará en un día hábil, en su idioma.","form.ref":"Su número de referencia:","opt.choose":"Elegir","opt.other":"Otro","opt.ind.restaurant":"Restaurante / comida","opt.ind.construction":"Construcción / oficios","opt.ind.retail":"Tienda minorista","opt.ind.transport":"Transporte / camiones","opt.ind.health":"Salud / medicina","opt.ind.services":"Servicios profesionales","opt.ind.ecommerce":"Comercio electrónico","opt.tib.lt6m":"Menos de 6 meses","opt.tib.6-12m":"6 a 12 meses","opt.tib.1-2y":"1 a 2 años","opt.tib.2y":"Más de 2 años","opt.use.wc":"Capital de trabajo","opt.use.equipment":"Equipo","opt.use.inventory":"Inventario","opt.use.expansion":"Expansión","opt.use.payroll":"Nómina"},
+      fr: {"form.t1":"Financement pour votre entreprise","form.s1":"Parlez-nous de votre entreprise. Environ 2 minutes.","form.biz":"Nom de l'entreprise","form.ind":"Secteur","form.state":"État","form.tib":"Ancienneté de l'entreprise","form.rev":"Chiffre d'affaires mensuel","form.continue":"Continuer","form.micro1":"Aucune vérification de crédit pour envoyer la demande","form.back":"Retour","form.t2":"De quoi avez-vous besoin ?","form.amount":"Montant souhaité","form.use":"Utilisation des fonds","form.name":"Nom complet","form.email":"E-mail","form.phone":"Téléphone","form.lang":"Langue préférée","form.t3":"Dernière étape","form.s3":"Nous envoyons votre demande à un seul partenaire de financement agréé. Pas de listes, pas de revente.","form.bp":"Je confirme que cette demande est uniquement à des fins professionnelles, et non personnelles, familiales ou domestiques.","form.consent":"J'accepte que Mortgage AI et son partenaire de financement agréé me contactent au sujet de ma demande de financement professionnel par téléphone, SMS et e-mail, y compris par des moyens automatisés, au numéro et à l'adresse fournis. Ce consentement n'est pas une condition d'achat. Des frais de messagerie et de données peuvent s'appliquer. Répondez STOP pour vous désinscrire. J'accepte les <a href=\"terms.html\" target=\"_blank\" rel=\"noopener\">Conditions</a> et la <a href=\"privacy.html\" target=\"_blank\" rel=\"noopener\">Politique de confidentialité</a>.","form.submit":"Envoyer ma demande","form.micro3":"Vos données restent privées, jamais revendues","form.dt":"Demande reçue","form.dp":"Un partenaire de financement agréé vous contactera sous un jour ouvré, dans votre langue.","form.ref":"Votre référence :","opt.choose":"Choisir","opt.other":"Autre","opt.ind.restaurant":"Restauration","opt.ind.construction":"Construction / artisans","opt.ind.retail":"Commerce de détail","opt.ind.transport":"Transport / camionnage","opt.ind.health":"Santé / médical","opt.ind.services":"Services professionnels","opt.ind.ecommerce":"E-commerce","opt.tib.lt6m":"Moins de 6 mois","opt.tib.6-12m":"6 à 12 mois","opt.tib.1-2y":"1 à 2 ans","opt.tib.2y":"Plus de 2 ans","opt.use.wc":"Fonds de roulement","opt.use.equipment":"Équipement","opt.use.inventory":"Stock","opt.use.expansion":"Expansion","opt.use.payroll":"Salaires"},
+      ar: {"form.t1":"تمويل لعملك التجاري","form.s1":"أخبرنا عن عملك. يستغرق حوالي دقيقتين.","form.biz":"اسم النشاط التجاري","form.ind":"المجال","form.state":"الولاية","form.tib":"مدة النشاط","form.rev":"الإيرادات الشهرية","form.continue":"متابعة","form.micro1":"لا يوجد فحص ائتماني لإرسال الطلب","form.back":"رجوع","form.t2":"ما الذي تحتاجه؟","form.amount":"المبلغ المطلوب","form.use":"استخدام التمويل","form.name":"الاسم الكامل","form.email":"البريد الإلكتروني","form.phone":"الهاتف","form.lang":"اللغة المفضلة","form.t3":"الخطوة الأخيرة","form.s3":"نرسل طلبك إلى شريك تمويل واحد مرخّص. بلا قوائم وبلا إعادة بيع.","form.bp":"أؤكد أن هذا الطلب لأغراض تجارية فقط، وليس للاستخدام الشخصي أو العائلي أو المنزلي.","form.consent":"أوافق على أن تتواصل معي Mortgage AI وشريك التمويل المرخّص بخصوص طلب التمويل التجاري عبر الهاتف والرسائل النصية والبريد الإلكتروني، بما في ذلك عبر تقنيات آلية، على الرقم والبريد اللذين قدمتهما. الموافقة ليست شرطًا لأي شراء. قد تُطبق رسوم الرسائل والبيانات. أرسل STOP لإلغاء الاشتراك. أوافق على <a href=\"terms.html\" target=\"_blank\" rel=\"noopener\">الشروط</a> و<a href=\"privacy.html\" target=\"_blank\" rel=\"noopener\">سياسة الخصوصية</a>.","form.submit":"إرسال طلبي","form.micro3":"بياناتك خاصة ولا يُعاد بيعها أبدًا","form.dt":"تم استلام الطلب","form.dp":"سيتواصل معك شريك تمويل مرخّص خلال يوم عمل واحد بلغتك.","form.ref":"رقمك المرجعي:","opt.choose":"اختر","opt.other":"أخرى","opt.ind.restaurant":"مطعم / أغذية","opt.ind.construction":"بناء / حِرف","opt.ind.retail":"متجر تجزئة","opt.ind.transport":"نقل / شاحنات","opt.ind.health":"صحة / طب","opt.ind.services":"خدمات مهنية","opt.ind.ecommerce":"تجارة إلكترونية","opt.tib.lt6m":"أقل من 6 أشهر","opt.tib.6-12m":"من 6 إلى 12 شهرًا","opt.tib.1-2y":"من سنة إلى سنتين","opt.tib.2y":"أكثر من سنتين","opt.use.wc":"رأس مال عامل","opt.use.equipment":"معدات","opt.use.inventory":"مخزون","opt.use.expansion":"توسع","opt.use.payroll":"رواتب"},
+      he: {"form.t1":"מימון לעסק שלך","form.s1":"ספרו לנו על העסק. לוקח בערך 2 דקות.","form.biz":"שם העסק","form.ind":"תחום","form.state":"מדינה","form.tib":"ותק העסק","form.rev":"הכנסה חודשית","form.continue":"המשך","form.micro1":"בלי בדיקת אשראי כדי לשלוח בקשה","form.back":"חזרה","form.t2":"מה אתם צריכים?","form.amount":"סכום נדרש","form.use":"למה הכסף","form.name":"שם מלא","form.email":"אימייל","form.phone":"טלפון","form.lang":"שפה מועדפת","form.t3":"שלב אחרון","form.s3":"אנחנו שולחים את הבקשה לשותף מימון מורשה אחד. בלי רשימות, בלי מכירה הלאה.","form.bp":"אני מאשר/ת שהבקשה היא למטרות עסקיות בלבד, ולא לשימוש אישי, משפחתי או ביתי.","form.consent":"אני מסכים/ה ש-Mortgage AI ושותף המימון המורשה שלה ייצרו איתי קשר לגבי בקשת המימון העסקי בטלפון, בהודעות ובאימייל, כולל בטכנולוגיה אוטומטית, במספר ובאימייל שמסרתי. ההסכמה אינה תנאי לרכישה כלשהי. ייתכנו חיובי הודעות ונתונים. השיבו STOP להסרה. אני מקבל/ת את <a href=\"terms.html\" target=\"_blank\" rel=\"noopener\">התנאים</a> ואת <a href=\"privacy.html\" target=\"_blank\" rel=\"noopener\">מדיניות הפרטיות</a>.","form.submit":"שליחת הבקשה","form.micro3":"הפרטים שלך נשארים פרטיים ולא נמכרים הלאה","form.dt":"הבקשה התקבלה","form.dp":"שותף מימון מורשה יחזור אליך תוך יום עסקים אחד, בשפה שלך.","form.ref":"מספר הפנייה שלך:","opt.choose":"בחירה","opt.other":"אחר","opt.ind.restaurant":"מסעדה / אוכל","opt.ind.construction":"בנייה / בעלי מקצוע","opt.ind.retail":"חנות","opt.ind.transport":"הובלות / משאיות","opt.ind.health":"בריאות / רפואה","opt.ind.services":"שירותים מקצועיים","opt.ind.ecommerce":"מסחר מקוון","opt.tib.lt6m":"פחות מ-6 חודשים","opt.tib.6-12m":"6 עד 12 חודשים","opt.tib.1-2y":"שנה עד שנתיים","opt.tib.2y":"יותר משנתיים","opt.use.wc":"הון חוזר","opt.use.equipment":"ציוד","opt.use.inventory":"מלאי","opt.use.expansion":"הרחבה","opt.use.payroll":"משכורות"}
     };
     for (var l in F){ I18N[l] = I18N[l] || {}; for (var k in F[l]) I18N[l][k] = F[l][k]; }
   })();
@@ -847,6 +866,10 @@
     var MAIL = ' · <bdi>mortgageloneai@gmail.com</bdi>';
     var F = {
       es: {
+        "a11y.skip": "Saltar al formulario de solicitud",
+        "a11y.nav": "Principal",
+        "a11y.lang": "Idiomas",
+        "a11y.menu": "Menú",
         "meta.desc": "Mortgage AI ayuda a dueños de pequeñas empresas a solicitar financiamiento: capital de trabajo, financiamiento de equipos y financiamiento basado en ingresos. Envíe una solicitud y un socio de financiamiento con licencia le dará seguimiento. No revendemos sus datos. En English, Español, Français, العربية, עברית.",
         "nav.cta": "Solicitar financiamiento",
         "hero.disambig": "Financiamiento para pequeñas empresas. <b style=\"color:#cdd8e8\">No somos un prestamista ni un sitio de hipotecas.</b>",
@@ -956,6 +979,10 @@
         "ft.disc": "Mortgage AI es una plataforma de tecnología y referencias. Pasamos solicitudes de financiamiento empresarial a un socio de financiamiento con licencia, que puede comunicarse con usted y presentarle ofertas. Mortgage AI no es un prestamista, no toma decisiones de crédito ni de aprobación, no revisa el crédito y no proporciona asesoramiento financiero, legal ni fiscal. El financiamiento es solo para fines comerciales. Mortgage AI no es una empresa hipotecaria y no ofrece hipotecas. Podemos recibir una comisión por referencia de nuestro socio de financiamiento. No vendemos ni revendemos su información de contacto. Cualquier nombre, cifra o ejemplo mostrado es ilustrativo. La disponibilidad varía según el estado y está sujeta a la ley aplicable y a la aprobación del socio."
       },
       fr: {
+        "a11y.skip": "Aller au formulaire de demande",
+        "a11y.nav": "Principal",
+        "a11y.lang": "Langues",
+        "a11y.menu": "Menu",
         "meta.desc": "Mortgage AI aide les propriétaires de petites entreprises à demander un financement : fonds de roulement, financement d'équipement et financement basé sur le chiffre d'affaires. Envoyez une seule demande et un partenaire de financement agréé vous recontacte. Nous ne revendons pas vos données. En English, Español, Français, العربية, עברית.",
         "nav.cta": "Demander un financement",
         "hero.disambig": "Financement pour petites entreprises. <b style=\"color:#cdd8e8\">Nous ne sommes ni un prêteur ni un site de prêts hypothécaires.</b>",
@@ -1065,6 +1092,10 @@
         "ft.disc": "Mortgage AI est une plateforme technologique de mise en relation. Nous transmettons les demandes de financement professionnel à un partenaire de financement agréé, qui peut vous contacter et vous présenter des offres. Mortgage AI n'est pas un prêteur, ne prend aucune décision de crédit ou d'approbation, ne consulte pas le crédit et ne fournit aucun conseil financier, juridique ou fiscal. Le financement est réservé à des fins professionnelles. Mortgage AI n'est pas une société de prêts hypothécaires et n'offre pas de prêts hypothécaires. Nous pouvons recevoir une commission de recommandation de notre partenaire de financement. Nous ne vendons ni ne revendons vos coordonnées. Les noms, chiffres et exemples présentés sont fournis à titre indicatif. La disponibilité varie selon l'État et dépend de la loi applicable et de l'approbation du partenaire."
       },
       ar: {
+        "a11y.skip": "انتقل إلى نموذج الطلب",
+        "a11y.nav": "التنقل الرئيسي",
+        "a11y.lang": "اللغات",
+        "a11y.menu": "القائمة",
         "meta.desc": "تساعد Mortgage AI أصحاب الأعمال الصغيرة على طلب التمويل: رأس المال العامل، وتمويل المعدات، والتمويل القائم على الإيرادات. أرسل طلبًا واحدًا وسيتابع معك شريك تمويل مرخّص. لا نعيد بيع بياناتك. متاح بـ English وEspañol وFrançais والعربية وעברית.",
         "nav.cta": "اطلب التمويل",
         "hero.disambig": "تمويل للأعمال الصغيرة. <b style=\"color:#cdd8e8\">لسنا جهة إقراض ولا موقعًا للرهن العقاري.</b>",
@@ -1174,6 +1205,10 @@
         "ft.disc": "Mortgage AI منصة تقنية للإحالة. نحيل طلبات تمويل الأعمال إلى شريك تمويل مرخّص قد يتواصل معك ويعرض عليك عروضًا. Mortgage AI ليست جهة إقراض، ولا تتخذ قرارات ائتمانية أو قرارات موافقة، ولا تستعلم عن السجل الائتماني، ولا تقدم استشارات مالية أو قانونية أو ضريبية. التمويل لأغراض تجارية فقط. Mortgage AI ليست شركة رهن عقاري ولا تقدم قروضًا عقارية. قد نحصل على رسوم إحالة من شريك التمويل. لا نبيع معلومات الاتصال الخاصة بك ولا نعيد بيعها. أي أسماء أو أرقام أو أمثلة معروضة هي للتوضيح فقط. يختلف التوفر حسب الولاية ويخضع للقانون المعمول به ولموافقة الشريك."
       },
       he: {
+        "a11y.skip": "דילוג לטופס הבקשה",
+        "a11y.nav": "ניווט ראשי",
+        "a11y.lang": "שפות",
+        "a11y.menu": "תפריט",
         "meta.desc": "Mortgage AI עוזרת לבעלי עסקים קטנים לבקש מימון: הון חוזר, מימון ציוד ומימון מבוסס הכנסות. שלחו בקשה אחת, ושותף מימון מורשה אחד יחזור אליך. אנחנו לא מוכרים את הפרטים שלך הלאה. ב-English, Español, Français, العربية, עברית.",
         "nav.cta": "בקשת מימון",
         "hero.disambig": "מימון לעסקים קטנים. <b style=\"color:#cdd8e8\">אנחנו לא גוף מלווה ולא אתר משכנתאות.</b>",
@@ -1311,17 +1346,24 @@
   var nav = document.getElementById('nav');
   window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY>12); });
   var hamb=document.getElementById('hamb'), links=document.getElementById('navLinks');
-  hamb.addEventListener('click', function(){ links.classList.toggle('open'); });
-  links.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ links.classList.remove('open'); }); });
+  function setMenu(open){ links.classList.toggle('open', open); hamb.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+  hamb.addEventListener('click', function(){ setMenu(!links.classList.contains('open')); });
+  links.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setMenu(false); }); });
   // lang menu
   var langBtn=document.getElementById('langBtn'), langMenu=document.getElementById('langMenu');
-  langBtn.addEventListener('click', function(e){ e.stopPropagation(); langMenu.classList.toggle('open'); });
-  document.addEventListener('click', function(){ langMenu.classList.remove('open'); });
-  langMenu.querySelectorAll('button').forEach(function(b){ b.addEventListener('click', function(){ applyLang(b.getAttribute('data-lang')); langMenu.classList.remove('open'); }); });
+  function setLangOpen(open){ langMenu.classList.toggle('open', open); langBtn.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+  langBtn.addEventListener('click', function(e){ e.stopPropagation(); setLangOpen(!langMenu.classList.contains('open')); });
+  document.addEventListener('click', function(){ setLangOpen(false); });
+  langMenu.querySelectorAll('button').forEach(function(b){ b.addEventListener('click', function(){ applyLang(b.getAttribute('data-lang')); setLangOpen(false); }); });
   // scroll-to-form helpers
   document.querySelectorAll('[data-scroll-form]').forEach(function(a){ a.addEventListener('click', function(e){ e.preventDefault(); document.getElementById('startForm').scrollIntoView({behavior:'smooth',block:'center'}); }); });
   // objection expanders
-  document.querySelectorAll('[data-obj]').forEach(function(o){ o.addEventListener('click', function(){ o.classList.toggle('open'); }); });
+  document.querySelectorAll('[data-obj]').forEach(function(o){
+    o.setAttribute('role','button'); o.setAttribute('tabindex','0'); o.setAttribute('aria-expanded','false');
+    function toggle(){ var on = o.classList.toggle('open'); o.setAttribute('aria-expanded', on ? 'true' : 'false'); }
+    o.addEventListener('click', toggle);
+    o.addEventListener('keydown', function(e){ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggle(); } });
+  });
   // ===== start form (business funding, Stage 1) =====
   var API_BASE = (location.hostname === 'localhost' || location.hostname === '127.0.0.1') ? 'http://localhost:8790' : 'https://mortgageai-api.fanzai-mgmt.workers.dev';
   var sc = document.getElementById('startForm'), openedAt = Date.now(), sending = false;
